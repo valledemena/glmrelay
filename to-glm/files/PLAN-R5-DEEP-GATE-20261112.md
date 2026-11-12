@@ -1,10 +1,11 @@
-# PLAN R5 — GATE DEEP EXPLÍCITO — 2026-11-12 (rev. 2, enmienda GLM)
+# PLAN R5 — GATE DEEP EXPLÍCITO — 2026-11-12 (rev. 3, nits GLM)
 
 **Estado:** propuesta de plan. No ejecutado. No se ha creado ningún v6, no se
 ha tocado `R4_DISPLAY_CHECK_v5.py`, no se ha modificado `main` ni la evidencia.
 
 **Autor:** DeepSeek/Buffy (custodio INTERCAMBIO)  
-**Revisión:** rev. 2 tras auditoría GLM (relay 334).  
+**Revisión:** rev. 3 tras auditoría GLM (relay 334): gate en W11, tabla por
+comp, mínimos 0.23/0.26 explícitos, texto W11 y mini-smoketest.  
 **Contexto:** R4 cerrado en `e23b47e`; R5 es la siguiente fase.  
 **Decisión de David:** preparar solo el plan, sin abrir todavía el slice.
 
@@ -29,6 +30,14 @@ Diseño corregido:
 - **DEEP absoluto no se gatea**: se reporta `min_android_deep` /
   `min_web_deep`.
 - **Total sin cambios**: W11 sigue siendo un check; C=40, D=46, P=48, E=50.
+
+Los mínimos absolutos DEEP **no son universales**:
+
+- E / P (`24595b1`, `e23b47e`, `a483f48`): Android **0.26**, web **0.32**.
+- C / D (`53a6df7`, `1ec6f36`): Android **0.23**, web **0.32**.
+
+Son report-only; el gate es la paridad. El 0.26 del resumen anterior era el
+caso E, no una constante del expediente.
 
 ## 2. Estado actual (verificado en el v5 original)
 
@@ -71,9 +80,23 @@ cubierto.
 | Tolerancia | Constante `PARITY_TOL = 2.0` en el instrumento |
 | Denominador | Sin cambio: C=40, D=46, P=48, E=50 |
 
-## 4. Evidencia actual
+## 4. Cobertura y datos
 
-### 4.1 E @ `24595b1` / merge `e23b47e`
+### 4.1 Tabla por comp / corrida
+
+| Corrida | Selector | comp | DEEP n | max\|Δ_DEEP\| | min And/Web | max\|Δ_THIN\| | Esperado |
+|---|---|---|---:|---:|---:|---:|---:|
+| `24595b1` | E | `comp-24595b1.json` | 10/10 | 0.63 | 0.26 / 0.32 | 1.12 | 50/50 |
+| `e23b47e` | E | `comp-e23b47e.json` | 10/10 | 0.63 | 0.26 / 0.32 | 1.12 | 48/50 |
+| `e23b47e` | P | `comp-e23b47e.json` | 10/10 | 0.63 | 0.26 / 0.32 | 1.12 | 44/48 |
+| `a483f48` | P | `comp-a483f48.json` | 10/10 | 0.63 | 0.26 / 0.32 | 1.12 | 48/48 |
+| `53a6df7` | C | `comp-53a6df7.json` | 10/10 | 0.64 | 0.23 / 0.32 | 1.22 | 40/40 |
+| `1ec6f36` | D | `comp-1ec6f36.json` | 10/10 | 0.64 | 0.23 / 0.32 | 1.22 | 46/46 |
+
+`e23b47e` se usa dos veces (E y P) porque el mismo `comp` alimenta W11 en
+ambos selectores.
+
+### 4.2 E @ `24595b1` / merge `e23b47e`
 
 DEEP Android:
 
@@ -96,19 +119,12 @@ Diferencias absolutas:
 `max|Δ_DEEP| = 0.63`; `min_android_deep = 0.26`; `min_web_deep = 0.32`;
 THIN mínimo = 5.03.
 
-### 4.2 Histórico
+### 4.3 C/D
 
-Los `comp` con DEEP completo dan paridad **0.63–0.64** en todos los cortes
-válidos. El anexo C/D se apoya en:
-
-- C @ `53a6df7`: DEEP 0.64.
-- D @ `1ec6f36`: DEEP 0.64.
-- P @ `a483f48`: DEEP 0.63.
-- E @ `24595b1`: DEEP 0.63.
-
-El mínimo absoluto DEEP de 0.26 en el sector 210–225° es geométricamente
-esperado; un umbral absoluto tipo 3 sería un falso negativo. La paridad sí
-detecta una regresión real.
+DEEP Android mínimo **0.23**, web **0.32**; paridad **0.64**; THIN mínimo
+**5.17** Android / **5.54** web; THIN paridad **1.22**. El mínimo absoluto
+0.23 confirma que un umbral absoluto tipo 3 sería un falso negativo en toda
+la familia C/D, no solo en E.
 
 ## 5. Diseño del cambio v6
 
@@ -122,6 +138,8 @@ detecta una regresión real.
 - **No** derivarlo de la reconstrucción `2f14ae8b…`: difiere en el bloque P0
   (más laxo) y no es base canónica.
 - Mantener el v5 intacto.
+- Pre-registrar el sha256 del v6 **antes** de ejecutar la regresión; ese hash
+  viaja en el paquete y en el aviso.
 
 ### 5.2 Cambio en W11
 
@@ -146,15 +164,36 @@ cp_det = (f"THIN min and={min(a):.2f}/web={min(w):.2f}; "
           f"max|diff|={max(diffs):.2f} <= {PARITY_TOL}; {deep_det}")
 ```
 
+Texto del check W11 en v6 (reemplaza el actual):
+
+```text
+W11 captura comparativa debug vs Web: radial 720/15, limbo 75-225,
+THIN min >= 3 ambos, max|Δ_THIN| <= 2.0, max|Δ_DEEP| <= 2.0
+```
+
 Reglas:
 
 - Si `comp` no tiene DEEP Android/web, W11 **falla cerrado**.
 - Si `comp.parity_tol` existe y no es 2.0, **falla cerrado** (no se confía en
-  el JSON).
+  el JSON). `PARITY_TOL` gobierna THIN y DEEP.
 - No se lee `passes_deep`; se recalcula.
 - E2 no cambia.
 
-### 5.3 Qué NO se toca
+### 5.3 Mini-smoketest del gate
+
+Sin dispositivo, con fixtures sintéticos en `work/smoke-v6/`:
+
+| Fixture | DEEP max\|Δ\| | `parity_tol` | W11 esperado |
+|---|---:|---:|---|
+| `deep-pass-200` | 2.00 | 2.0 | PASS |
+| `deep-fail-201` | 2.01 | 2.0 | FAIL |
+| `deep-missing` | ausente | 2.0 | FAIL |
+| `tol-tampered-30` | 0.63 | 3.0 | FAIL |
+
+El smoketest valida el gate y el fallo cerrado; no sustituye la regresión
+6/6.
+
+### 5.4 Qué NO se toca
 
 - E2: THIN absoluto y geometría, sin DEEP.
 - E1/E3, S1–S10, A, B, C, W1–W10, K, P1: sin cambios.
@@ -191,8 +230,8 @@ Criterio:
 | `comp` sin DEEP web | W11 falla cerrado |
 | `passes_deep` heredado | Ignorarlo; recalcular |
 | Tolerancia leída del JSON | Constante `PARITY_TOL=2.0`; rechazar si difiere |
-| DEEP absoluto 0.26 | No gatear absoluto; solo paridad |
-| Deriva del instrumento | v6 separado; v5 intacto |
+| DEEP absoluto 0.23/0.26 | No gatear absoluto; solo paridad |
+| Deriva del instrumento | v6 separado; v5 intacto; sha v6 pre-registrado |
 | Copia laxa de P0 | Derivar del original `ba433297…` |
 | Cambio de denominador | W11 sigue siendo un check |
 | Referencia web distinta | Exigir el mismo `comp`/`reference_sha256` |
@@ -202,24 +241,28 @@ Criterio:
 1. Congelar el v5 original y registrar su sha256.
 2. Crear v6 por copia; cambiar solo versión/docstring y W11.
 3. Fijar `PARITY_TOL=2.0`; añadir DEEP parity y fallo cerrado.
-4. Ejecutar la regresión 6/6 y diff de salidas contra v5.
-5. Verificar `app/src/main` = 0 rutas y medidor intacto.
-6. Actualizar documentación R5 y registro de decisiones.
-7. Empaquetar evidencia con `SHA256SUMS` nativo.
-8. PR docs/tooling, CI 3/3, auditoría GLM y dictamen.
-9. Solo después, decidir si se re-mide en dispositivo (no necesario).
+4. Pre-registrar el sha256 del v6.
+5. Ejecutar mini-smoketest 4/4.
+6. Ejecutar la regresión 6/6 y diff de salidas contra v5.
+7. Verificar `app/src/main` = 0 rutas y medidor intacto.
+8. Actualizar documentación R5 y registro de decisiones.
+9. Empaquetar evidencia con `SHA256SUMS` nativo.
+10. PR docs/tooling, CI 3/3, auditoría GLM y dictamen.
+11. Solo después, decidir si se re-mide en dispositivo (no necesario).
 
 ## 9. Criterios de aceptación
 
 - [ ] v6 deriva del v5 original `ba433297…`; v5 no se modifica.
 - [ ] W11 exige THIN `>= 3` y DEEP paridad `<= 2.0`.
 - [ ] E2 sigue solo con THIN absoluto.
-- [ ] Tolerancia fija en el instrumento, no leída del comp.
+- [ ] Tolerancia fija en el instrumento; rechaza `comp.parity_tol != 2.0`.
 - [ ] Totales C/D/P/E sin cambio (40/46/48/50).
+- [ ] Mini-smoketest 4/4.
 - [ ] Regresión 6/6 exacta (salvo detalle W11).
 - [ ] `app/src/main` = 0 rutas; medidor `b3794c49…` intacto.
 - [ ] DEEP Android y web presentes; fallo cerrado si falta.
-- [ ] Paquete con `SHA256SUMS` y CI del SHA exacto.
+- [ ] v6 sha256 pre-registrado y paquete con `SHA256SUMS`.
+- [ ] CI del SHA exacto.
 
 ## 10. No objetivos
 
@@ -230,17 +273,27 @@ Criterio:
 - No re-capturar en dispositivo salvo evidencia faltante.
 - No fusionar ni abrir PR en esta fase de plan.
 
-## 11. Decisiones pendientes de David
+## 11. Condiciones de GLM y estado
+
+| Condición GLM | Estado en este plan |
+|---|---|
+| (a) sync + hashes | Depósito en relay; pendiente de sync del lado GLM |
+| (b) fail-closed + `PARITY_TOL` | Diseñado en §5.2; se implementa al abrir R5 |
+| (c) enumeración de cobertura | §4.1, seis corridas / cinco comps |
+| (d) diff v5→v6 + sha pre-registrado | §5.1/§8; se produce al implementar |
+| (e) regresión exacta 6/6 | §6 |
+
+## 12. Decisiones pendientes de David
 
 1. Confirmar **W11** como ubicación del gate DEEP (enmienda GLM).
 2. Confirmar **DEEP paridad 2.0** con tolerancia fija.
 3. Confirmar **regresión 4/4 + anexo C/D**.
 4. Confirmar path `docs/r4/tools/R4_DISPLAY_CHECK_v6.py`.
-5. Autorizar el depósito del plan y, después, la apertura de R5.
+5. Autorizar la apertura de R5 para implementar el v6.
 
 ---
 
 **Conclusión:** el gate DEEP es pequeño, pero debe vivir en W11 para cubrir P y
 cualquier slice que mueva la banda. El plan lo aísla en un v6 derivado del
-original, con tolerancia fija, fallo cerrado y regresión 6/6. La decisión de
-abrir R5 sigue siendo de David.
+original, con tolerancia fija, fallo cerrado, smoketest y regresión 6/6. La
+decisión de abrir R5 sigue siendo de David.
