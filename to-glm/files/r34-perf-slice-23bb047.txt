@@ -1,0 +1,36 @@
+R3.4 - SLICE DE RENDIMIENTO (fuera del PR #39)
+==============================================
+Base: 608ae83 (origin/main, misma base que R3.4)
+Worktree: ionosphere-live-3d-android-perf, rama perf/medium-fps
+Estado: worktree limpio; no se commiteo ninguna optimizacion (ninguna mejoro).
+
+MEDICIONES 5 MIN (SurfaceFlinger BLAST, produccion, 1080x2400)
+--------------------------------------------------------------
+12/4 (medium default)          23.88 fps
+ 8/3 (low)                     24.00 fps
+12/4 sin atmosfera (atmo=false) 24.10 fps
+12/4 bloom off (52 s)           29.24 fps
+12/4 atmo off + bloom off (52s) 29.25 fps
+renderScale 0.8 (52 s)          29.35 fps
+bateria simulada unplug (52s)   29.88 fps
+
+HALLAZGO
+--------
+El corto (50 s) llega a ~29,3; el sostenido cae a ~24 incluso con atmósfera
+desactivada y con buffer 0,8x. No es la capa de estaciones, no es el shader
+de atmosfera y no es fill-rate. El techo sostenido de 24 fps aparece en la
+linea base y persiste al quitar carga; el dispositivo esta cargando por USB
+(bateria 100%, 34-35 C, thermal status 0). No se puede firmar T4 medium 30
+con este entorno.
+
+EXPERIMENTOS NO COMMITEADOS
+---------------------------
+- DebugDataPanel: fetch a Dispatchers.IO (no cambio FPS).
+- GlobeSurfaceView: holder.setFixedSize(0.8*w,0.8*h) (no cambio el sostenido).
+Ambos revertidos; el arbol de perf quedo limpio.
+
+SIGUIENTE
+---------
+Para separar dispositivo de software: repetir 5 min con el telefono fisicamente
+desenchufado (WiFi adb) o en el Android 11 de referencia. Sin eso, el 24 fps
+sostenido es una limitacion del entorno/dispositivo, no de R3.4.
