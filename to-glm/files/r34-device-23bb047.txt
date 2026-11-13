@@ -1,0 +1,77 @@
+R3.4 — GATE DE DISPOSITIVO (T4/T6) — RE-MEDICIÓN AVION ON + CACHÉ
+================================================================
+Fecha: 2026-11-13
+Head: 23bb04715b95a752f34eac8353ef36e0f0fdd85b (PR #39)
+APK debug: app/build/outputs/apk/debug/app-debug.apk
+sha256 APK: fe08faae58c2b6ce33f606321779cf746ef8ae79f255c6e7d7ca98db00623dfd
+tamaño APK: 42026978 bytes
+
+DISPOSITIVO / ENTORNO
+---------------------
+Modelo: Xiaomi Mi 10 Lite 5G (M2002J9G), serial 1140a489
+Android: 12 / API 31 (desviación declarada; plan fija Android 11 / API 30)
+Batería: 99%, USB powered, temperatura 313 (31.3 C), thermal status 0
+Pantalla: 1080x2400, 60 Hz, density 440
+GL: OpenGL ES 3.2 V@0502.0; GL_ALIASED_POINT_SIZE_RANGE=1..1023; techo R3.4=70 px
+Atmo medium: 12/4; low medido con atmoSteps=8/3 (pins MIN)
+Red: WiFi encendida para calentar caché; después avión ON, WiFi/data OFF,
+     Active default network: none. La app usa InMemoryCache: la caché solo
+     sobrevive dentro del proceso ya caliente, no tras force-stop.
+
+MÉTODO FPS
+----------
+Capa: SurfaceView[com.valledemena.ionosphere/...MainActivity](BLAST)#0
+Comando: dumpsys SurfaceFlinger --latency '<layer>'
+Timestamps de presentación (2ª columna), descartando 0 y Long.MAX, deduplicados;
+FPS=(n-1)/(t_last-t_first). Ventana 5 min (low: 60 s).
+DESVIACIÓN: el plan §9.2 nombra FramePacer; la app no expone `pacer.renders`
+en esta build y no se añadió un head nuevo. Se usa SurfaceFlinger como
+proxy de presentación sostenida; se declara.
+
+T4 — MEDIDAS
+------------
+Medium OFF (stations=false), avión ON + caché:
+  frames=7222, ventana=301.24 s, FPS=23.97
+Medium ON (stations=true), avión ON + caché:
+  frames=7216, ventana=300.74 s, FPS=23.99
+Ratio ON/OFF = 23.991/23.971 = 1.0008  (>=0.95: PASA)
+Medium >=30 FPS: FALLA (23.99)
+Low (atmoSteps=8/3, stations=true), avión ON + caché:
+  frames=1881, ventana=62.88 s, FPS=29.90  (>=20: PASA)
+  Nota: 8/3 son los pins MIN existentes; no hay enum atmoQuality=low.
+Techo de punto: 70 px, driver 1..1023: PASA (código + log).
+
+Referencia con red viva (misma head, antes de esta re-medición):
+  OFF 23.86 fps (297.03 s); ON 24.16 fps (298.62 s); ratio 1.0127.
+
+T6 — CAPTURAS
+-------------
+T6-1 pointSize 11, estaciones ON, cámara por defecto [0,0,3.3], model product:
+  work/r34/t6-1.png  (frame f4; puntos visibles a la derecha; HUD con lista kc2g larga
+  y slider al pie sin etiqueta; pointSize 11 fijado en prefs)
+  Alternativa con cámara fija [3.3,0,0]: work/r34/t6-1-fixed-camera.png
+T6-2 pointSize 3, estaciones ON, cámara fija [3.3,0,0]:
+  work/r34/t6-2.png  (HUD "punto 3")
+T6-3 pointSize 15, estaciones ON, cámara fija [3.3,0,0]:
+  work/r34/t6-3.png  (HUD "punto 15"; punto grande)
+T6-4 popup con code visible: BLOQUEADO.
+  adb shell input: SecurityException INJECT_EVENTS en MIUI.
+  Falta toque manual de David o toggle/reinicio de "USB debugging (Security settings)".
+T6-5 opcional: no hay estación stale/sin foF2 en la corrida.
+Lado a lado web/Android: PENDIENTE.
+
+SHA256
+------
+009b2f35de3981f1e34bdde355b31736a22b9e652464d93f9624a095bb1e1d67  t6-1.png  (572295 bytes)
+f10c7bcb4e5203630ee449d2f5aabf38c9e12b4ba176d4abaa9e60db6f2da666  t6-1-fixed-camera.png  (771699 bytes)
+f4229b1c24ec4d51eeed402870eda969c9b35bcc827c1a9d1dc8e781b32f97a4  t6-2.png  (1459900 bytes)
+1c0b77e65e801b12b2e4ad07b8f306041589fb65d82b004c34b08975e3a99604  t6-3.png  (1352043 bytes)
+95163b66d1394b6ba0436ab66617b455c08c78228c6b7e730f8a6a4d46a2b265  fps-off-cached.raw  (355499 bytes)
+ff2e3cf42524c7e06ac1ac7507c7d9a3b9d9dde52107bd9a11aa325dad9f3f54  fps-on-cached.raw  (355563 bytes)
+5c6e6cae3faf29b95802ff5788e8d17555e9d0ea2953df001dfecd7de1f8af55  fps-low-cached.raw  (112278 bytes)
+
+CONCLUSIÓN
+----------
+T4 NO firmable: medium 23.99 < 30 en avión ON + caché; low 29.90 >=20; ratio PASA.
+No hay regresión de la capa (ON≈OFF): el déficit es de la línea base.
+T6-1/2/3 capturados; T6-4 pendiente de input; falta lado a lado. No T7/merge.
