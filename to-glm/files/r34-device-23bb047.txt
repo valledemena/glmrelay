@@ -61,7 +61,9 @@ T6-4 popup con code visible: CAPTURADO por toque manual de David.
   La inyeccion adb sigue bloqueada: persist.security.adbinput=0 y
   setprop ... 1 falla sin root; no se uso para T6-4.
 T6-5 opcional: no hay estacion stale/sin foF2 en la corrida.
-Lado a lado web/Android: PENDIENTE.
+Lado a lado web/Android: CAPTURADO (camara aproximada; color NO es paridad).
+  work/r34/r34-side-by-side.png  (web local + Android 23bb047, mismo viewport)
+  Fuentes: work/r34/web-rotated2.png y work/r34/android-side.jpg.
 
 SHA256
 ------
@@ -75,8 +77,10 @@ ff2e3cf42524c7e06ac1ac7507c7d9a3b9d9dde52107bd9a11aa325dad9f3f54  fps-on-cached.
 1f94e267d59f912ea8087098aa31fc796da84bb40318f151012a8ca7027f302a  t6-4-pq052.jpg
 d17d211d238e89fdb621e21f3c387964c36d980fcecf232d6cd2b7a3e5f18ea6  t6-4-jr055.jpg
 
+184dad02432608ec2e0b8000e25c0ae097f22fe5b6053e44addc38a0aa91b1a5  r34-side-by-side.png
+
 CONCLUSION
 ----------
 T4 NO firmable: medium 23.99 < 30 en avion ON + cache; low 29.90 >=20; ratio PASA.
 No hay regresion de la capa (ON~OFF): el deficit es de la linea base.
-T6-1/2/3/4 capturados; falta el lado a lado. No T7/merge.
+T6-1/2/3/4 y lado a lado capturados. No T7/merge.
