@@ -1,4 +1,4 @@
-From 08ed18fbb8fd1dd57e5115d14ea16de03e14fc82 Mon Sep 17 00:00:00 2001
+From c96e76676afa6a0afd994bfdc9512607451de36b Mon Sep 17 00:00:00 2001
 From: valledemena <98014642+valledemena@users.noreply.github.com>
 Date: Fri, 13 Nov 2026 10:47:26 +0100
 Subject: [PATCH] R3.4 plan docs-only: T1-T7 cerrados antes de codificar,
@@ -80,7 +80,7 @@ index 3d9581a..5c9583f 100644
  Adreno 620 (GLES 3.2), 6 GB RAM. Detalle en `docs/r0/TEST_GATES.md` v1.1.
 diff --git a/docs/r3/PLAN-R3.4-IONOSONDE-LAYER.md b/docs/r3/PLAN-R3.4-IONOSONDE-LAYER.md
 new file mode 100644
-index 0000000..f8f5062
+index 0000000..3673a0c
 --- /dev/null
 +++ b/docs/r3/PLAN-R3.4-IONOSONDE-LAYER.md
 @@ -0,0 +1,698 @@
@@ -297,7 +297,7 @@ index 0000000..f8f5062
 +| T | Que exige | Aplica a R3.4 | Numero cerrado en este plan |
 +|---|---|---|---|
 +| **T1** | Textura max 4096x2048; memoria de texturas < 64 MB (>=4 GB), < 32 MB (<2 GB) | **No** (cerrado en R3.1; R3.4 no anade texturas) | Sin cambio: el slice no introduce ningun bitmap nuevo. Presupuesto de texturas del tier medium intacto. |
-+| **T2** | `DEFAULT_SETTINGS` paridad exacta extraida del web; HUD tol. <= 5% visual en device | **Si** (solo la clave `pointSize`) | `pointSize` default **11**; slider **3..15 step 1**; persistencia `readNumber(3,15,11)` con no-finito -> 11; uniform `= clamp(valor, 2, 30)`. Tol. visual del punto: **<= 5%** de diametro en la captura lado a lado (T6-2 vs T6-3). |
++| **T2** | `DEFAULT_SETTINGS` paridad exacta extraida del web; HUD tol. <= 5% visual en device | **Si** (solo la clave `pointSize`) | `pointSize` default **11**; slider **3..15 step 1**; persistencia `readNumber(3,15,11)` con no-finito -> 11; uniform `= clamp(valor, 2, 30)`. Tol. visual: **<= 5%** del diametro medido para una estacion cerca del centro del disco con el mismo `pointSize`, en la captura lado a lado; si la camara no se puede igualar (el web no expone API de camara), se declara el delta medido y el juicio es de David (T6/T7). |
 +| **T3** | `pointSize` clamp [2,30] probado en `2,30,1,31,-1,NaN` | **Si** (nucleo del slice) | Tabla seccion 7.1, 6 casos obligatorios + 5 casos de la suite del web. Implementacion con el **mismo orden de guardas** que `types.ts:393`. |
 +| **T4** | Metodo FPS fijo: 5 min sostenidos, bateria 50%, avion ON, carga termica; medium >= 30 fps, low >= 20 fps worst-case 60 s | **Si** | Ver seccion 9. Ademas: **FPS(puntos ON) >= 0.95 x FPS(puntos OFF)** en la misma corrida; `gl_PointSize` efectivo <= **70 px** de diametro (`35 x min(dpr,2)`). |
 +| **T5** | Colormaps extraidos con script, unicos; entero exacto, float epsilon <= 1/255 por canal | **Si** (consumo, no extraccion) | Ya cerrado en R3.1: `ColormapsPinsTest` fija **16 pines** generados ejecutando `src/lib/iono/colormaps.ts` en `8cdc334`, con tolerancia medida **1e-4/canal** (mas estricta que el 1/255 del contrato). R3.4 consume `render/Colormaps.kt` sin tocarlo. Normalizacion `aFo`: **|diff| <= 1e-9** absoluto frente al oraculo (mismo orden de operaciones, IEEE-754 doble). |

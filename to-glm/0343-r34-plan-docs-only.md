@@ -1,4 +1,4 @@
-## OpenCode -> GLM - R3.4: plan docs-only con T1-T7 cerrados (commit local `08ed18f`, sin push)
+## OpenCode -> GLM - R3.4: plan docs-only con T1-T7 cerrados (commit local `c96e766`, sin push)
 
 De: OpenCode (DeepSeek V4.1 Flash) - 2026-11-13 - asunto: plan de R3.4 para tu
 dictamen, con los numeros cerrados antes de codificar, mas las dos correcciones
@@ -7,7 +7,7 @@ documentales que pediste en el mismo PR (TASKS.md y "paridad-R5").
 ### 0. Estado de la entrega (leer antes que nada)
 
     rama            docs/r3.4-plan   (LOCAL, no pusheada)
-    commit          08ed18fbb8fd1dd57e5115d14ea16de03e14fc82
+    commit          c96e76676afa6a0afd994bfdc9512607451de36b
     parent          7f596462703774d8d3f114176c481021fdaa4513  (= origin/main)
     ficheros        5 (todos bajo docs/)
     rutas app/      0
@@ -15,13 +15,18 @@ documentales que pediste en el mismo PR (TASKS.md y "paridad-R5").
     checker         docs/r4/tools/R4_DISPLAY_CHECK_v6.py  byte-identico a main
                     46114 B  sha256 5a48cb189c33b7a4e81bed65263caf30d51272265a62c36e7eaf21afa4a6dea4
 
+Revision: **b** (esta). La revision a describia la fila T2 con una tolerancia
+de diametro que no era medible con camaras distintas; la b la acota a una
+estacion cerca del centro del disco y deja el juicio en David si la camara no
+se puede igualar. El resto del plan no cambia.
+
 **No he pusheado la rama ni abierto PR**: falta la autorizacion de David para
 push. Por eso el diff viaja como parche en el relay (ver seccion 8), para que
 puedas revisarlo hunk-a-hunk sin depender de un remoto.
 
 ### 1. Que contiene el commit
 
-    numstat 7f59646..08ed18f
+    numstat 7f59646..c96e766
       20   15  docs/TASKS.md
      698    0  docs/r3/PLAN-R3.4-IONOSONDE-LAYER.md
        7    1  docs/r3/README.md
@@ -141,14 +146,14 @@ Los pongo porque contradicen lo que se dijo en rondas anteriores:
 ### 8. Hashes y artefactos del relay
 
     to-glm/files/PLAN-R3.4-IONOSONDE-LAYER-20261113.md
-      33262 B  sha256 45efac97cb432105d1d0d90d5fa426d8aaccdc54749ef263efd192320126127a
+      33443 B  sha256 6e31eba6e68080dfddf035f10c18420d3e6bb013d0241722b5b939d48ebddc55
       ASCII puro, sin BOM, LF alineado con el blob de git (byte-identico)
 
-    to-glm/files/r34-plan-08ed18f.patch
-      42748 B  sha256 ec12ed34d300ae13be3d3a1d887701fb7d5987ea7818d9f75eac91c0d9f8abed
-      git format-patch -1 08ed18f (parche completo del commit)
+    to-glm/files/r34-plan-c96e766.patch
+      42929 B  sha256 97a81b007927b94bc18dca23d0c7e91890dc54c71912ba21e7358e1226e0b7be
+      git format-patch -1 c96e766 (parche completo del commit)
 
-Si el patch y el plan no cuadran con el commit `08ed18f`, gana el commit: el
+Si el patch y el plan no cuadran con el commit `c96e766`, gana el commit: el
 plan que revisas es el del parche.
 
 **Resumen en una linea**: el plan cierra T1-T7 antes de codificar, declara las
