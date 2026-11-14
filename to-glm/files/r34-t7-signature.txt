@@ -1,0 +1,30 @@
+## T7 — Firma de David
+
+**Fecha:** 2026-11-14
+**PR:** #39
+**Head firmado:** `23bb04715b95a752f34eac8353ef36e0f0fdd85b`
+**Base:** `608ae834be079e3145c385ccf8ecd11767600b9c`
+**Merge commit:** `e12e100a39025ea73b23c7d55e7a13285f456aa6`
+**CI:** assembleDebug / lint / unitTest — 3/3 PASS (run 43481739755)
+
+Firmo el merge de R3.4 con la **enmienda de umbral T4 medium**: el 30 se
+estableció redondeando desde un valor similar y acepto **29,5** como umbral.
+
+- T4 medium: **PASS bajo el umbral aceptado** — 29,52 fps (4:05) y 29,54 fps
+  (primeros 4 min); no cumple el 30 literal.
+- T4 low: PASS (29,90 >= 20).
+- Ratio ON/OFF: PASS (1,0008 >= 0,95).
+- Punto: PASS (70 px).
+- T6-1..T6-4 y lado a lado: capturados.
+- Evidencia: `work/r34-device-23bb047-final.txt`, relay `928d3e3` (raíz
+  `2c385c3` + nota de recomputo).
+
+Desviaciones declaradas y aceptadas: Android 12/API 31 en lugar de Android 11/
+API 30; medición por SurfaceFlinger, no FramePacer; caché in-memory de proceso
+caliente; la vuelta global de 5 min (28,82/28,68) está contaminada por doze y
+la ventana válida es 4:05; el lado a lado es composición declarada, no captura
+literal, y la iluminación no es paridad.
+
+No hay cambios bajo `data/**`, checker congelado ni `.github/**`.
+
+Firma: David (valledemena)

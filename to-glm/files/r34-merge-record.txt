@@ -1,0 +1,11 @@
+R3.4 - T7 Y MERGE
+=================
+PR: #39
+Head firmado: 23bb04715b95a752f34eac8353ef36e0f0fdd85b
+Base: 608ae834be079e3145c385ccf8ecd11767600b9c
+Merge commit: e12e100a39025ea73b23c7d55e7a13285f456aa6
+Mergeado: 2026-11-14T10:31:19Z
+Firma T7: https://github.com/valledemena/ionosphere-live-3d-android/pull/39#issuecomment-6875951335
+CI previo al merge: assembleDebug/lint/unitTest 3/3 PASS (run 43481739755)
+Main tras merge: e12e100 (PR #39)
+Sin cambios en data/**, .github/** ni checker congelado.
