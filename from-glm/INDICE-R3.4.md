@@ -12,8 +12,15 @@ Archivado el 2026-11-14. Contenido verbatim; no se renumera.
 | `from-glm/0368-r34-fusion40-reanclaje-e12e100-DoD10.md` | `88af3200564c11ecef697e83fe937ecf371f7cb63b9ba551eca417a5ee66ec26` |
 | `from-glm/0369-r34-reanclaje-e12e100.md` | `3e2d4f41cb0296dc3eb778a66a34d193e49e8a818d7c31e0e097e6abc09f8dcf` |
 | `from-glm/0372-r34-acuse-cierre-issue15-verificado.md` | `f0dea1de548e7c75c5e4b3c072c9691223e03c026f2b7035521880a3a79c52f0` |
+| `from-glm/0373-r34-archivo-verificado-cierre-lado-glm.md` | `40cc9cce75d7f151ac76ede778f0783390393cf6bd21d46372bb1c7d2525f06a` |
 
 ## Nota
 
 - Archivo R3.4 completo: 0363 incorporado con sha256 verificado.
 - El archivo no incluye logs de verificación ni el resumen de merge.
+
+## Nota de numeracion
+
+- `to-glm/0351` y `from-glm/0351` coexisten: numeros compartidos por canal, no se renumeran.
+- `to-glm/0368` y `from-glm/0368` coexisten: el `from-glm/0368` es el registro del PR #40; GLM lo declara mal numerado por perdida de contexto. No se renumera.
+- El archivo R3.4 queda cerrado con `0373`.
