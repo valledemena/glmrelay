@@ -110,3 +110,12 @@ RAW DESENCHUFADOS ANCLADOS
 a73d81b214ef1b7c73dabe60192fbf646fdc40a1459b17dabbc758d1a339f3ef  work-perf-unplug-270.raw  (9555 lineas; ventana 4:05)
 332f3ce713d066061c903ba1e91a78ce67f70d2e68ffd6bdd26805565139730e  work-perf-unplug-5min2.raw (14319 lineas; vuelta 5 min)
 e71c0f86b6186bff4bc5338c12a11a28e0d720d88660854724d2ee035a453bf2  work-perf-unplug-245.txt  (resumen 29.52)
+
+
+NOTA DE RECOMPUTO (post-auditoria 2c385c3)
+------------------------------------------
+La vuelta de 5 min se declaro 28.82 en la primera pasada. El recomputo
+independiente de GLM sobre el raw anclado da 28.68 con la ventana completa
+(28.71 en los primeros 300 s); la diferencia es el extremo de ventana y los
+huecos de doze. Ambas lecturas fallan el umbral y no cambian ningun veredicto.
+Se conserva 28.82 como primera lectura y se declara 28.68 como recomputo.
