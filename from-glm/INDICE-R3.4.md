@@ -14,6 +14,6 @@ Archivado el 2026-11-14. Contenido verbatim; no se renumera.
 
 ## Pendiente
 
-- : no estaba adjunto en INTERCAMBIO.
+- `from-glm/0363-r34-acta-final-y-sbs-v2.md`: no estaba adjunto en INTERCAMBIO.
   GLM declara sha256 prefijo `ab8b78f554c2…`; falta el fichero para archivarlo.
 - El archivo no incluye logs de verificación ni el resumen de merge.
