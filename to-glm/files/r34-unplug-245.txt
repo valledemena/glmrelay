@@ -1,0 +1,3 @@
+frames 7238
+window_s 245.14
+fps 29.52

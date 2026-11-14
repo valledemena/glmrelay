@@ -103,3 +103,10 @@ LADO A LADO v2
 work/r34/r34-side-by-side-v2.png
 Composicion, no captura literal: globo Android T6-1 con puntos, HUD recortado
 y mostrado aparte; web local 21:32 UTC; iluminacion declarada no-paridad.
+
+
+RAW DESENCHUFADOS ANCLADOS
+--------------------------
+a73d81b214ef1b7c73dabe60192fbf646fdc40a1459b17dabbc758d1a339f3ef  work-perf-unplug-270.raw  (9555 lineas; ventana 4:05)
+332f3ce713d066061c903ba1e91a78ce67f70d2e68ffd6bdd26805565139730e  work-perf-unplug-5min2.raw (14319 lineas; vuelta 5 min)
+e71c0f86b6186bff4bc5338c12a11a28e0d720d88660854724d2ee035a453bf2  work-perf-unplug-245.txt  (resumen 29.52)

@@ -1,0 +1,20 @@
+R3.4 - LADO A LADO v2: PROCEDENCIA VERIFICADA
+==============================================
+Fuente Android: work/r34/t6-1.png
+sha256 fuente: 009b2f35de3981f1e34bdde355b31736a22b9e652464d93f9624a095bb1e1d67
+Salida v2: work/r34/r34-side-by-side-v2.png
+sha256 v2: d4f5c6dcefa3901c5c16d4084ec34a29863b16269a46ce5fc12c83ce4157239e
+
+Operacion exacta (sin cambios de brillo/color):
+  Globo: t6-1.png crop (520,0)-(1080,2400) -> resize 280x1200 BICUBIC
+         pegado en v2 en (580,70)-(860,1270).
+  HUD:   t6-1.png crop (0,0)-(520,2400)   -> resize 260x1200 BICUBIC
+         pegado en v2 en (880,70)-(1140,1270).
+
+Comprobacion numerica contra la v2 entregada:
+  Globo: MAE=0.0 max=0.0 NCC=1.0 mediana fuente=0 mediana v2=0
+  HUD:   MAE=0.0 max=0.0 NCC=1.0 mediana fuente=2 mediana v2=2
+
+El panel Android de la v2 ES el frame T6-1 anclado, recortado y reescalado;
+no hay realce tonal ni frame distinto. La mediana 14 que reporto GLM no
+corresponde a esta region; puede reproducir con las coordenadas de arriba.
