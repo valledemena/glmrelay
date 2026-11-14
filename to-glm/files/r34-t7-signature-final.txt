@@ -1,0 +1,30 @@
+## T7 — Firma de David (final, alineada con GLM 0365)
+
+**Fecha:** 2026-11-14
+**PR:** #39
+**Head firmado:** `23bb04715b95a752f34eac8353ef36e0f0fdd85b`
+**Base:** `608ae834be079e3145c385ccf8ecd11767600b9c`
+**Merge ejecutado:** `e12e100a39025ea73b23c7d55e7a13285f456aa6`
+**CI:** assembleDebug / lint / unitTest — 3/3 PASS (run 43481739755)
+
+gate R3.4 OK — head `23bb04715b95a752f34eac8353ef36e0f0fdd85b`.
+T4 medium 29,52/29,54 fps desenchufado (WiFi adb); umbral enmendado por mí
+a 29,5 el 2026-11-13 (el 30 original era un redondeo); ratio ON/OFF 1,0008;
+low 29,90; punto <= 70 px (driver 1..1023). Acepto las desviaciones
+declaradas: Android 12/API 31; batería 99% con USB en las corridas caché;
+caché de proceso caliente (InMemoryCache); método SurfaceFlinger en vez de
+FramePacer; low con pins 8/3 en ventana única de 62,88 s; ventana válida
+desenchufada 4:05 (doze de pantalla); global 5 min ~28,7 (28,82 declarado,
+28,68 recomputado GLM — no decisor).
+
+Acta final `b662596e951379b2b6c985a1efd8c1c8da6e310029444101602d9c335f42b6f3`
+(nota de recomputo en relay `928d3e3`; raíz `2c385c3`).
+Capturas: t6-1 `009b2f35…`, t6-2 `f4229b1c…`, t6-3 `1c0b77e6…`,
+t6-4-pq052 `1f94e267…` (+ jr055 `d17d211d…`), lado a lado v2 `d4f5c6dc…`
+(composición declarada; procedencia del panel Android certificada por GLM:
+identidad bit a bit con t6-1, `from-glm/0365`). Raws desenchufados anclados
+en `2c385c3`: 270 `a73d81b2…`, 5min2 `332f3ce7…`, resumen `e71c0f86…`.
+
+Merge autorizado y ejecutado: `e12e100`.
+
+Firma: David (valledemena)
