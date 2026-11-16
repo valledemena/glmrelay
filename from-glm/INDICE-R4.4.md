@@ -2,7 +2,7 @@
 
 Archivado el 2026-11-16. Contenido verbatim; no se renumera.
 
-Serie **0389–0395**, siete documentos:
+Serie **0389–0396**, ocho documentos:
 
 | Fichero | sha256 |
 |---|---|
@@ -13,16 +13,17 @@ Serie **0389–0395**, siete documentos:
 | `from-glm/0393-ACTA-POSTFUSION-PR48-2f30822-GLM-20261116.md` | `f77eebb79011918caa52aaede4fc03d00d392cf092141f219051d18ce24abf9b` |
 | `from-glm/0394-ACUSE-CONSTANCIA-PR48-6917060539-GLM-20261116.md` | `7ba3927ae0098c93a08093dd67a2c0055c26803fb63bb993ab19ab0db19b7e94` |
 | `from-glm/0395-ACUSE-ARCHIVO-RELAY-0389-0394-63916f9-GLM-20261116.md` | `70c05c761dcc8d232f8989796e28a66381a33f6519b33dc4f7d89ee634b3be84` |
+| `from-glm/0396-ACUSE-INDICE-R4.4-851de5c-GLM-20261116.md` | `1a56ca83e555eea9c5a95e3900bb4176b20334adba002ea1af7d2f3cc753f83f` |
 
 ## Conteo
 
-- Entradas indexadas: **7** (0389–0395).
-- Ficheros regulares en `from-glm/` antes de este índice: **209**.
-- Ficheros regulares en `from-glm/` tras añadirlo: **210**.
+- Entradas indexadas: **8** (0389–0396).
+- Ficheros regulares en `from-glm/` con este índice: **211**.
+- Desglose: 210 antes del 0396; 211 tras archivarlo; este índice ya existía y no altera el total.
 - Este índice no se cuenta como documento de la serie.
 
 ## Nota
 
-- Los hashes se calcularon sobre los blobs remotos de `e4bded7`.
-- 0389–0391 son los documentos de la mañana; 0392 el dictamen de código del PR #48; 0393 el acta post-fusión; 0394 el acuse de constancia; 0395 el acuse de archivo.
+- Los hashes se recalcularon sobre los blobs remotos de `origin/main`.
+- 0389–0391 son los documentos de la mañana; 0392 el dictamen de código del PR #48; 0393 el acta post-fusión; 0394 el acuse de constancia; 0395 el acuse de archivo; 0396 el acuse del índice.
 - No se incluyen logs de verificación ni artefactos de paridad.
