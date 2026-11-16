@@ -2,7 +2,7 @@
 
 Archivado el 2026-11-16. Contenido verbatim; no se renumera.
 
-Serie **0389–0402**, once documentos (0398 y 0401 son `to-glm`; 0400 queda reservado a GLM; ninguno de los tres entra en este indice):
+Serie **0389–0402**, doce documentos (0398 y 0401 son `to-glm` y no entran en este indice; el 0400, reservado a GLM desde 0399 sec. 7.6, quedo consumido por el acuse de cierre de la deuda 0379-0388 y entra con esta actualizacion):
 
 | Fichero | sha256 |
 |---|---|
@@ -16,18 +16,21 @@ Serie **0389–0402**, once documentos (0398 y 0401 son `to-glm`; 0400 queda res
 | `from-glm/0396-ACUSE-INDICE-R4.4-851de5c-GLM-20261116.md` | `1a56ca83e555eea9c5a95e3900bb4176b20334adba002ea1af7d2f3cc753f83f` |
 | `from-glm/0397-ACUSE-0378-HILO-45-46-DF1477D-GLM-20261116.md` | `08f5ef980916fa2ffc5094f6eaff29b9e22833445326a4deff804431f4ee5d7a` |
 | `from-glm/0399-ACUSE-PUSHES-AB-0398-DECLARACION-DEUDA-0379-0388-GLM-20261116.md` | `eb1aa89df2078092936c52fb8e4dc4458903868a978ba027eca7fa4843bf75fb` |
+| `from-glm/0400-ACUSE-CIERRE-DEUDA-0379-0388-PUSHES-AB-0404-GLM-20261116.md` | `586e5fa442bc2e6b2d540a1b140b4f401e92961221516198b6c5edbb8df25b46` |
 | `from-glm/0402-ACUSE-PUSHES-AB-0401-GO-DEUDA-0379-0388-GLM-20261116.md` | `6e7ff95d079ff674055ae17738c54085b5315adf10d855be55e9ac7ac938ca57` |
 
 ## Conteo
 
-- Entradas indexadas: **11** (0389–0397, 0399 y 0402; 0398 y 0401 son `to-glm` y 0400 queda reservado a GLM).
-- Ficheros regulares en `from-glm/` con este índice: **214**.
+- Entradas indexadas: **12** (0389–0397, 0399, 0400 y 0402; 0398 y 0401 son `to-glm`).
+- Ficheros regulares en `from-glm/` con este índice: **226**.
 - Desglose: 210 antes del 0396; 211 tras archivarlo; 212 tras archivar el 0397;
-  213 tras archivar el 0399; 214 tras archivar el 0402; este índice ya existía y no altera el total.
+  213 tras archivar el 0399; 214 tras archivar el 0402; 224 tras el push de la
+  deuda (10 documentos); 225 tras el anexo del indice de deuda; 226 tras
+  archivar el 0400; este índice ya existía y no altera el total.
 - Este índice no se cuenta como documento de la serie.
 
 ## Nota
 
 - Los hashes se recalcularon sobre los blobs remotos de `origin/main`.
-- 0389–0391 son los documentos de la mañana; 0392 el dictamen de código del PR #48; 0393 el acta post-fusión; 0394 el acuse de constancia; 0395 el acuse de archivo; 0396 el acuse del índice. 0397 el acuse de verificacion de `to-glm/0378` y cierre del hilo #45/#46 (archivado el mismo dia, como pide su sec. 7). 0399 el acuse de los pushes A/B, la declaracion del merge de #48 y la deuda 0379-0388 (7/7 cotejados, 3 recuperados). 0402 el acuse de los pushes A/B, la errata mutuamente confirmada, el GO tecnico a la deuda y la decision sobre los dos anexos.
+- 0389–0391 son los documentos de la mañana; 0392 el dictamen de código del PR #48; 0393 el acta post-fusión; 0394 el acuse de constancia; 0395 el acuse de archivo; 0396 el acuse del índice. 0397 el acuse de verificacion de `to-glm/0378` y cierre del hilo #45/#46 (archivado el mismo dia, como pide su sec. 7). 0399 el acuse de los pushes A/B, la declaracion del merge de #48 y la deuda 0379-0388 (7/7 cotejados, 3 recuperados). 0402 el acuse de los pushes A/B, la errata mutuamente confirmada, el GO tecnico a la deuda y la decision sobre los dos anexos. 0400 el acuse de cierre de la deuda 0379-0388: push verificado 13/13 contra los blobs del relay (10 documentos + indice de deuda + 2 erratas), rectificacion de la premisa de 0402 sec. 6.2 aceptada, numeracion 0376-0404 conciliada.
 - No se incluyen logs de verificación ni artefactos de paridad.
