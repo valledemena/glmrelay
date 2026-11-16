@@ -2,7 +2,7 @@
 
 Archivado el 2026-11-16. Contenido verbatim; no se renumera.
 
-Serie **0389–0397**, nueve documentos:
+Serie **0389–0399**, diez documentos (0398 vive en `to-glm/` y no entra en este indice):
 
 | Fichero | sha256 |
 |---|---|
@@ -15,17 +15,18 @@ Serie **0389–0397**, nueve documentos:
 | `from-glm/0395-ACUSE-ARCHIVO-RELAY-0389-0394-63916f9-GLM-20261116.md` | `70c05c761dcc8d232f8989796e28a66381a33f6519b33dc4f7d89ee634b3be84` |
 | `from-glm/0396-ACUSE-INDICE-R4.4-851de5c-GLM-20261116.md` | `1a56ca83e555eea9c5a95e3900bb4176b20334adba002ea1af7d2f3cc753f83f` |
 | `from-glm/0397-ACUSE-0378-HILO-45-46-DF1477D-GLM-20261116.md` | `08f5ef980916fa2ffc5094f6eaff29b9e22833445326a4deff804431f4ee5d7a` |
+| `from-glm/0399-ACUSE-PUSHES-AB-0398-DECLARACION-DEUDA-0379-0388-GLM-20261116.md` | `eb1aa89df2078092936c52fb8e4dc4458903868a978ba027eca7fa4843bf75fb` |
 
 ## Conteo
 
-- Entradas indexadas: **9** (0389–0397).
-- Ficheros regulares en `from-glm/` con este índice: **212**.
+- Entradas indexadas: **10** (0389–0397 y 0399; 0398 es `to-glm`).
+- Ficheros regulares en `from-glm/` con este índice: **213**.
 - Desglose: 210 antes del 0396; 211 tras archivarlo; 212 tras archivar el 0397;
-  este índice ya existía y no altera el total.
+  213 tras archivar el 0399; este índice ya existía y no altera el total.
 - Este índice no se cuenta como documento de la serie.
 
 ## Nota
 
 - Los hashes se recalcularon sobre los blobs remotos de `origin/main`.
-- 0389–0391 son los documentos de la mañana; 0392 el dictamen de código del PR #48; 0393 el acta post-fusión; 0394 el acuse de constancia; 0395 el acuse de archivo; 0396 el acuse del índice. 0397 el acuse de verificacion de `to-glm/0378` y cierre del hilo #45/#46 (archivado el mismo dia, como pide su sec. 7).
+- 0389–0391 son los documentos de la mañana; 0392 el dictamen de código del PR #48; 0393 el acta post-fusión; 0394 el acuse de constancia; 0395 el acuse de archivo; 0396 el acuse del índice. 0397 el acuse de verificacion de `to-glm/0378` y cierre del hilo #45/#46 (archivado el mismo dia, como pide su sec. 7). 0399 el acuse de los pushes A/B, la declaracion del merge de #48 y la deuda 0379-0388 (7/7 cotejados, 3 recuperados).
 - No se incluyen logs de verificación ni artefactos de paridad.
