@@ -1,0 +1,94 @@
+# MANIFEST de re-ejecucion del arnes R4.6.0 - glm-sim2 - 2026-11-18
+#
+# Objeto: TERCERA CORRECCION del arnes (invocacion robusta de esbuild) y
+# re-ejecucion de las cinco pruebas: tres invocaciones (relativa, punto,
+# absoluta) y dos guardas (sin argumento, clon sin pin). Este manifiesto
+# sustituye en la practica al MANIFEST-sha256-glm-sim2-20261117.txt, que queda
+# intacto como registro de la generacion anterior del payload: no se reescribe
+# nada de lo ya aterrizado.
+#
+# Uso: desde este directorio,  sha256sum -c MANIFEST-sha256-glm-sim2-20261118.txt
+# Verificacion de una corrida nueva:  node check-invariantes.mjs <salida.json>
+#   (exit 0 todo cuadra | 1 discrepancia | 2 uso/lectura; compara pin, blobs,
+#    dimensiones, celdas y checksums; ignora ms_median, ms_p95 y heap)
+#
+# QUE CAMBIA RESPECTO DEL 20261117, Y QUE NO
+#   cambia    harness/r46-grid-baseline.mjs: la forma de invocar esbuild. Antes,
+#             process.execPath + binario como primer argumento ("node <bin>"),
+#             que en Linux muere con SyntaxError cuando npm ci deja ahi el ELF
+#             nativo. Ahora se inspecciona la cabecera del fichero: ejecucion
+#             directa del path si es ejecutable nativo (ELF/PE), "node <bin>"
+#             si es un script, y fallback a la otra forma si la primaria falla;
+#             la forma usada se declara por stderr y en esbuild_invocation.
+#   cambia    harness_sha256  b860a4ac...beca8c1a  ->  9ccf52f7...5e65a727
+#   cambia    stderr de las tres invocaciones 0 B -> 69 B (linea que declara la
+#             forma usada; antes no habia nada que declarar)
+#   cambia    out-*.json: +2 campos (esbuild_invocation: "node-bin";
+#             esbuild_attempts: []), 3462/3463 B -> 3578 B
+#   cambia    check-invariantes.mjs: fija el payload nuevo y sigue aceptando el
+#             del 20261117 como generacion previa; manifiesto por defecto, este.
+#   NO cambia pin, blobs del pin, celdas, checksums, texture_bytes, heap.touch,
+#             pin_file_stats, ni las dos guardas (exit 2 y 3, mismos stderr).
+#
+# ENTORNO DE LA CORRIDA (identico al del 20261117 salvo lo anotado)
+#   node    v24.15.0
+#   npm     11.12.1
+#   git     2.56.0.windows.2
+#   so      win32 10.0.26100 x64 | i5-4570TE 2.70GHz, 4 vCPU, 15.9 GiB
+#   esbuild 0.28.2 del clon web. node_modules/esbuild/bin/esbuild es el shim JS
+#           de 9350 B (cabecera=script), asi que la forma primaria elegida fue
+#           "node-bin" y el fallback no llego a usarse. La rama "direct" queda
+#           implementada pero NO ejercitada en este anfitrion: aqui no hay
+#           binario nativo que la dispare.
+#
+# INVARIANTES COMPARABLES (identicos en las tres invocaciones)
+#   pin                       8cdc3348ab087d10dd43807af217da4e246d996d
+#   web_root_head             = pin
+#   web_root_status           "sucio" EN ESTA CORRIDA, y es estado previo, no
+#                             efecto del arnes: el oraculo local tiene ediciones
+#                             ajenas (next-env.d.ts, src/components/ionosphere/
+#                             IonosphereScene.tsx modificados, dev-r34.pid sin
+#                             seguimiento). No afecta a la medicion: el arnes
+#                             materializa dims y constantes con git archive del
+#                             pin, nunca del arbol de trabajo; pin_blobs y los
+#                             dos checksums salen identicos a la corrida limpia.
+#   checksum 72x72x48 60-500  844848.546114   (248832 celdas)   SIN CAMBIOS
+#   checksum 72x36x60 60-700  536270.831702   (155520 celdas)   SIN CAMBIOS
+#   harness_sha256            9ccf52f7bb7e5791e6210ddd696d1a4cf22324c8cff55ef76cbfc7fa5e65a727
+#   pin_blobs                 profileGrid 73207e86 | ionomath d27752f5 |
+#                             densityVolume 63c16fd5 | layerProfile 4184bdb1
+#
+# INVOCACIONES (las tres con exit 0 y stderr de 69 B, la linea de forma)
+#   out-rel.json  node harness/r46-grid-baseline.mjs ../../../ionosphere-live-3d-web
+#   out-dot.json  node <ruta absoluta al arnes> .      (cwd = clon web)
+#   out-abs.json  node harness/r46-grid-baseline.mjs <ruta absoluta al clon>
+#   stderr identico en las tres:
+#     "[r46] esbuild: cabecera=script; forma usada=node-bin; forma primaria"
+#
+# GUARDAS
+#   sin argumento  exit 2 | stdout 0 B | stderr = linea de uso (76 B)
+#                  "uso: node r46-grid-baseline.mjs <ruta-del-clon-web> [--runs N] [--warmup N]"
+#   clon sin pin   exit 3 | stdout 0 B | stderr = fatal de git + ERROR (185 B)
+#                  "ERROR: el clon no contiene el commit pin 8cdc3348... Haz: git fetch --all"
+#   Las dos guardas dan el mismo resultado que el 20261117: la correccion no
+#   toca el camino de validacion de argumentos ni el de verificacion del pin.
+#
+# LOS TRES JSON NO SON BYTE-IDENTICOS ENTRE SI. Solo difieren en los campos de
+# tiempo (ms_median, ms_p95) y en heap.retained_mib. Son iguales en los tres:
+# checksum, pin, harness_sha256, esbuild_invocation, pin_blobs, pin_file_stats,
+# cells, valid, heap.touch y texture_bytes. Para comparar, usar esos invariantes.
+#
+9ccf52f7bb7e5791e6210ddd696d1a4cf22324c8cff55ef76cbfc7fa5e65a727 *harness/r46-grid-baseline.mjs
+64bb89e9f048817290b291aef1dfe833e075dc1560ccb8b55dcd82126467c081 *harness/r46-entry.ts
+2ca29e26b8b57686c0cb9773ec3d78b3f4c4fa26c023536ddd04c8f613e91b01 *check-invariantes.mjs
+f06c8eb0635414183f301e819a98bf266f3b7ad95849625d68b78d98788a83e3 *npm-ci.log
+d39a18dc442c66d98726c9425484442ddf9b7fe757ced4457b6cd852bf8803d4 *out-rel.json
+7f5c5514f17ac5f6ce6474abd8d380792b66d77a4eb1b13881bdbfed6f1f7489 *out-dot.json
+138d8b7e2508a89e092e776aa09351c993c43485dd141be0b6b117fc44cf429d *out-abs.json
+ef0272b6e64903672ae5f4996142f28dcb25dda5db9aab8925127503eb11ea95 *err-rel.txt
+ef0272b6e64903672ae5f4996142f28dcb25dda5db9aab8925127503eb11ea95 *err-dot.txt
+ef0272b6e64903672ae5f4996142f28dcb25dda5db9aab8925127503eb11ea95 *err-abs.txt
+645702a679361880c4d3bfca0a077455a129a5ec970009443fbac1d28c444484 *guard-noarg-err.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *guard-noarg-out.txt
+468a8631aabd71a7f5ae99f2885673f158a1241afb6605b352f2e5b3362e71be *guard-nopin-err.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *guard-nopin-out.txt
