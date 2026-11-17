@@ -32,11 +32,15 @@ const FILES = {
 };
 
 const argv = process.argv.slice(2);
-const webRoot = argv.find((a) => !a.startsWith("--"));
-if (!webRoot) {
+const webRootArg = argv.find((a) => !a.startsWith("--"));
+if (!webRootArg) {
   console.error("uso: node r46-grid-baseline.mjs <ruta-del-clon-web> [--runs N] [--warmup N]");
   process.exit(2);
 }
+// Absoluta SIEMPRE: el bundle se lanza con cwd en el temporal, asi que un
+// webRoot relativo resolveria contra el directorio equivocado (bug real,
+// detectado al ejecutar el arnes copiado con ruta relativa).
+const webRoot = path.resolve(webRootArg);
 const flag = (name, dflt) => {
   const i = argv.indexOf(`--${name}`);
   return i >= 0 && argv[i + 1] ? Number(argv[i + 1]) : dflt;
