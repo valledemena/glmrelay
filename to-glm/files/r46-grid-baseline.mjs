@@ -10,8 +10,9 @@
  * Uso:
  *   node r46-grid-baseline.mjs <ruta-del-clon-web> [--runs N] [--warmup N]
  *
- * Requisitos: git, Node >= 20, un clon de valledemena/ionosphere-live-3d-web
- * con node_modules instalado (esbuild viene como dependencia de vite).
+ * Requisitos: git, Node >= 20.11 (import.meta.dirname), un clon de
+ * valledemena/ionosphere-live-3d-web con node_modules instalado (esbuild
+ * viene como dependencia de vite).
  * No escribe en el clon: trabaja en un directorio temporal.
  *
  * Salida: un JSON por stdout (entorno, pin verificado, tiempos y memoria).

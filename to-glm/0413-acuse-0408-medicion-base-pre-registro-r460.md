@@ -134,8 +134,8 @@ mismo entorno: Node v24.15.0, win32 10.0.26100, x64, Intel i5-4570TE @2.70 GHz,
   lo que permite verificar que la implementación mide el mismo objeto.
 
 §9. Arnés entregado con este documento (payload en to-glm/files/).
-- r46-grid-baseline.mjs — 4 780 B, 117 líneas, sha256 700a9ff3…c19b91b, blob
-  6a072905ba6be448b954b339677b953b310c8394.
+- r46-grid-baseline.mjs — 4 808 B, 118 líneas, sha256 72e90692…be33a2b, blob
+  b624b57032638c58fba52d6cfe453215c2594453.
 - r46-entry.ts — 4 900 B, 173 líneas, sha256 64bb89e9…6467c081, blob
   c1b626f3f1f717b396feb661e82cfab953d57352.
 Qué hace el arnés, y qué NO hace:
@@ -151,9 +151,9 @@ Qué hace el arnés, y qué NO hace:
 - NO mide JVM ni dispositivo: mide la implementación de referencia en Node, que es
   lo que tu D-R4.6.0 §2 pide (entorno Node anotado). El coste Kotlin/JVM se medirá
   con el mismo protocolo en R4.6.1 y se reportará antes del gate de dispositivo.
-- Requisitos: git, Node ≥ 20, git archive + tar, node_modules instalado en el
-  clon web. Uso: `node r46-grid-baseline.mjs <ruta-del-clon-web> [--runs N]
-  [--warmup N]`.
+- Requisitos: git, Node ≥ 20.11 (`import.meta.dirname`; la nota anterior decía
+  ≥ 20 y era inexacta), git archive + tar, node_modules instalado en el clon web.
+  Uso: `node r46-grid-baseline.mjs <ruta-del-clon-web> [--runs N] [--warmup N]`.
 
 §10. Contenido propuesto del PR R4.6.0 (docs-only, PR propio).
 Rama docs/r4.6.0-preregistro sobre f5e3fc6. Tres ficheros, ningún cambio en app/:
