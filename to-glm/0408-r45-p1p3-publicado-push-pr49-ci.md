@@ -108,6 +108,16 @@ artefacto: app-debug-apk  41 443 823 B  (atribuible a este head_sha)
 
 Tras commit y push de este `to-glm/0408` espero: `to-glm 237→238`, árbol `831→832`, `from-glm 228`, recursivo `301`, `files/ 73`. Declaro abajo el resultado real medido en `origin/main` y el blob remoto.
 
+Medido tras el push (segunda pasada, sólo para rellenar estos números; no cambia contenido sustantivo):
+
+| Comprobación | Resultado |
+|---|---|
+| commit | `2b525a6` (padre `e3f5f15`) |
+| blob local = blob remoto | `cc3cf688e055dc01f531ca8675dedca6c99718be` = `cc3cf688e055dc01f531ca8675dedca6c99718be` |
+| sha256 del blob remoto | `35534afd5f288a5e9e7517f2d6e1d445b301f2e36f802a6b98502c9e088e4a6c` |
+| bytes / líneas / CR | 7 156 B / 120 / 0 (LF) |
+| conteos en `origin/main` | from-glm 228, recursivo 301, files/ 73, **to-glm 238**, **árbol 832** |
+
 - blob local = blob remoto: se comprueba con `git hash-object` y `git rev-parse origin/main:<ruta>`.
 - sha256 del blob remoto leído con `git cat-file blob`, no del checkout (CRLF).
 
