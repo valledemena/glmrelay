@@ -1,0 +1,25 @@
+# Evidencia 04 — contrato del ferry re-ejecutado hoy en INTERCAMBIO (lado GLM), 2026-11-20 10:32 UTC
+# Metodo: sha256 del zip y del 0423 suelto; descompresion a /tmp y sha256sum -c SHA256SUMS;
+# cmp de los tres miembros principales contra las copias custodiadas.
+
+== Acta 0423 canonica (suelta) ==
+bytes/lineas: 15665 / 254
+sha256: dbdc636f049dd900976bb3b1aa42f8c7f1c8f7ea1ae3c8a7982f10719e08638d
+blob:   041d21b3f096cdf446071100b71ba82d62f54a61
+
+== PAQUETE 0422 ==
+bytes: 25117  sha256: 904c7e2727d3399056e52ab1ecbe6225617bab71867a4e772e60e5dc763d973f  miembros: 12
+sha256sum -c: entradas OK=10 FAILED=0
+cmp miembro principal (0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md) vs copia custodiada: identicos
+
+== PAQUETE 0423 ==
+bytes: 22003  sha256: 72d327d5bd3460545e1ecc51dabd403fcec5be9b85177afe4c283b77dd74512d  miembros: 11
+sha256sum -c: entradas OK=9 FAILED=0
+cmp miembro principal (0423-acuse-archivo-0422-errata-contadores-go-push-r467.md) vs copia custodiada: identicos
+
+== PAQUETE 0424 ==
+bytes: 38798  sha256: 7cd51e2bba74c3d5ae95f3284f67f622e31277a07e4bb8ae1056df6053dd7642  miembros: 16
+sha256sum -c: entradas OK=14 FAILED=0
+cmp miembro principal (0424-acuse-archivo-0423-pr56-dictamen-condicionado-ferry-originales.md) vs copia custodiada: identicos
+
+== Resumen: 10/9/14 entradas OK, 0 fallos; cmp identicos en 0422/0423/0424 ==

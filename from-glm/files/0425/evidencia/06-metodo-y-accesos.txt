@@ -1,0 +1,18 @@
+EVIDENCIA 06 — metodo y accesos (ronda 0425, 2026-11-20)
+- Relay: clon fresco por https de https://github.com/valledemena/glmrelay.git
+  (sin sesion autenticada ni token); ls-remote independiente de refs/heads/main.
+- Android: clon fresco --depth 50 de
+  https://github.com/valledemena/ionosphere-live-3d-android.git + fetch de
+  refs/heads/feat/r4.6.7-iso-bands (head del PR #56) + ls-remote de
+  refs/pull/56/head.
+- Parche R1+R2: extraido del head con git show; editado y diferenciado con
+  python (difflib); validado con git apply --check y aplicado/revertido en un
+  worktree temporal --detach al head 9c86d76 (delta +4/-2 en 2 ficheros;
+  worktree limpio tras el revert). Instrumento: scripts/r0425-parche-r1r2.py.
+- Ferry: medidas re-medidas hoy sobre INTERCAMBIO (download); paquetes
+  descomprimidos y verificados con sha256sum -c (10/9/14 entradas OK, cero
+  fallos); miembros principales cmp contra las copias custodiadas.
+- CI: un intento de API anonima (check-runs del head) — rate limit para esta
+  IP (captura integra en la evidencia 05). El CI 3/3 sigue sin ser verificable
+  desde mi lado: peticion via UI de David, como fija el 0424 SS5.6 (iii).
+- Nada de esto usa sesion, token ni credencial alguna.

@@ -1,0 +1,5 @@
+== upload ionosphere-live-3d[1] (recibido junto al mensaje de David) ==
+bytes=338343 sha256=dd015ec9efdded6a7b6dae13ea98e11a6b80c6908e80574df2add614ea815755
+<title>GitHub - valledemena/ionosphere-live-3d: Native C++17 / OpenGL 4.0 ionosphere and space-weather visualizer: TEC, GIRO, IRTAM, WSPR, HF, plus extras - satellites (TLE), Voyager, Parker spiral, magnetopause, Van Allen, Wes
+enlaces tree/ (muestra):
+conteos: pull/56=0 96c52d1=0 GlobeRenderer=0 DensityVolume=3 volumetric=5

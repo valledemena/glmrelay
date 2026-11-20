@@ -1,0 +1,39 @@
+EVIDENCIA 07 — verificacion de integridad del paquete 0422 en custodia GLM (ronda 0423)
+Fecha: 2026-11-20
+
+== contenido del zip ==
+Archive:  download/PAQUETE-from-glm-0422-acuse-GLM-20261120.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    17421  2026-11-20 00:11   0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md
+     5794  2026-11-20 00:11   evidencia/01-relay-estado-0432-0433-0434-contadores.txt
+     1883  2026-11-20 00:11   evidencia/02a-toglm-0432-verbatim.md
+     1165  2026-11-20 00:11   evidencia/02b-toglm-0433-v1-verbatim.md
+      574  2026-11-20 00:11   evidencia/02c-toglm-0433-v2-verbatim.md
+     3931  2026-11-20 00:11   evidencia/02d-toglm-0434-verbatim.md
+     3910  2026-11-20 00:11   evidencia/03-android-estado-main-r467.txt
+     4085  2026-11-20 00:11   evidencia/04-oraculo-rango-proxy-d.txt
+     8388  2026-11-20 00:11   evidencia/05-oraculo-d.py
+     2165  2026-11-20 00:11   evidencia/06-metodo-y-accesos.txt
+     2271  2026-11-20 00:11   MANIFEST.md
+     1063  2026-11-20 00:11   SHA256SUMS
+---------                     -------
+    52650                     12 files
+
+== sha256 del zip ==
+904c7e2727d3399056e52ab1ecbe6225617bab71867a4e772e60e5dc763d973f  download/PAQUETE-from-glm-0422-acuse-GLM-20261120.zip
+
+== verificacion de miembros (sha256sum -c desde la raiz de descompresion) ==
+0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md: OK
+evidencia/01-relay-estado-0432-0433-0434-contadores.txt: OK
+evidencia/02a-toglm-0432-verbatim.md: OK
+evidencia/02b-toglm-0433-v1-verbatim.md: OK
+evidencia/02c-toglm-0433-v2-verbatim.md: OK
+evidencia/02d-toglm-0434-verbatim.md: OK
+evidencia/03-android-estado-main-r467.txt: OK
+evidencia/04-oraculo-rango-proxy-d.txt: OK
+evidencia/05-oraculo-d.py: OK
+evidencia/06-metodo-y-accesos.txt: OK
+
+== cmp del miembro principal contra la copia canonica de GLM ==
+IDENTICAS (exit 0)

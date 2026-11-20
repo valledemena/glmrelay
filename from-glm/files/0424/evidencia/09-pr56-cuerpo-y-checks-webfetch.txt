@@ -1,0 +1,57 @@
+EVIDENCIA 09 — PR #56: cuerpo y checks, leidos via WebFetch (SEGUNDA MANO)
+Fecha: 2026-11-20 · metodo: WebFetch de la pagina publica del PR
+(https://github.com/valledemena/ionosphere-live-3d-android/pull/56 y /checks);
+la API anonima devolvio rate limit (evidencias 07/08), asi que esta lectura es
+una transcripcion de segunda mano, declarada: el cuerpo byte-exacto viaja por
+ferry (HTML) o lo confirma Deepseek con el verbatim. El diff SI es de primera
+mano (evidencia 06, clon fresco).
+
+== estado y numeros ==
+- state: Open (no merged)
+- commits: 2 · head: 9c86d76 · base: main (8611ee6)
+- title: «R4.6.7 iso-bands (D-R4.6.2) — golden JVM»
+
+== cuerpo del PR (transcripcion WebFetch) ==
+# R4.6.7 iso-bands (D-R4.6.2) — golden JVM
+Branch `feat/r4.6.7-iso-bands`, base `main` (8611ee6), commits `96c52d1` + `9c86d76`.
+Sin `app/**` existente, sin `data/**`, sin `.github/**`, sin checker congelado.
+## DoD de R4.6.7
+* Bandas solo en el raymarch (`isoSum` en `ATMO_FRAG`), nunca en la cortina.
+* `showIso=false` por defecto (`GlobeRenderer.showIso`).
+* Bandas logNe 10.5/11/11.5 (`ISO_BAND_1/2/3`).
+* UI deshabilitada sin volumen ON: `uShowIso = showIso && sliceVolume != null`.
+* Golden JVM del uniform: `ISO_STRENGTH = 0.75f` + pines de color
+(`AtmoShaderConstantsTest.pins_iso`).
+## Verificacion (golden JVM, JVM pura)
+`testDebugUnitTest`: BUILD SUCCESSFUL,
+`RESUMEN-TESTS tarea=testDebugUnitTest ficheros=51 tests=326 fallos=0 errores=0 omitidos=0`.
+Diffs: GlobeRenderer +26/0, AtmoShaderConstants +9/0, AtmoShaderSource
++8/7, AtmoShaderSourceTest +2/2 (vs 96c52d1), sin inflacion.
+## Decisiones de forma (acta 0422 de GLM, relay)
+* Q19: mapa del shader: `logNe = 8.0 + 4.5 * (odIso / 0.49f)` con
+`odIso = odR + odM`; rango medido (oraculo del shader, codigo propio):
+bandas en odIso 0.27222 / 0.32667 / 0.38111, alcanzables en toda calidad.
+Entrada puede pasar 1.0 por menos del 1%; PR declara clamp o rango medido.
+* Q20: `ISO_STRENGTH = 0.75f` golden.
+* Q21: gating `showIso && sliceVolume != null` (cableado R4.6.1 garantiza
+que sliceVolume != null implica capa ON y datos).
+Verificado de primera mano en el worktree: clon fresco del repo Android
+(main = 8611ee6), diffs reales por difflib (arbol +8/7 netos sobre 96c52d1),
+pines golden, `cat-file` LRV en 0.
+## Deudas de forma (0421 §5.1 y 05.4)
+Informe del emulador (`emulator-5554`): version de emulador, imagen, comando,
+logcat, casillas; FPS de referencia, no de dispositivo.
+## Actas
+* 0422: `from-glm/0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md`
+(archivada verbatim; hash: consultar handoff).
+* 0423 (GLM, actual): `from-glm/0423-acuse-archivo-0422-errata-contadores-go-push-r467.md`
+(archivada). Erratas de contadores registradas en el handoff.
+* 0434: acuse de implementacion del OpenCode, en relay.
+GO de forma dado por GLM (via David). Doble GO del merge intacto: acta 0423
+(mia sobre 9c86d76) + GO de David (escribido por el usuario).
+
+== checks (pagina /checks, transcripcion WebFetch) ==
+- Workflows presentes en el PR: assembleDebug, unitTest, lint (CI on: pull_request).
+- Estado concreto de cada check: NO VISIBLE desde esta via (la pagina pide
+  seleccionar cada check en la barra lateral); queda como condicion (iii) del
+  dictamen del acta 0424.

@@ -1,0 +1,32 @@
+ORACULO 0423 — alcance de bandas del mapa implementado del R4.6.7
+Formula declarada (9c86d76): logNe = 8.0 + 4.5 * (odIso / 0.49f)
+Constantes: PLANET_R=1.0 ATM_R=1.0255 H_R=0.0085 H_M=0.012 (AtmoShaderConstants, blob 62f5f6c9)
+Barrido: D en {2.0, 2.5, 3.3, 4.5}, b en [0, 1.03] paso 0.001, uSteps 8/12/16 (STEPS_MIN/DEFAULT/MAX).
+
+[1] uSteps= 8: max odIso = 0.49412 (D=2.0, b=1.0)
+[1] uSteps=12: max odIso = 0.49361 (D=2.0, b=1.0)
+[1] uSteps=16: max odIso = 0.49343 (D=2.5, b=1.0)
+
+[2] posicion de los pines bajo el mapa declarado:
+    banda 10.5: x = 0.55556  ->  odIso necesario = 0.27222
+    banda 11.0: x = 0.66667  ->  odIso necesario = 0.32667
+    banda 11.5: x = 0.77778  ->  odIso necesario = 0.38111
+
+[3] entrada maxima = max odIso / 0.49 y logNe maximo = 8 + 4.5 * entrada:
+    uSteps= 8: entrada max = 1.00841 (+0.84% sobre 1.0)  logNe max = 12.5379
+    uSteps=12: entrada max = 1.00738 (+0.74% sobre 1.0)  logNe max = 12.5332
+    uSteps=16: entrada max = 1.00701 (+0.70% sobre 1.0)  logNe max = 12.5315
+    tope del rango del proyecto (LayerProfile): logNe = 12.5
+
+[4] banda mas alta 11.5: odIso necesario = 0.38111
+    uSteps= 8: margen = 0.11301 (ALCANZA)
+    uSteps=12: margen = 0.11250 (ALCANZA)
+    uSteps=16: margen = 0.11232 (ALCANZA)
+
+[5] para entrada <= 1.0 estricta se necesita OD_REF >= max odIso:
+    uSteps= 8: OD_REF >= 0.49412
+    uSteps=12: OD_REF >= 0.49361
+    uSteps=16: OD_REF >= 0.49343
+    declarado: OD_REF = 0.49 -> sobrepaso de entrada 0.84% en el rayo rasante extremo;
+    ningun pin vive por encima de 11.5, asi que el sobrepaso no toca
+    banda alguna: es forma (entrada fuera de [0,1] por <1%), no sustancia.

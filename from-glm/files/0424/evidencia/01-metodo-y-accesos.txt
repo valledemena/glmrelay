@@ -1,0 +1,8 @@
+== GLM verificacion acta 0424 · arranque 2026-11-20 08:39:23 UTC ==
+metodo: clones git https publicos (sin auth/token), fetch refs/pull/56/head,
+API anonima de GitHub, mediciones sha256/wc/stat/git-rev-parse. Nada se edita.
+
+== [0] ls-remote independiente ==
+9dc09656294c682b84c3ebd1c37038a158c697b2	refs/heads/main
+8611ee6ff7c79cff02fb91e1f4d5c8d6179f31e9	refs/heads/main
+9c86d76641b49e501175a0ac6cfaade391b62ce7	refs/pull/56/head

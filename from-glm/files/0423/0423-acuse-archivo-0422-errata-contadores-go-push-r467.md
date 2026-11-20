@@ -1,84 +1,254 @@
-# from-glm/0423 — acuse del archivo del 0422 (la reconstrucción medida, fiel en lo sustancial, con sus glitches registrados), una errata de contadores en el resumen de David, y el GO de forma para el push+PR del R4.6.7: de mi lado ya, con los puntos de verificación del dictamen pre-registrados antes del push
+# from-glm/0423 — acuse del archivo del 0422 (la reconstruccion medida, fiel en lo sustancial, con sus glitches registrados), una errata de contadores en el resumen de David, y el GO de forma para el push+PR del R4.6.7: de mi lado ya, con los puntos de verificacion del dictamen pre-registrados antes del push
 
-> Cadena documental: `c30760e` (archivo del from-glm/0422) + mensaje de David del 2026-11-20 (resumen final: acta aceptada, implementación `96c52d1` -> `9c86d76`, suite verde, pendientes) via David -> **0423** (este documento)
-> Dirección: GLM -> relay · Estado: ACUSE DEL ARCHIVO + GO DE FORMA PARA PUSH+PR · Fecha: 2026-11-20
-> Materia: recepción verificada del archivo del 0422 como reconstrucción declarada de 86 líneas (4 158 B, blob `b3a32335`, sha256 `4ba841af` — todo exacto a lo declarado); cotejo contra mi acta canónica (261 líneas) con los glitches de forma registrados sin edición; errata de contadores del resumen (to-glm recursivo medido 562, no 559); respuesta al «push+PR cuando creas GO»: GO de forma de mi lado, con el doble GO del merge intacto; y los puntos de verificación que el dictamen del PR exigirá sobre el head final, fijados ANTES del push para que nada se mueva después
+> Cadena documental: `c30760e` (archivo del from-glm/0422) + mensaje de David
+> del 2026-11-20 (resumen final: acta aceptada, implementacion `96c52d1` ->
+> `9c86d76`, suite verde, pendientes) via David -> **0423** (este documento)
+> Direccion: GLM -> relay · Estado: ACUSE DEL ARCHIVO + GO DE FORMA PARA
+> PUSH+PR · Fecha: 2026-11-20
+> Materia: recepcion verificada del archivo del 0422 como reconstruccion
+> declarada de 86 lineas (4 158 B, blob `b3a32335`, sha256 `4ba841af` — todo
+> exacto a lo declarado); cotejo contra mi acta canonica (261 lineas) con los
+> glitches de forma registrados sin edicion; errata de contadores del resumen
+> (to-glm recursivo medido 562, no 559); respuesta al «push+PR cuando creas
+> GO»: GO de forma de mi lado, con el doble GO del merge intacto; y los puntos
+> de verificacion que el dictamen del PR exigira sobre el head final, fijados
+> ANTES del push para que nada se mueva despues
 
-## §1 Propósito
+## §1 Proposito
 
-(a) Recibir y verificar el archivo del 0422 en `c30760e` y el mensaje de resumen que lo acompaña, con mediciones propias: clones frescos por https de relay y repo Android, sin sesión autenticada ni token. (b) Cotejar la reconstrucción archivada contra mi acta canónica y registrar las diferencias y glitches sin editar nada (doctrina verbatim). (c) Declarar el canónico y el paquete 0422 con sus hashes, para que el contrato parcial («no hay paquete de él») se pueda completar cuando David quiera. (d) Registrar la errata de contadores del resumen. (e) Responder la pregunta de los pendientes — «push+PR cuando creas GO» — con el GO de forma y con la lista verificable de lo que el cuerpo del PR debe anotar.
+(a) Recibir y verificar el archivo del 0422 en `c30760e` y el mensaje de
+resumen que lo acompana, con mediciones propias: clones frescos por https de
+relay y repo Android, sin sesion autenticada ni token. (b) Cotejar la
+reconstruccion archivada contra mi acta canonica y registrar las diferencias y
+glitches sin editar nada (doctrina verbatim). (c) Declarar el canonico y el
+paquete 0422 con sus hashes, para que el contrato parcial («no hay paquete de
+el») se pueda completar cuando David quiera. (d) Registrar la errata de
+contadores del resumen. (e) Responder la pregunta de los pendientes — «push+PR
+cuando creas GO» — con el GO de forma y con la lista verificable de lo que el
+cuerpo del PR debe anotar.
 
-## §2 Recepción: el archivo y el resumen, medidos
+## §2 Recepcion: el archivo y el resumen, medidos
 
-- **El commit de archivo**: `c30760e` (`c30760efe6cc34756f647f1791cb466ee638cde8`, 2026-11-20 07:35:32 +0100, autor `98014642+valledemena@users.noreply.github.com` — via web, sin handoff.py en el relay, como fija el 0420 sección 7), un fichero, 86 insertions. `HEAD = origin/main = c30760e`, worktree limpio, ls-remote independiente coincide.
-- **El 0422 archivado** (reconstrucción): blob `b3a32335c0cce742d49370c293d8981c96f674d0`, **4 158 B / 86 líneas / CR=0**, sha256 `4ba841af98e3f319a4999f5e0ba13ba7c7fc526d01c8de27e6ed12a0ac57d1b3`. Todo exacto a lo que el resumen declara. Recibido como lo que el propio resumen dice: reconstrucción desde mi mensaje, sin paquete — el contrato parcial, declarado por su lado. La sección 3 lo coteja.
-- **ERRATA — contadores del resumen.** El resumen declara «to-glm 264/559»; lo medido en `c30760e`: to-glm **264/562** (directo/recursivo). La cadena completa de la ronda: `1f6dc05` 261/559 -> `772813b` 262/560 -> `b80fc9d` 263/561 -> `a694534` 263/561 (la reescritura no cambió contadores) -> `1c2aa15` 264/562 -> `c30760e` 264/562. El 559 es el valor de tres documentos atrás (`1f6dc05`); las declaraciones del propio `0432` (262/560) y `0433` v2 (263/561) ya coinciden con esta cadena, así que la convención es la misma y el 559 de hoy es un número caducado, no otra forma de contar. Registrada sin edición. Todo lo demás del resumen cuadra: arbol 882, from-glm 246/319/73. Y una menor del mismo mensaje: «0432 suse 3» (sic; «sección 3»).
-- **Repo Android**: `origin/main` sigue en `8611ee6` (merge del PR #55); ls-remote sin rama `feat/r4.6.7-iso-bands`; `96c52d1` y `9c86d76` con cero ocurrencias en el remoto; `ISO_STRENGTH` y `uShowIso` con cero ocurrencias en el árbol de main; los cuatro ficheros del diff declarado preexisten en main con los blobs conocidos (`AtmoShaderConstants` `62f5f6c9`, `AtmoShaderSource` `fb63062d`, y sus tests `314fdc4d` / `8cebf9e1`). La rama sigue sin push, como declara el resumen: nada del R4.6.7 es verificable todavía, y este acta no pretende verificarlo.
-- **Suite declarada**: `RESUMEN-TESTS 51/326/0/0/0` sobre el worktree — recibida como declaración del lado implementador; la línea de ejecución real viajará en el PR (doctrina Q18).
-- **«handoff.py check -> OK»**: recibido como declaración del lado implementador.
-- El resumen describe el `0434` como «acuse de implementación, Q19-Q21 abiertos»: lo eran al publicarse; mi 0422 los resolvió y el propio resumen acepta las tres decisiones en la misma tabla. Leído así, sin errata.
+- **El commit de archivo**: `c30760e`
+  (`c30760efe6cc34756f647f1791cb466ee638cde8`, 2026-11-20 07:35:32 +0100, autor
+  `98014642+valledemena@users.noreply.github.com` — via web, sin handoff.py en
+  el relay, como fija el 0420 seccion 7), un fichero, 86 insertions. `HEAD =
+  origin/main = c30760e`, worktree limpio, ls-remote independiente coincide.
+- **El 0422 archivado** (reconstruccion): blob
+  `b3a32335c0cce742d49370c293d8981c96f674d0`, **4 158 B / 86 lineas / CR=0**,
+  sha256 `4ba841af98e3f319a4999f5e0ba13ba7c7fc526d01c8de27e6ed12a0ac57d1b3`.
+  Todo exacto a lo que el resumen declara. Recibido como lo que el propio
+  resumen dice: reconstruccion desde mi mensaje, sin paquete — el contrato
+  parcial, declarado por su lado. La seccion 3 lo coteja.
+- **ERRATA — contadores del resumen.** El resumen declara «to-glm 264/559»; lo
+  medido en `c30760e`: to-glm **264/562** (directo/recursivo). La cadena
+  completa de la ronda: `1f6dc05` 261/559 -> `772813b` 262/560 -> `b80fc9d`
+  263/561 -> `a694534` 263/561 (la reescritura no cambio contadores) ->
+  `1c2aa15` 264/562 -> `c30760e` 264/562. El 559 es el valor de tres documentos
+  atras (`1f6dc05`); las declaraciones del propio `0432` (262/560) y `0433` v2
+  (263/561) ya coincidian con esta cadena, asi que la convencion es la misma y
+  el 559 de hoy es un numero caducado, no otra forma de contar. Registrada sin
+  edicion. Todo lo demas del resumen cuadra: arbol 882, from-glm 246/319/73. Y
+  una menor del mismo mensaje: «0432 suse 3» (sic; «seccion 3»).
+- **Repo Android**: `origin/main` sigue en `8611ee6` (merge del PR #55);
+  ls-remote sin rama `feat/r4.6.7-iso-bands`; `96c52d1` y `9c86d76` con cero
+  ocurrencias en el remoto; `ISO_STRENGTH` y `uShowIso` con cero ocurrencias en
+  el arbol de main; los cuatro ficheros del diff declarado preexisten en main
+  con los blobs conocidos (`AtmoShaderConstants` `62f5f6c9`, `AtmoShaderSource`
+  `fb63062d`, y sus tests `314fdc4d` / `8cebf9e1`). La rama sigue sin push,
+  como declara el resumen: nada del R4.6.7 es verificable todavia, y este acta
+  no pretende verificarlo.
+- **Suite declarada**: `RESUMEN-TESTS 51/326/0/0/0` sobre el worktree —
+  recibida como declaracion del lado implementador; la linea de ejecucion real
+  viajara en el PR (doctrina Q18).
+- **«handoff.py check -> OK»**: recibido como declaracion del lado
+  implementador.
+- El resumen describe el `0434` como «acuse de implementacion, Q19-Q21
+  abiertos»: lo eran al publicarse; mi 0422 los resolvio y el propio resumen
+  acepta las tres decisiones en la misma tabla. Leido asi, sin errata.
 
-## §3 La reconstrucción del 0422: cotejo y lo que queda fijado
+## §3 La reconstruccion del 0422: cotejo y lo que queda fijado
 
-**3.1 Las dos versiones.** La canónica: **17 421 B / 261 líneas / CR=0**, sha256 `5c04012753c5c46553c5836b0be29eaed04060dba4c5802e2009810ef1530429`, miembro principal del paquete (zip sha256 `904c7e2727d3399056e52ab1ecbe6225617bab71867a4e772e60e5dc763d973f`, 12 miembros, re-verificado íntegro hoy: `sha256sum -c` completo y `cmp` contra mi copia, exit 0). La archivada: **4 158 B / 86 líneas** — la reconstrucción de David desde mi mensaje de la ronda, que murió a mitad de entrega antes de que el paquete viajara. No son los mismos bytes y no tienen por qué serlo: lo que se archiva del mensaje es lo que el mensaje llevó.
+**3.1 Las dos versiones.** La canonica: **17 421 B / 261 lineas / CR=0**,
+sha256 `5c04012753c5c46553c5836b0be29eaed04060dba4c5802e2009810ef1530429`,
+miembro principal del paquete (zip sha256
+`904c7e2727d3399056e52ab1ecbe6225617bab71867a4e772e60e5dc763d973f`, 12
+miembros, re-verificado integro hoy: `sha256sum -c` completo y `cmp` contra mi
+copia, exit 0). La archivada: **4 158 B / 86 lineas** — la reconstruccion de
+David desde mi mensaje de la ronda, que murio a mitad de entrega antes de que
+el paquete viajara. No es el mismo bytes y no tiene por que serlo: lo que se
+archiva del mensaje es lo que el mensaje llevo.
 
-**3.2 Fiel en lo sustancial** (cotejo cláusula a cláusula en la evidencia 03): las cinco condiciones de Q19 condensadas en tres líneas (entrada [0,1], `8+4.5*x` del proyecto, estabilidad 0.494/0.494/0.493, rango medido, proxy provisional, constantes pinned), Q20 con el `0.75` golden y la doctrina de corrección documentada, Q21 con la compuerta y su fundamentación medida en el cableado R4.6.1, las tres erratas de la ronda, la rama sin push verificada y los pendientes. Además añade material nuevo de mi mensaje posterior, ya con el `9c86d76` delante: los stats por fichero de `96c52d1` y `9c86d76`, el implementador (OpenCode, DeepSeek V4.1 Flash, via David), la base `8611ee6`, y los candidatos Robolectric y R4.7 (NDK). Sin oposición con la canónica; este 0423 lo recibe por su lado.
+**3.2 Fiel en lo sustancial** (cotejo clausula a clausula en la evidencia 03):
+las cinco condiciones de Q19 condensadas en tres lineas (entrada [0,1],
+`8+4.5*x` del proyecto, estabilidad 0.494/0.494/0.493, rango medido, proxy
+provisional, constantes pinned), Q20 con el `0.75` golden y la doctrina de
+correccion documentada, Q21 con la compuerta y su fundamentacion medida en el
+cableado R4.6.1, las tres erratas de la ronda, la rama sin push verificada y
+los pendientes. Anade ademas material nuevo de mi mensaje posterior, ya con el
+`9c86d76` delante: los stats por fichero de `96c52d1` y `9c86d76`, el
+implementador (OpenCode, DeepSeek V4.1 Flash, via David), la base `8611ee6`, y
+los candidatos Robolectric y R4.7 (NDK). Sin oposicion con la canonica; este
+0423 lo recibe por su lado.
 
-**3.3 Glitches de forma registrados** (sin edición, doctrina verbatim): L31 «-Forma:» (guion pegado); L37-38 «— station: respuesta estable» (resto de redacción en inglés); L42 «quedan consisten en la acta» (sic; «consisten» no es palabra castellana); L86 la línea final en inglés («This document does not declare its own hash.») donde la canónica declara lo propio en castellano y remite al mensaje acompañante.
+**3.3 Glitches de forma registrados** (sin edicion, doctrina verbatim): L31
+«-Forma:» (guion pegado); L37-38 «— station: respuesta estable» (resto de
+redaccion en ingles); L42 «quedan consisten en la acta» (sic; «consisten» no es
+palabra castellana); L86 la linea final en ingles («This document does not
+declare its own hash.») donde la canonica declara lo propio en castellano y
+remite al mensaje acompanante.
 
-**3.4 El encuadre, aclarado para el historial.** El título archivado dice «acta del review de la implementación de R4.6.7» y el commit de archivo repite «acta del review». Ni la canónica ni la reconstrucción son dictamen de código: la rama sin push no deja nada verificable, y la canónica lo dice expresamente en su sección 6. El «review» del título se lee como recepción del review request (lo que el `0434` era). El dictamen llega sobre el head final del PR, con el doble GO del merge intacto (sección 4).
+**3.4 El encuadre, aclarado para el historial.** El titulo archivado dice «acta
+del review de la implementacion de R4.6.7» y el commit de archivo repite «acta
+del review». Ni la canonica ni la reconstruccion son dictamen de codigo: la
+rama sin push no deja nada verificable, y la canonica lo dice expresamente en
+su seccion 6. El «review» del titulo se lee como recepcion del review request
+(lo que el `0434` era). El dictamen llega sobre el head final del PR, con el
+doble GO del merge intacto (seccion 4).
 
-**3.5 El contrato parcial, y cómo se completa.** El paquete 0422 sigue integro en mi custodia y disponible; la sección 7 declara los hashes y el contrato de verificación a la llegada. La reconstrucción archivada NO se reescribe (regla simétrica a la que este mismo 0422 fijó para el `0433`): acta archivada y canónica conviven — la primera es el texto del relay, la segunda el miembro principal del paquete. David puede completar el contrato archivando los miembros bajo `from-glm/files/0422/` (convención del `0388-errata`, `061`, `316`-`330`) en el commit que elija, o dejarlo declarado parcial como esta: ambas cosas quedan verificables por los hashes de esta sección. Y queda fijado el precedente, simétrico al del `0433`: cuando una entrega muere a mitad de sesión, lo archivado del mensaje se etiqueta reconstrucción — como David ha hecho aquí, con la etiqueta puesta por su lado. Bien hecho.
+**3.5 El contrato parcial, y como se completa.** El paquete 0422 sigue integro
+en mi custodia y disponible; la seccion 7 declara los hashes y el contrato de
+verificacion a la llegada. La reconstruccion archivada NO se reescribe (regla
+simetrica a la que este mismo 0422 fijo para el `0433`): acta archivada y
+canonica conviven — la primera es el texto del relay, la segunda el miembro
+principal del paquete. David puede completar el contrato archivando los
+miembros bajo `from-glm/files/0422/` (convencion del `0388-errata`, `061`,
+`316`-`330`) en el commit que elija, o dejarlo declarado parcial como esta:
+ambas cosas quedan verificables por los hashes de esta seccion. Y queda fijado
+el precedente, simetrico al del `0433`: cuando una entrega muere a mitad de
+sesion, lo archivado del mensaje se etiqueta reconstruccion — como David ha
+hecho aqui, con la etiqueta puesta por su lado. Bien hecho.
 
 ## §4 El GO de forma para el push+PR del R4.6.7
 
-- **Respuesta al «cuando creas GO»: ya.** De mi lado no hay impedimento de forma para el push+PR del worktree `ionosphere-r467-iso` / rama `feat/r4.6.7-iso-bands` con los commits `96c52d1` + `9c86d76`. Fundamento: las condiciones del 0422 están declaradas aplicadas (la fórmula del mapa, los pines golden, la compuerta), la suite está declarada verde con su línea RESUMEN-TESTS (51/326/0/0/0), y la deuda de forma del informe del emulador puede viajar en el cuerpo del PR o en un to-glm posterior — el 0422 sección 2 ya declaró que no bloquea.
-- **Lo que este GO no es.** No es dictamen de código: nada del diff es verificable sin push. No es el GO del merge: ese sigue siendo **doble** — acta favorable mía sobre el head final del PR + GO escrito de David — con CI 3/3 y la línea RESUMEN-TESTS de ejecución real (Q18). La puerta del GO escrito sigue siendo suya (0434 sección 4); este acta solo le quita el «cuando» de la pregunta.
-- **La cola declarada queda como esta**: FPS de referencia en `emulator-5554` (pendiente), R4.6.3 (raymarch `density`; GO) y R4.6.5 (gate visual; NO PROBADO) después, con Robolectric como candidato para el call site y R4.7 (NDK) si llega. Cada slice conserva su doble GO.
+- **Respuesta al «cuando creas GO»: ya.** De mi lado no hay impedimento de
+  forma para el push+PR del worktree `ionosphere-r467-iso` / rama
+  `feat/r4.6.7-iso-bands` con los commits `96c52d1` + `9c86d76`. Fundamento:
+  las condiciones del 0422 estan declaradas aplicadas (la formula del mapa, los
+  pines golden, la compuerta), la suite esta declarada verde con su linea
+  RESUMEN-TESTS (51/326/0/0/0), y la deuda de forma del informe del emulador
+  puede viajar en el cuerpo del PR o en un to-glm posterior — el 0422 seccion 2
+  ya declaro que no bloquea.
+- **Lo que este GO no es.** No es dictamen de codigo: nada del diff es
+  verificable sin push. No es el GO del merge: ese sigue siendo **doble** —
+  acta favorable mia sobre el head final del PR + GO escrito de David — con CI
+  3/3 y la linea RESUMEN-TESTS de ejecucion real (Q18). La puerta del GO
+  escrito sigue siendo suya (0434 seccion 4); este acta solo le quita el
+  «cuando» de la pregunta.
+- **La cola declarada queda como esta**: FPS de referencia en `emulator-5554`
+  (pendiente), R4.6.3 (raymarch `density`; GO) y R4.6.5 (gate visual; NO
+  PROBADO) despues, con Robolectric como candidato para el call site y R4.7
+  (NDK) si llega. Cada slice conserva su doble GO.
 
-## §5 Puntos de verificación pre-registrados para el dictamen del PR
+## §5 Puntos de verificacion pre-registrados para el dictamen del PR
 
-Fijados ANTES del push, para que nada se mueva después. El dictamen los comprobará sobre el head final.
+Fijados ANTES del push, para que nada se mueva despues. El dictamen los
+comprobara sobre el head final.
 
-**5.1 Fórmula y rango del mapa** (oráculo propio, evidencias 05/06, el mismo barrido del 0422): con `logNe = 8.0 + 4.5 * (odIso / 0.49f)` y el máximo medido de odIso (0.49412 / 0.49361 / 0.49343 a 8/12/16 pasos):
+**5.1 Formula y rango del mapa** (oraculo propio, evidencias 05/06, el mismo
+barrido del 0422): con `logNe = 8.0 + 4.5 * (odIso / 0.49f)` y el maximo medido
+de odIso (0.49412 / 0.49361 / 0.49343 a 8/12/16 pasos):
 
-- Los tres pines caen en odIso **0.27222 / 0.32667 / 0.38111** — alcanzables en toda calidad, con márgenes 0.11301 / 0.11250 / 0.11232 contra el máximo. La sustancia de Q19 se cumple: las tres bandas existen en pantalla en toda calidad.
-- La entrada alcanza **1.00841 / 1.00738 / 1.00701** (+0.84% / +0.74% / +0.70% sobre 1.0) y el logNe máximo **12.5379 / 12.5332 / 12.5315** — por encima del tope del rango del proyecto (12.5) en el rayo rasante extremo. Ningún pin vive por encima de 11.5, así que el sobrepaso no toca banda alguna: es forma (entrada fuera de [0,1] por menos de un 1%), no sustancia. **El PR declara**: si la entrada lleva clamp (o su ausencia) y el rango medido sobre las geometrías reales. Para una entrada estrictamente [0,1] haría falta `OD_REF >= 0.49412` o un clamp — elección del implementador, documentada en el PR.
-- Mi 0422 sección 3.5 pidó `OD_REF >= 0.494` a título informativo; el `0.49f` elegido deja el sobrepaso declarado arriba. La elección es del implementador («la elección es del implementador; las condiciones son las de 3.4»), y la condición que viaja en el PR es la de 3.4.3: rango medido y declarado.
+- Los tres pines caen en odIso **0.27222 / 0.32667 / 0.38111** — alcanzables en
+  toda calidad, con margenes 0.11301 / 0.11250 / 0.11232 contra el maximo. La
+  sustancia de Q19 se cumple: las tres bandas existen en pantalla en toda
+  calidad.
+- La entrada alcanza **1.00841 / 1.00738 / 1.00701** (+0.84% / +0.74% / +0.70%
+  sobre 1.0) y el logNe maximo **12.5379 / 12.5332 / 12.5315** — por encima del
+  tope del rango del proyecto (12.5) en el rayo rasante extremo. Ningun pin
+  vive por encima de 11.5, asi que el sobrepaso no toca banda alguna: es forma
+  (entrada fuera de [0,1] por menos de un 1%), no sustancia. **El PR declara**:
+  si la entrada lleva clamp (o su ausencia) y el rango medido sobre las
+  geometrias reales. Para una entrada estrictamente [0,1] haria falta `OD_REF
+  >= 0.49412` o un clamp — eleccion del implementador, documentada en el PR.
+- Mi 0422 seccion 3.5 pidio `OD_REF >= 0.494` a titulo informativo; el `0.49f`
+  elegido deja el sobrepaso declarado arriba. La eleccion es del implementador
+  («la eleccion es del implementador; las condiciones son las de 3.4»), y la
+  condicion que viaja en el PR es la de 3.4.3: rango medido y declarado.
 
-**5.2 Los stats del diff, a conciliar.** El `0434` declaró `96c52d1` «+80/-1 en cinco ficheros»; el resumen de hoy lo declara «+26/-0 GlobeRenderer, +9/-0 AtmoShaderConstants» y `9c86d76` «+8/-7, +2/-2» (AtmoShaderSource y su test). Cuatro ficheros y +45/-9 no concilian solos con cinco ficheros y +80/-1. El dictamen re-mide el diff real del head final y concilia ambas declaraciones.
+**5.2 Los stats del diff, a conciliar.** El `0434` declaro `96c52d1` «+80/-1 en
+cinco ficheros»; el resumen de hoy lo declara «+26/-0 GlobeRenderer, +9/-0
+AtmoShaderConstants» y `9c86d76` «+8/-7, +2/-2» (AtmoShaderSource y su test).
+Cuatro ficheros y +45/-9 no concilian solos con cinco ficheros y +80/-1. El
+dictamen re-mide el diff real del head final y concilia ambas declaraciones.
 
-**5.3 Lo que el cuerpo del PR debe anotar** — la lista de David («acta 0422 + decisiones + erratas + deudas»), desglosada para que sea verificable cláusula a cláusula:
+**5.3 Lo que el cuerpo del PR debe anotar** — la lista de David («acta 0422 +
+decisiones + erratas + deudas»), desglosada para que sea verificable clausula a
+clausula:
 
-1. Referencia al `from-glm/0422` (archivado y canónico) y las decisiones Q19/Q20/Q21 con sus condiciones.
-2. El proxy declarado provisional, en una línea: mapping sobre las densidades atmosféricas del raymarch, no densidad electrónica; espera el `density()` de R4.6.3; el re-targeting es corrección documentada con los goldens actualizados en el mismo commit.
-3. Lo que muestra el mapa, en una línea: las bandas son contornos de columna integrada a lo largo del rayo (anillos de limbo), no cscaros de un campo 3D — los cscaros llegan con R4.6.3.
-4. La dependencia de la compuerta, en una línea: `uShowIso = showIso && sliceVolume != null` se apoya en el cableado R4.6.1 (inyecta null con la capa apagada); si algún día la inyección pre-calienta el volumen con la capa apagada, la compuerta añade `sliceShow` explícitamente.
-5. La doctrina de corrección documentada extendida al strength y a la escalera: `ISO_STRENGTH = 0.75f` por `pins_iso`; escalera 0.5/0.75/1.0 por el golden de strings; y el dominio del strength declarado (multiplicador escalar, acotado o no a [0,1]).
-6. Las erratas de la ronda como contexto: `0432` sección 3 (texto corrupto), `0433` (reescritura in situ y regla simétrica), `0434` (cita horaria), y la de hoy (contadores del resumen).
-7. Las deudas: el informe del emulador (versión de emulador e imagen, comando exacto, extractos de logcat, casilla a casilla de que verifica y que no) y los FPS de referencia en `emulator-5554`.
-8. El DoD cláusula a cláusula, incluyendo «bandas solo en el raymarch, nunca en la cortina» (`0403-D2`).
-9. La línea RESUMEN-TESTS de ejecución real (51/326/0/0/0 declarada) y el CI 3/3 del PR.
+1. Referencia al `from-glm/0422` (archivado y canonico) y las decisiones
+   Q19/Q20/Q21 con sus condiciones.
+2. El proxy declarado provisional, en una linea: mapping sobre las densidades
+   atmosfericas del raymarch, no densidad electronica; espera el `density()` de
+   R4.6.3; el re-targeting es correccion documentada con los goldens
+   actualizados en el mismo commit.
+3. Lo que muestra el mapa, en una linea: las bandas son contornos de columna
+   integrada a lo largo del rayo (anillos de limbo), no cascarones de un campo
+   3D — los cascarones llegan con R4.6.3.
+4. La dependencia de la compuerta, en una linea: `uShowIso = showIso &&
+   sliceVolume != null` se apoya en el cableado R4.6.1 (inyecta null con la
+   capa apagada); si algun dia la inyeccion pre-calienta el volumen con la capa
+   apagada, la compuerta anade `sliceShow` explicitamente.
+5. La doctrina de correccion documentada extendida al strength y a la escalera:
+   `ISO_STRENGTH = 0.75f` por `pins_iso`; escalera 0.5/0.75/1.0 por el golden
+   de strings; y el dominio del strength declarado (multiplicador escalar,
+   acotado o no a [0,1]).
+6. Las erratas de la ronda como contexto: `0432` seccion 3 (texto corrupto),
+   `0433` (reescritura in situ y regla simetrica), `0434` (cita horaria), y la
+   de hoy (contadores del resumen).
+7. Las deudas: el informe del emulador (version de emulador e imagen, comando
+   exacto, extractos de logcat, casilla a casilla de que verifica y que no) y
+   los FPS de referencia en `emulator-5554`.
+8. El DoD clausula a clausula, incluido «bandas solo en el raymarch, nunca en
+   la cortina» (`0403-D2`).
+9. La linea RESUMEN-TESTS de ejecucion real (51/326/0/0/0 declarada) y el CI
+   3/3 del PR.
 
-**5.4 Emulador**: verificación de referencia, no de dispositivo (0421 secciones 5.1 y 5.4); su FPS no llena el presupuesto de la sección 6 del plan.
+**5.4 Emulador**: verificacion de referencia, no de dispositivo (0421 secciones
+5.1 y 5.4); su FPS no llena el presupuesto de la seccion 6 del plan.
 
 ## §6 Lo que este acta no es
 
-No es dictamen del código del R4.6.7 (la rama sigue sin push, sección 2; nada del diff es verificable). No es el GO del merge (doble GO, sección 4). No pre-juzga el head final: los puntos de la sección 5 son condiciones de forma pre-registradas, no un chequeo ya hecho.
+No es dictamen del codigo del R4.6.7 (la rama sigue sin push, seccion 2; nada
+del diff es verificable). No es el GO del merge (doble GO, seccion 4). No
+pre-juzga el head final: los puntos de la seccion 5 son condiciones de forma
+pre-registradas, no un chequeo ya hecho.
 
-## §7 Contrato de verificación del paquete 0422 a la llegada (reiterado)
+## §7 Contrato de verificacion del paquete 0422 a la llegada (reiterado)
 
-Cuando el paquete viaje: `cmp` del miembro principal (acta canónica, 17 421 B / 261 líneas, sha256 `5c040127...`) contra la copia custodiada en INTERCAMBIO; `sha256sum -c SHA256SUMS` desde la raíz de descompresión (rutas relativas, como los paquetes 0415-0422); y el hash del zip (`904c7e27...`) contra el mensaje acompañante. Es el contrato del `to-glm/0422` sección 2 y el `to-glm/0423` sección 7, reiterado aquí para el paquete del 0422 mío — y de paso para el de este 0423, que viaja con las mismas reglas.
+Cuando el paquete viaje: `cmp` del miembro principal (acta canonica, 17 421 B /
+261 lineas, sha256 `5c040127...`) contra la copia custodiada en INTERCAMBIO;
+`sha256sum -c SHA256SUMS` desde la raiz de descompresion (rutas relativas, como
+los paquetes 0415-0422); y el hash del zip (`904c7e27...`) contra el mensaje
+acompanante. Es el contrato del `to-glm/0422` seccion 2 y el `to-glm/0423`
+seccion 7, reiterado aqui para el paquete del 0422 mio — y de paso para el de
+este 0423, que viaja con las mismas reglas.
 
 ## §8 Contadores previstos
 
-- Al aterrizar este `0423` (solo): from-glm **247** (recursivo **320**, `files/` 73), to-glm 264/562, **arbol 883**.
-- Si el resumen de David aterriza antes como `to-glm/0435`: to-glm **265/563**, arbol 883 antes de este acta y **884** después.
-- Si además se archivan los miembros del paquete 0422 bajo `from-glm/files/0422/`: `files/` 73 -> 85, from-glm recursivo 320 -> 332, arbol +12 sobre cualquiera de los dos casos.
-- Números libres después: from-glm **0424**, to-glm **0436** (o **0435** si el resumen no aterriza).
+- Al aterrizar este `0423` (solo): from-glm **247** (recursivo **320**,
+  `files/` 73), to-glm 264/562, **arbol 883**.
+- Si el resumen de David aterriza antes como `to-glm/0435`: to-glm **265/563**,
+  arbol 883 antes de este acta y **884** despues.
+- Si ademas se archivan los miembros del paquete 0422 bajo
+  `from-glm/files/0422/`: `files/` 73 -> 85, from-glm recursivo 320 -> 332,
+  arbol +12 sobre cualquiera de los dos casos.
+- Numeros libres despues: from-glm **0424**, to-glm **0436** (o **0435** si el
+  resumen no aterriza).
 
 ## §9 Estado
 
-Archivo del 0422 verificado: reconstrucción de 86 líneas, fiel en lo sustancial, con cuatro glitches de forma y un encuadre aclarados para el historial — y el contrato parcial declarado con los hashes, para completarlo cuando se quiera. Errata de contadores del resumen registrada (to-glm recursivo 562, no 559) y la menor del «suse 3». La implementación del R4.6.7 (`96c52d1` -> `9c86d76`) sigue sin push: recibida como declaración, con sus stats por conciliar en el dictamen. **El GO de forma para el push+PR está dado: ya** — con el doble GO del merge intacto y los puntos de verificación de la sección 5 pre-registrados antes del push. Este documento no contiene hash propio; la declaración de tamaños y hashes viaja en el mensaje acompañante.
+Archivo del 0422 verificado: reconstruccion de 86 lineas, fiel en lo
+sustancial, con cuatro glitches de forma y un encuadre aclarados para el
+historial — y el contrato parcial declarado con los hashes, para completarlo
+cuando se quiera. Errata de contadores del resumen registrada (to-glm recursivo
+562, no 559) y la menor del «suse 3». La implementacion del R4.6.7 (`96c52d1`
+-> `9c86d76`) sigue sin push: recibida como declaracion, con sus stats por
+conciliar en el dictamen. **El GO de forma para el push+PR esta dado: ya** —
+con el doble GO del merge intacto y los puntos de verificacion de la seccion 5
+pre-registrados antes del push. Este documento no contiene hash propio; la
+declaracion de tamanos y hashes viaja en el mensaje acompanante.
 
-— GLM (Z.ai), 2026-11-20 · responde al archivo `c30760e` del from-glm/0422 y al mensaje de David del 2026-11-20 (resumen final con pendientes), y da el GO de forma para el push+PR del R4.6.7
+— GLM (Z.ai), 2026-11-20 · responde al archivo `c30760e` del from-glm/0422 y al
+mensaje de David del 2026-11-20 (resumen final con pendientes), y da el GO de
+forma para el push+PR del R4.6.7

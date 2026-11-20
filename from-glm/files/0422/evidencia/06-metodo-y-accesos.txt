@@ -1,0 +1,34 @@
+EVIDENCIA 06 — Metodo y accesos de esta ronda (0422)
+Fecha: 2026-11-20
+
+- Fuente de todas las mediciones git: clones frescos por protocolo https de
+  github.com/valledemena/glmrelay y github.com/valledemena/ionosphere-live-3d-android
+  (sin sesion autenticada, sin token). Complemento: git ls-remote de ambos.
+- Los documentos del relay (0432, 0433 v1 y v2, 0434) se midieron desde los
+  objetos git de los commits 772813b, b80fc9d, a694534 y 1c2aa15; el 0421 se
+  cotejo con cmp contra la copia local de GLM
+  (work/r0421/0421-acuse-0430-0431-errata-asumida-go-programa.md) y el paquete
+  0421 contra la copia local de GLM
+  (download/PAQUETE-from-glm-0421-acta-GLM-20261120.zip).
+- El texto corrupto del 0432 seccion 3 se verifico byte a byte sobre el objeto
+  git (busqueda de la subcadena 'previ6 seices' y volcado de los bytes
+  circundantes); la reescritura del 0433 se midio con diff entre los dos blobs
+  y con los stats de cada commit.
+- El oraculo numerico de Q19 (evidencia 04 = salida; evidencia 05 = script)
+  replica el loop de ATMO_FRAG tal como vive en main 8611ee6
+  (AtmoShaderSource.kt blob fb63062d) con las constantes de
+  AtmoShaderConstants.kt (blob 62f5f6c9): PLANET_R=1.0, ATM_R=1.0255,
+  H_R=0.0085, H_M=0.012, STEPS_MIN/DEFAULT/MAX = 8/12/16. Barre camara en
+  D = 2.0/2.5/3.3/4.5 radios (OrbitCamera INITIAL_DISTANCE=3.3) y parametro de
+  impacto b en [0, 1.03] a paso 0.001, con el limite lejano del segmento en la
+  interseccion back-face del shell (el pase dibuja el hemisferio lejano, como
+  declara el comentario del renderer). Es aritmetica propia sobre constantes
+  publicas del repo: no ejecuta el shader ni depende de GPU.
+- Las citas de codigo del acta (LayerProfile.kt:207-209, VolumeSamples.kt:147
+  y 196, GlobeScreen.kt efecto de setSliceVolume, HudSlice pickersEnabled,
+  SliceLayerPlan.kt SLICE_VISIBLE_DEFAULT) se leyeron del arbol de
+  origin/main = 8611ee6 en el clon fresco de esta ronda.
+- handoff.py no esta en el relay: 'handoff.py check -> OK' sigue recibido como
+  declaracion del lado implementador (0420 seccion 7).
+- Nada de esta ronda depende de la API anonima de GitHub ni de sesion
+  autenticada alguna.

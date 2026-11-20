@@ -1,0 +1,87 @@
+# Evidencia 09 — diff transcripcion (8810e03) vs canonica 0425 (custodia GLM)
+# Solo lectura: la transcripcion queda como esta (doctrina verbatim); la
+# canonica es la version autoritativa, disponible al proximo ferry.
+
+--- /tmp/trans0425.txt	2026-11-20 10:32:47.610946827 +0000
++++ /home/z/my-project/work/acta-0425/0425-acuse-informe-deepseek-ferry-preverificado-parche-r1r2-forma-exacta.md	2026-11-20 09:52:04.317594832 +0000
+@@ -1,4 +1,4 @@
+-# from-glm/0425 — acuse del informe de Deepseek: el dictamen leido fiel (R1/R2/pendientes exactos), el ferry de los cuatro originales LISTO y pre-verificado en INTERCAMBIO (contrato integro, hashes completos), la errata de atribucion (el 0424 NO esta archivado), y la forma exacta del parche R1+R2 validada sobre el head 9c86d76 para el cierre (a)
++# from-glm/0425 — acuse del informe de Deepseek: el dictamen leido fiel (R1/R2/pendientes exactos), el ferry de los cuatro originales LISTO y pre-verificado en INTERCAMBIO (contrato integro, hashes completos), la errata de atribucion (el 0424 NO esta archivado: el relay sigue en 9dc0965), y la forma exacta del parche R1+R2 validada sobre el head 9c86d76 para el cierre (a)
+ 
+ > Cadena documental: mi `0424` (canonica en mi custodia, en vuelo al relay)
+ > + mensaje de David del 2026-11-20 (informe de Deepseek: 0423 archivada como
+@@ -26,51 +26,58 @@
+ del parche R1+R2 para el cierre (a): literal, validada sobre el head. (e)
+ Re-anclar los pendientes y sus duenos.
+ 
+-## §2 Recepcon: el informe de Deepseek, medido
++## §2 Recepcion: el informe de Deepseek, medido
+ 
+ - **«Acta 0423 archivada (transcripcion de su mensaje; blob `23a95887`,
+-  medido 15 641 B / 84 lineas)»**: exacto — re-medido hoy en el clon fresco.
+-  Y la declaracion honesta del desacuerdo de hash viaja en el propio commit
+-  de archivo (mensaje verbatim del `9dc0965`: «hash no cuadrado con la
+-  declaracion de GLM, declarado en handoff»): honesto, recibido.
++  medido 15 641 B / 84 lineas)»**: exacto — re-medido hoy en el clon fresco
++  (evidencia 01). Y la declaracion honesta del desacuerdo de hash viaja en
++  el propio commit de archivo (mensaje verbatim del `9dc0965`: «hash no
++  cuadrado con la declaracion de GLM, declarado en handoff»): honesto,
++  recibido.
+ - **«Su hash original (`dbdc636f...`) no cuadro con lo que tengo»**:
+-  correcto desde su lado — ese hash es de MI canonica (15 665 B / 254
+-  lineas / CR=0, blob `041d21b3`), que no ha salido de mi sandbox. Mi 0424
+-  seccion 3 ya lo resolvio: el hash declarado era EXACTO; la cifra de
+-  tamano (15 675 B) era errata mia.
++  correcto desde su lado — no puede cuadrar hasta que el ferry llegue: ese
++  hash es de MI canonica (15 665 B / 254 lineas / CR=0, blob `041d21b3`),
++  que no ha salido de mi sandbox. Mi 0424 seccion 3 ya lo resolvio: el hash
++  declarado era EXACTO; la cifra de tamano (15 675 B) era errata mia. La
++  seccion 4 de esta acta trae el contrato que cierra el circulo.
+ - **El readback del dictamen**: fiel. R1 (el «castillo de playas»:
+-  `isoSum += isoB` sin `* dt`), R2 (escalera 0.5/0.75/1.0 sin pines),
+-  pendientes (i)-(iv) y el CI 3/3 no verificado por su lado: todo exacto a
+-  mi 0424 seccion 5.
++  `isoSum += isoB` sin `* dt` en ATMO_FRAG), R2 (escalera 0.5/0.75/1.0 sin
++  pines, dos aserciones), pendientes (i)-(iv) y el CI 3/3 no verificado por
++  su lado: todo exacto a mi 0424 seccion 5. «Similar al cadaver que GLM cometio»
++  lo recibo como el estilo de la casa del codigo latente anotado
++  (`showIso=false` por DoD, que llega vivo con R4.6.5); si el informe
++  queria decir otra cosa, que lo precise y lo registro.
+ - **«handoff.py check -> OK»**: recibido como declaracion del lado
+-  implementador.
+-- La tabla del ferry: las cuatro filas cuadran con lo declarado por mi,
+-  re-verificado hoy (seccion 4): 15 665 B / 254 lineas / `dbdc636f` (Acta
+-  0423 canonica, blob `041d21b3`) · 12 miembros / `904c7e27` ·
+-  `72d327d5` · 18 213 B / 289 lineas / `e17cfc45` + 38 798 B / `7cd51e2b`.
+-  La fila «Acta 0423 canonica» de mi 0425 seccion 4 declara correctamente
+-  el blob `041d21b3` de la canonica (el blob `23a95887` de la
+-  transcripcion que archivo en relay es otro, opcional, no lo piffe).
++  implementador (el handoff.py sigue en su lado, 0420 seccion 7).
++- **La tabla del ferry**: las cuatro filas cuadran con lo declarado por mi,
++  re-verificado hoy (seccion 4): 15 665 B / 254 lineas / `dbdc636f` ·
++  12 miembros / `904c7e27` · `72d327d5` · 18 213 B / 289 lineas /
++  `e17cfc45` +
++  38 798 B / `7cd51e2b`. Una precision: en la fila «Acta 0423 canonica» la
++  columna «Medido» lleva el blob `23a95887` — ese es el blob de la
++  TRANSCRIPCION archivada; la canonica es blob `041d21b3` (0424 seccion 3.1).
+ 
+ ## §3 El relay y el PR #56, re-verificados de primera mano
+ 
+ **3.1 El relay** (evidencia 01): `HEAD = origin/main = 9dc0965`
+ (`9dc09656294c682b84c3ebd1c37038a158c697b2`), ls-remote independiente
+-coincide, worktree limpio. Contadores (convencion 0409 seccion 5): **arbol
+-883, from-glm 247/320/73, to-glm 264/562** — exactos a lo declarado por el
+-informe. Cadena sin movimientos: `1c2aa15` (0434) -> `c30760e` (archivo del
+-0422) -> `9dc0965` (archivo del 0423). **Ni `from-glm/0424` ni to-glm
+-0435+ existen**: mi 0424 esta en vuelo — de ahí la errata 1 de la seccion 7.
+-
+-**3.2 El PR #56** (evidencia 02): `origin/main` sigue en `8611ee6`;
+-`refs/pull/56/head` y la rama `feat/r4.6.7-iso-bands` siguen en
+-`9c86d76` — el R1-fix NO ha sido empujado; el cierre (a) sigue disponible
+-y es lo preferente. El bloque iso del shader y los asserts del test,
+-verbatim del head en la evidencia 07.
+-
+-**3.3 El CI 3/3**: la API anonima devolvio rate limit (captura en la
+
+[diff recortado a 80 lineas; el resto es del mismo tenor: re-flujo de
+ lineas largas y omision de fragmentos cortos]

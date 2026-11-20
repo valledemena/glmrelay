@@ -1,0 +1,38 @@
+EVIDENCIA 08 — metodo y accesos de esta ronda (0423)
+Fecha: 2026-11-20
+
+- Fuente de todas las mediciones git: clones frescos por protocolo https de
+  github.com/valledemena/glmrelay (completo) y
+  github.com/valledemena/ionosphere-live-3d-android (--depth 50), sin sesion
+  autenticada y sin token. Complemento: git ls-remote de ambos.
+- El 0422 archivado (reconstruccion de David) se midio desde los objetos git
+  de c30760e (blob, bytes, lineas, CR, sha256) y se volco verbatim a la
+  evidencia 02; el cotejo contra mi acta canonica (evidencia 03) se hizo sobre
+  esa copia y sobre la canonica en mi custodia
+  (work/r0422-q19q20q21/0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md).
+- El paquete 0422 se verifico hoy de nuevo en mi custodia (evidencia 07):
+  unzip -l, sha256sum -c desde la raiz de descompresion y cmp del miembro
+  principal contra la canonica (exit 0). El zip declarado es
+  download/PAQUETE-from-glm-0422-acuse-GLM-20261120.zip.
+- El oraculo de alcance de bandas (evidencias 05 salida / 06 script) replica
+  el mismo barrido del oraculo de la ronda 0422 (evidencia 05 de aquel
+  paquete): camara D en {2.0, 2.5, 3.3, 4.5} radios (OrbitCamera
+  INITIAL_DISTANCE=3.3), parametro de impacto b en [0, 1.03] a paso 0.001,
+  uSteps 8/12/16 (STEPS_MIN/DEFAULT/MAX), limite lejano del segmento en la
+  interseccion back-face del shell. Sobre el maximo odIso re-derivado
+  (0.49412/0.49361/0.49343) computa la posicion de los pines 10.5/11.0/11.5,
+  la entrada maxima odIso/0.49 y el margen de alcance por calidad. Es
+  aritmetica propia sobre constantes publicas de main (AtmoShaderConstants,
+  blob 62f5f6c9; AtmoShaderSource, blob fb63062d): no ejecuta el shader ni
+  depende de GPU.
+- El mensaje de David de esta ronda (resumen final con el acta aceptada, la
+  implementacion 96c52d1 -> 9c86d76 y los pendientes) se recibio por el canal
+  de chat: sus numeros (blob, 4 158 B / 86 lineas / CR=0, sha256 4ba841af,
+  arbol 882, from-glm 246/319/73) se cotejaron contra lo medido; la unica
+  discrepancia es to-glm recursivo 559 frente al 562 medido (errata
+  registrada en el acta SS2). Si ese resumen aterriza luego como to-glm/0435,
+  este acta ya lo tiene recibido por su contenido.
+- handoff.py no esta en el relay: «handoff.py check -> OK» sigue recibido
+  como declaracion del lado implementador (0420 seccion 7).
+- Nada de esta ronda depende de la API anonima de GitHub ni de sesion
+  autenticada alguna.

@@ -1,0 +1,45 @@
+EVIDENCIA 01 — estado del relay en HEAD = c30760e (ronda 0423)
+Fecha: 2026-11-20 · Fuente: clon fresco https://github.com/valledemena/glmrelay.git
+
+== HEAD y estado ==
+c30760efe6cc34756f647f1791cb466ee638cde8
+  <98014642+valledemena@users.noreply.github.com>
+Fri Nov 20 07:35:32 2026 +0100
+from-glm/0422: acta del review de la implementacion de R4.6.7 (ionosphere-r467-iso, commits 96c52d1 + 9c86d76) archivada verbatim
+## main...origin/main
+ls-remote (refs/heads/main):
+c30760efe6cc34756f647f1791cb466ee638cde8	refs/heads/main
+
+== cadena de la ronda (commits y contadores) ==
+COMMIT     ARBOL  FROMGLM FROMGLM_rec    TOGLM        TOGLM_rec
+1f6dc05    878    245     318            261          559
+772813b    879    245     318            262          560
+b80fc9d    880    245     318            263          561
+a694534    880    245     318            263          561
+1c2aa15    881    245     318            264          562
+c30760e    882    246     319            264          562
+
+== diff 1c2aa15..c30760e (lo unico que cambia: el archivo del 0422) ==
+ ...-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md | 86 ++++++++++++++++++++++
+ 1 file changed, 86 insertions(+)
+
+== from-glm/0422 archivado: mediciones del blob ==
+ruta: from-glm/0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md
+blob:   b3a32335c0cce742d49370c293d8981c96f674d0
+bytes:  4158
+lineas: 86
+CR:     0
+sha256: 4ba841af98e3f319a4999f5e0ba13ba7c7fc526d01c8de27e6ed12a0ac57d1b3
+
+== contadores en HEAD=c30760e (detallados) ==
+arbol (recursivo):            882
+from-glm docs (directo .md):  246
+from-glm recursivo:           319
+from-glm/files/:              73
+to-glm docs (directo .md):    264
+to-glm recursivo:             562
+to-glm/files/:                298
+
+== numeros libres ==
+from-glm: ultimo 0422 -> libre 0423 (este acta)
+to-glm:   ultimo 0434 -> libre 0435

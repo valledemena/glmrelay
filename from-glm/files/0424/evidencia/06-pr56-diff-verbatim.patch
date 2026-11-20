@@ -1,0 +1,184 @@
+diff --git a/app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt b/app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt
+index 20ff1ed..3e6c038 100644
+--- a/app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt
++++ b/app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt
+@@ -136,10 +136,15 @@ class GlobeRenderer(
+     private var uAtmoIntensity = 0
+     private var uAtmoSteps = 0
+     private var uAtmoLightSteps = 0
++    // R4.6.7 (iso-bands): uniforms del glow (golden por AtmoShaderConstants).
++    private var uShowIso = 0
++    private var uIsoColor = 0
++    private var uIsoStrength = 0
+ 
+     // Rider K3: defaults de pin, override solo si la Activity resolvio un extra en rango.
+     private val atmoSteps = atmoStepsOverride ?: AtmoShaderConstants.DEFAULT_STEPS
+     private val atmoLightSteps = atmoLightStepsOverride ?: AtmoShaderConstants.DEFAULT_LIGHT_STEPS
++    @Volatile private var showIso = false  // R4.6.7: showIso=false por defecto (D-R4.6.2)
+ 
+     private val projection = FloatArray(16)
+     private val view = FloatArray(16)
+@@ -226,6 +231,12 @@ class GlobeRenderer(
+         GLES20.glUniform1f(uAtmoIntensity, 1.0f)
+         GLES20.glUniform1f(uAtmoSteps, atmoSteps.toFloat())
+         GLES20.glUniform1f(uAtmoLightSteps, atmoLightSteps.toFloat())
++        // R4.6.7 (iso-bands): uniforms nuevos + golden por pins.
++        uShowIso = GLES20.glGetUniformLocation(atmoProgram, "uShowIso")
++        uIsoColor = GLES20.glGetUniformLocation(atmoProgram, "uIsoColor")
++        uIsoStrength = GLES20.glGetUniformLocation(atmoProgram, "uIsoStrength")
++        GLES20.glUniform3f(uIsoColor, AtmoShaderConstants.ISO_COLOR_R, AtmoShaderConstants.ISO_COLOR_G, AtmoShaderConstants.ISO_COLOR_B)
++        GLES20.glUniform1f(uIsoStrength, AtmoShaderConstants.ISO_STRENGTH)
+         GLES20.glUseProgram(0)
+         textureId = uploadTextureFromAsset("earth-day.jpg", srgb = true)
+             ?: uploadTexture(PlaceholderGlobeTexture.TIER_MEDIUM_WIDTH, PlaceholderGlobeTexture.TIER_MEDIUM_HEIGHT)
+@@ -372,6 +383,9 @@ class GlobeRenderer(
+             GLES20.glUniformMatrix4fv(uAtmoMvp, 1, false, viewProjection, 0)
+             GLES20.glUniformMatrix4fv(uAtmoModel, 1, false, IDENTITY_MATRIX, 0)
+             pushSunCamera(uAtmoSunDir, uAtmoCameraPos)
++            // R4.6.7 (iso-bands): glow apagado por defecto; solo activo con
++            // showIso y volumen activo (sin volumen ON el glow no corre).
++            GLES20.glUniform1i(uShowIso, if (showIso && sliceVolume != null) 1 else 0)
+ 
+             GLES20.glEnable(GLES20.GL_BLEND)
+             GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_ONE)
+@@ -708,6 +722,18 @@ class GlobeRenderer(
+         sliceShow = show
+     }
+ 
++    /**
++     * R4.6.7 (iso-bands): activa/desactiva el glow de bandas en el raymarch
++     * del shell atmosferico. Por defecto off (D-R4.6.2). UI deshabilitada sin
++     * volumen activo (`sliceVolume != null`): el glow apaga aunque sea `true`.
++     */
++    fun setShowIso(show: Boolean) {
++        showIso = show
++    }
++
++    /** R4.6.7: estado del glow de bandas (UI de disable sin volumen ON). */
++    fun isShowIso(): Boolean = showIso
++
+     /**
+      * R4.5 P4b: volumen activo para la cortina. `null` = no hay volumen en
+      * runtime (estado de R4.5: R4.4 entrego el volumen puro y nadie lo cablea
+diff --git a/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderConstants.kt b/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderConstants.kt
+index 62f5f6c..95b0233 100644
+--- a/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderConstants.kt
++++ b/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderConstants.kt
+@@ -22,4 +22,13 @@ object AtmoShaderConstants {
+     const val STEPS_MAX = 16
+     const val LIGHT_STEPS_MIN = 3
+     const val LIGHT_STEPS_MAX = 6
++
++    // R4.6.7 (iso-bands): umbrales logNe de banda + color/strength golden (D-R4.6.2).
++    const val ISO_BAND_1 = 10.5f   // banda externa (dDebil)
++    const val ISO_BAND_2 = 11.0f
++    const val ISO_BAND_3 = 11.5f   // banda interna (fuerte)
++    const val ISO_STRENGTH = 0.75f  // intensidad golden del glow (uIsoStrength)
++    const val ISO_COLOR_R = 0.5f
++    const val ISO_COLOR_G = 0.85f
++    const val ISO_COLOR_B = 1.0f
+ }
+diff --git a/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt b/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+index fb63062..bd17326 100644
+--- a/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
++++ b/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+@@ -27,6 +27,10 @@ uniform vec3 uCameraPos;
+ uniform float uIntensity;
+ uniform float uSteps;        // 8..16 (calidad)
+ uniform float uLightSteps;   // 3..6
++// R4.6.7 (iso-bands): emision isotropica donde logNe cruza umbrales banda logNe.
++uniform bool uShowIso;
++uniform vec3 uIsoColor;
++uniform float uIsoStrength;
+ in vec3 vFragPos;
+ out vec4 fragColor;
+ 
+@@ -38,6 +42,9 @@ const float H_M      = ${AtmoShaderConstants.H_M};
+ const vec3  BETA_R   = vec3(${AtmoShaderConstants.BETA_R_R}, ${AtmoShaderConstants.BETA_R_G}, ${AtmoShaderConstants.BETA_R_B});
+ const float BETA_M   = ${AtmoShaderConstants.BETA_M};
+ const float G_MIE    = ${AtmoShaderConstants.G_MIE};
++const float ISO_BAND_1 = ${AtmoShaderConstants.ISO_BAND_1};  // logNe: banda debil
++const float ISO_BAND_2 = ${AtmoShaderConstants.ISO_BAND_2};  // logNe: banda media
++const float ISO_BAND_3 = ${AtmoShaderConstants.ISO_BAND_3};  // logNe: banda intensa
+ 
+ float raySphere(vec3 ro, vec3 rd, float r) {
+   float b = dot(ro, rd);
+@@ -89,6 +96,7 @@ void main() {
+ 
+   vec3 sumR = vec3(0.0);
+   vec3 sumM = vec3(0.0);
++  float isoSum = 0.0;
+   float odR = 0.0, odM = 0.0;
+ 
+   for (int i = 0; i < ${AtmoShaderConstants.STEPS_MAX}; i++) {
+@@ -99,6 +107,19 @@ void main() {
+     float dM = exp(-h / H_M) * dt;
+     odR += dR; odM += dM;
+ 
++    // R4.6.7 (iso-bands): logNe sobre odIso, escala aceptada en la acta 0422
++    // (GLM): des-normalizacion del proyecto 8+4.5*x con rango medido max 0.49
++    // (provisional, se declara en el PR). Atraviesa umbrales banda logNe
++    // (10.5/11/11.5): glow 1.0 encima de ISO_BAND_3, 0.75 entre ISO_BAND_2 e
++    // ISO_BAND_3, 0.5 entre ISO_BAND_1 e ISO_BAND_2.
++    float odIso = odR + odM;
++    float logNe = 8.0 + 4.5 * (odIso / 0.49f);
++    float isoB = 0.0;
++    if (logNe >= ISO_BAND_3) isoB = 1.0;
++    else if (logNe >= ISO_BAND_2) isoB = 0.75;
++    else if (logNe >= ISO_BAND_1) isoB = 0.5;
++    if (uShowIso) isoSum += isoB;
++
+     // planet shadow: the ray to the sun from p must not cross Earth
+     float tPlanet = raySphere(p, sun, PLANET_R);
+     if (tPlanet > 0.0) continue;
+@@ -110,7 +131,7 @@ void main() {
+     sumM += dM * att;
+   }
+ 
+-  vec3 col = (sumR * BETA_R * phaseR + sumM * BETA_M * phaseM) * uIntensity * ${AtmoShaderConstants.INTENSITY_SCALE};
++  vec3 col = (sumR * BETA_R * phaseR + sumM * BETA_M * phaseM + isoSum * uIsoColor * uIsoStrength) * uIntensity * ${AtmoShaderConstants.INTENSITY_SCALE};
+ 
+   // faint sundisk blended into the limb (redder at dusk via extinction)
+   fragColor = vec4(col, 1.0);
+diff --git a/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderConstantsTest.kt b/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderConstantsTest.kt
+index 314fdc4..b69e459 100644
+--- a/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderConstantsTest.kt
++++ b/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderConstantsTest.kt
+@@ -35,4 +35,15 @@ class AtmoShaderConstantsTest {
+         eqi(AtmoShaderConstants.LIGHT_STEPS_MIN, 3)
+         eqi(AtmoShaderConstants.LIGHT_STEPS_MAX, 6)
+     }
++
++    // R4.6.7 (iso-bands): umbrales logNe banda + color/strength golden (D-R4.6.2).
++    @Test fun pins_iso() {
++        eq(AtmoShaderConstants.ISO_BAND_1, 10.5f)
++        eq(AtmoShaderConstants.ISO_BAND_2, 11.0f)
++        eq(AtmoShaderConstants.ISO_BAND_3, 11.5f)
++        eq(AtmoShaderConstants.ISO_STRENGTH, 0.75f)
++        eq(AtmoShaderConstants.ISO_COLOR_R, 0.5f)
++        eq(AtmoShaderConstants.ISO_COLOR_G, 0.85f)
++        eq(AtmoShaderConstants.ISO_COLOR_B, 1.0f)
++    }
+ }
+diff --git a/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt b/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+index 8cebf9e..dbec1d5 100644
+--- a/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
++++ b/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+@@ -73,4 +73,17 @@ class AtmoShaderSourceTest {
+         assertTrue(frag.contains("if (tExit <= 0.0) return vec2(0.0);"))
+         assertTrue(frag.contains("return vec2(odR, odM);"))
+     }
++
++    @Test fun frag_iso_bands_r467() {
++        // R4.6.7 (iso-bands): solo en el raymarch, golden JVM de los umbrales.
++        assertTrue(frag.contains("uniform bool uShowIso;"))
++        assertTrue(frag.contains("uniform vec3 uIsoColor;"))
++        assertTrue(frag.contains("uniform float uIsoStrength;"))
++        assertTrue(frag.contains("const float ISO_BAND_1 = 10.5;"))
++        assertTrue(frag.contains("const float ISO_BAND_2 = 11.0;"))
++        assertTrue(frag.contains("const float ISO_BAND_3 = 11.5;"))
++        assertTrue(frag.contains("float logNe = 8.0 + 4.5 * (odIso / 0.49f);"))
++        assertTrue(frag.contains("if (uShowIso) isoSum += isoB;"))
++        assertTrue(frag.contains("isoSum * uIsoColor * uIsoStrength"))
++    }
+ }

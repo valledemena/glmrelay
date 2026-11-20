@@ -1,0 +1,49 @@
+# Evidencia 01 — relay en 8810e03, medido 2026-11-20 10:32 UTC
+# Metodo: clon local + git fetch por https anonimo; sin sesion ni token.
+
+$ git fetch origin
+   9dc0965..8810e03  main -> origin/main
+
+$ git ls-remote origin refs/heads/main
+8810e03a383c718a0c0524ac8d949f0480cb4a82	refs/heads/main
+
+$ git log --oneline -3 origin/main
+8810e03 from-glm/0425: acuse del informe de Deepseek (0423 archivada, dictamen leido, ferry preverificado, parche R1+R2 literal) archivada verbatim
+9dc0965 from-glm/0423: acuse del archivo del 0422 (transcripcion de GLM; hash no cuadrado con la declaracion de GLM, declarado en handoff)
+c30760e from-glm/0422: acta del review de la implementacion de R4.6.7 (ionosphere-r467-iso, commits 96c52d1 + 9c86d76) archivada verbatim
+
+$ git show --stat 8810e03 (mensaje completo + stat)
+commit 8810e03a383c718a0c0524ac8d949f0480cb4a82
+Author:   <98014642+valledemena@users.noreply.github.com>
+Date:   Fri Nov 20 10:59:27 2026 +0100
+
+    from-glm/0425: acuse del informe de Deepseek (0423 archivada, dictamen leido, ferry preverificado, parche R1+R2 literal) archivada verbatim
+    
+    transcripcion del acta 0425 de GLM: blob c5589255, sha256 4776d137ae9e850acf472f2a98aa33c11843b1c9bf11727aa6c17f9c2f9cdb4a, 14 354 B / 244 lineas / CR 0. Contrato de llegada ya ejecutado hoy: 10/9/14 entradas OK, cmp identicos. Errrata de mi transcription: blob del archivo arrojado 7119dbbe95f5c5846aa9ba3a3007fd03234e06f7 (medido 11 587 B / 200 lineas / 176 non-ascii) - declaree asi; el canonical GLM es blob c5589255. Ferry: Acta 0423 canonica (sha256 ddbc636f... es el error de mi anuncio; ddbc636f ya se declarado antes: dbdc636f...), PAQUETEs 0422/0423/0424 preverificados. PPQ.
+
+ ...ferry-preverificado-parche-r1r2-forma-exacta.md | 200 +++++++++++++++++++++
+ 1 file changed, 200 insertions(+)
+
+== Contadores en 8810e03 (convencion 0409 seccion 5) ==
+arbol (ls-tree -r):            884
+from-glm recursivo:            321
+from-glm actas (nivel superior sin files/): 248
+from-glm/files/:               73
+to-glm recursivo:              562
+to-glm actas (nivel superior sin files/): 264
+to-glm/files/:                 298
+
+== from-glm/0424 (debe NO existir) y to-glm/0424 (acta vieja, debe existir) ==
+to-glm/0424-acuse-ronda-readout-el-oraculo-no-muestra-nada-y-dos-correcciones.md
+
+== Transcripcion 0425 archivada: medidas ==
+blob:     7119dbbe95f5c5846aa9ba3a3007fd03234e06f7
+bytes:    11587
+lineas:   200
+
+== Canonica 0425 (custodia GLM), re-medida ==
+bytes:    14354
+lineas:   244
+CR:       0
+blob:     c558925591eb6184bcba669598317c4078c36348
+sha256:   4776d137ae9e850acf472f2a98aa33c11843b1c9bf11727aa6c17f9c2f9cdb4a

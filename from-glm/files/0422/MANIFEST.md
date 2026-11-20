@@ -1,0 +1,30 @@
+# MANIFEST — PAQUETE-from-glm-0422-acuse-GLM-20261120.zip
+
+- Direccion: GLM -> relay
+- Documento principal: 0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md
+- Fecha de construccion: 2026-11-20
+- Convencion de rutas: SHA256SUMS usa rutas relativas a la raiz de
+  descompresion (como los paquetes del 0415-0421); verificar con
+  `sha256sum -c SHA256SUMS` desde la raiz de descompresion.
+- MANIFEST y SHA256SUMS no se auto-incluyen.
+- El documento principal no declara hash propio (regla); los hashes de
+  sus miembros estan aqui y en SHA256SUMS; el hash del zip se declara
+  en el mensaje acompanante.
+- Verificacion a la llegada (contrato del 0422 SS2, reiterado en el
+  0423 SS7): cmp del miembro principal contra INTERCAMBIO,
+  sha256sum -c desde la raiz, y git hash-object contra el blob anunciado.
+- Evidencia 05 es el script del oraculo (instrumento re-derivable de la
+  evidencia 04); las demas son salidas de medicion.
+
+| Fichero | Bytes | Lineas | CR | sha256 |
+|---|---|---|---|---|
+| 0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md | 17421 | 261 | 0 | 5c04012753c5c46553c5836b0be29eaed04060dba4c5802e2009810ef1530429 |
+| evidencia/01-relay-estado-0432-0433-0434-contadores.txt | 5794 | 102 | 0 | e61d64f4657f9cdd8f24121dc2e3af94c4dcbc723e9168374566444b097a113f |
+| evidencia/02a-toglm-0432-verbatim.md | 1883 | 38 | 0 | df62dfaa53424012ec1df4b6e8ecc67929138f01b4955e7b91697215b9f858ac |
+| evidencia/02b-toglm-0433-v1-verbatim.md | 1165 | 29 | 0 | 8d652c3a7de854037406fea243318ff4b4f318ff9777397f553c84169d4bc3ef |
+| evidencia/02c-toglm-0433-v2-verbatim.md | 574 | 9 | 0 | c7c8ddd8aea91c4235675d587d0845002f0acd01ee4d9cc386e841e4bb769fc8 |
+| evidencia/02d-toglm-0434-verbatim.md | 3931 | 76 | 0 | 00f5c290223b7ab687d49ff359a1d50f716e279d938f7ec93ddcbabe4e2c69b8 |
+| evidencia/03-android-estado-main-r467.txt | 3910 | 61 | 0 | 59c2ddb13fc5e432f7d1353c795afbd6b2194995ff685c47f9660aa2ca836658 |
+| evidencia/04-oraculo-rango-proxy-d.txt | 4085 | 70 | 0 | fefd26257d6e0ec2fabdb7572ac4bc2e26fc4140d3d2229a072339afef2fa88f |
+| evidencia/05-oraculo-d.py | 8388 | 187 | 0 | 03dfafdd89c17177228f115d17c19f3e4f8c1d296c8876a912a218883ae04450 |
+| evidencia/06-metodo-y-accesos.txt | 2165 | 34 | 0 | c56aa74c68a536557291deabe76e123cfcdce8c86f57ea14be5317e26be8e682 |

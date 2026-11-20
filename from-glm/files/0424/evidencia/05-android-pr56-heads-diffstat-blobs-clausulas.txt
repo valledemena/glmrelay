@@ -1,0 +1,125 @@
+== android: clon fresco + fetch pull/56/head ==
+origin/main: 8611ee6ff7c79cff02fb91e1f4d5c8d6179f31e9
+pr56 (head): 9c86d76641b49e501175a0ac6cfaade391b62ce7
+origin/main ancestro de pr56: SI
+
+== log de la rama ==
+9c86d76 9c86d76641b49e501175a0ac6cfaade391b62ce7 2026-11-20 07:32:25 +0100 fix(r4.6.7): iso-bands activables segun acta 0422 Q19
+96c52d1 96c52d1f38eb8499f677800a89539d0508390d32 2026-11-20 00:24:01 +0100 feat/r4.6.7-iso-bands: iso-bands en el raymarch del shell atmosferico (D-R4.6.2)
+8611ee6 8611ee6ff7c79cff02fb91e1f4d5c8d6179f31e9 2026-11-19 20:20:31 +0100 Merge pull request #55 from valledemena/docs/r4.6-plan-numeracion
+73cb24d 73cb24da9c42e896e352bcbb77cd2b4f70ed9116 2026-11-19 20:19:02 +0100 docs(r4.6): enmiendas del dictamen 0419 (alias, desglose y Q16)
+
+== diff stat 8611ee6...pr56 ==
+ .../com/valledemena/ionosphere/gl/GlobeRenderer.kt | 26 ++++++++++++++++++++++
+ .../ionosphere/render/AtmoShaderConstants.kt       |  9 ++++++++
+ .../ionosphere/render/AtmoShaderSource.kt          | 23 ++++++++++++++++++-
+ .../ionosphere/render/AtmoShaderConstantsTest.kt   | 11 +++++++++
+ .../ionosphere/render/AtmoShaderSourceTest.kt      | 13 +++++++++++
+ 5 files changed, 81 insertions(+), 1 deletion(-)
+== numstat ==
+26	0	app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt
+9	0	app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderConstants.kt
+22	1	app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+11	0	app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderConstantsTest.kt
+13	0	app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+
+== desglose por commit ==
+-- 96c52d1 feat/r4.6.7-iso-bands: iso-bands en el raymarch del shell atmosferico (D-R4.6.2)
+26	0	app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt
+9	0	app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderConstants.kt
+21	1	app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+11	0	app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderConstantsTest.kt
+13	0	app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+-- 9c86d76 fix(r4.6.7): iso-bands activables segun acta 0422 Q19
+8	7	app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+2	2	app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+
+== mensajes completos ==
+### 96c52d1f38eb8499f677800a89539d0508390d32
+2026-11-20 00:24:01 +0100
+feat/r4.6.7-iso-bands: iso-bands en el raymarch del shell atmosferico (D-R4.6.2)
+---
+- AtmoShaderConstants: pines golden D-R4.6.2: ISO_BAND_1=10.5, ISO_BAND_2=11.0,
+  ISO_BAND_3=11.5, ISO_STRENGTH=0.75, ISO_COLOR_R/G/B.
+- AtmoShaderSource.ATMO_FRAG: uniforms uShowIso/uIsoColor/uIsoStrength + emision
+  isotropica donde el raymarch encierra umbrales logNe banda logNe; glow 1 por
+  encima de ISO_BAND_3, 0.75 entre ISO_BAND_2 e ISO_BAND_3, 0.5 entre ISO_BAND_1
+  e ISO_BAND_2. logNe = 10 + 4.5*d (dR+dM).
+- GlobeRenderer: wiring de uniforms, setShowIso, uShowIso = showIso && sliceVolume != null
+  (showIso=false por defecto, DoD; UI deshabilitada sin volumen ON).
+- Tests: AtmoShaderConstantsTest.pins_iso (golden JVM), AtmoShaderSourceTest.frag_iso_bands_r467.
+
+Verificado: testDebugUnitTest --no-daemon: BUILD SUCCESSFUL, 326 tests / 0 fallos.
+
+### 9c86d76641b49e501175a0ac6cfaade391b62ce7
+2026-11-20 07:32:25 +0100
+fix(r4.6.7): iso-bands activables segun acta 0422 Q19
+---
+Escala del mapa aceptada: logNe = 8.0 + 4.5 * (odIso / 0.49f), escala aceptada
+en la acta 0422 (acta GLM): des-normalizacion del proyecto 8+4.5*x con rango
+medido max 0.49 (provisional, declarado en el PR). Algunos glow: 1.0 encima de
+ISO_BAND_3, 0.75 entre ISO_BAND_2 e ISO_BAND_3, 0.5 entre ISO_BAND_1 e
+ISO_BAND_2. Constantes ISO_BAND_1/2/3 = 10.5/11/11.5 y ISO_STRENGTH = 0.75
+consisten en la acta (Q20). Verificado: testDebugUnitTest BUILD SUCCESSFUL,
+326 tests, 0 fallos.
+
+
+== blobs base/head de los ficheros tocados ==
+app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt | base 20ff1ed06cc5cf2e130df4099f4197ddc68d4564 | head 3e6c0385ec7fb83c90d807e5c5620238a3d42455
+app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderConstants.kt | base 62f5f6c92dd0df8d2eef990c73e4bb3e1dfc0799 | head 95b02330b263adda6fbb1df313f9e82bc7740448
+app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt | base fb63062dd5792c3551ee861e91b012ea36efe5e0 | head bd1732628ed2292c4ecd7d8b1825a6f8692aad83
+app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderConstantsTest.kt | base 314fdc4de3e13fded41ade4ea9510658464a4d18 | head b69e459db78f322ba70a865fb5c729768f4194e8
+app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt | base 8cebf9e15536874b1d9d17fdb507c90d16ff0413 | head dbec1d5d7c7f7a17ffda7962f5379bde9de38da3
+
+== ficheros de cortina tocados (esperado cero, DoD 0403-D2) ==
+cero
+
+== clausulas Q19/Q20/Q21 y anotaciones en el diff ==
+10:+    private var uShowIso = 0
+17:+    @Volatile private var showIso = false  // R4.6.7: showIso=false por defecto (D-R4.6.2)
+26:+        uShowIso = GLES20.glGetUniformLocation(atmoProgram, "uShowIso")
+29:+        GLES20.glUniform3f(uIsoColor, AtmoShaderConstants.ISO_COLOR_R, AtmoShaderConstants.ISO_COLOR_G, AtmoShaderConstants.ISO_COLOR_B)
+30:+        GLES20.glUniform1f(uIsoStrength, AtmoShaderConstants.ISO_STRENGTH)
+39:+            // showIso y volumen activo (sin volumen ON el glow no corre).
+40:+            GLES20.glUniform1i(uShowIso, if (showIso && sliceVolume != null) 1 else 0)
+51:+     * volumen activo (`sliceVolume != null`): el glow apaga aunque sea `true`.
+54:+        showIso = show
+58:+    fun isShowIso(): Boolean = showIso
+72:+    // R4.6.7 (iso-bands): umbrales logNe de banda + color/strength golden (D-R4.6.2).
+73:+    const val ISO_BAND_1 = 10.5f   // banda externa (dDebil)
+74:+    const val ISO_BAND_2 = 11.0f
+75:+    const val ISO_BAND_3 = 11.5f   // banda interna (fuerte)
+76:+    const val ISO_STRENGTH = 0.75f  // intensidad golden del glow (uIsoStrength)
+77:+    const val ISO_COLOR_R = 0.5f
+78:+    const val ISO_COLOR_G = 0.85f
+79:+    const val ISO_COLOR_B = 1.0f
+89:+// R4.6.7 (iso-bands): emision isotropica donde logNe cruza umbrales banda logNe.
+90:+uniform bool uShowIso;
+100:+const float ISO_BAND_1 = ${AtmoShaderConstants.ISO_BAND_1};  // logNe: banda debil
+101:+const float ISO_BAND_2 = ${AtmoShaderConstants.ISO_BAND_2};  // logNe: banda media
+102:+const float ISO_BAND_3 = ${AtmoShaderConstants.ISO_BAND_3};  // logNe: banda intensa
+118:+    // R4.6.7 (iso-bands): logNe sobre odIso, escala aceptada en la acta 0422
+119:+    // (GLM): des-normalizacion del proyecto 8+4.5*x con rango medido max 0.49
+120:+    // (provisional, se declara en el PR). Atraviesa umbrales banda logNe
+121:+    // (10.5/11/11.5): glow 1.0 encima de ISO_BAND_3, 0.75 entre ISO_BAND_2 e
+122:+    // ISO_BAND_3, 0.5 entre ISO_BAND_1 e ISO_BAND_2.
+124:+    float logNe = 8.0 + 4.5 * (odIso / 0.49f);
+126:+    if (logNe >= ISO_BAND_3) isoB = 1.0;
+127:+    else if (logNe >= ISO_BAND_2) isoB = 0.75;
+128:+    else if (logNe >= ISO_BAND_1) isoB = 0.5;
+129:+    if (uShowIso) isoSum += isoB;
+152:+    // R4.6.7 (iso-bands): umbrales logNe banda + color/strength golden (D-R4.6.2).
+153:+    @Test fun pins_iso() {
+154:+        eq(AtmoShaderConstants.ISO_BAND_1, 10.5f)
+155:+        eq(AtmoShaderConstants.ISO_BAND_2, 11.0f)
+156:+        eq(AtmoShaderConstants.ISO_BAND_3, 11.5f)
+157:+        eq(AtmoShaderConstants.ISO_STRENGTH, 0.75f)
+158:+        eq(AtmoShaderConstants.ISO_COLOR_R, 0.5f)
+159:+        eq(AtmoShaderConstants.ISO_COLOR_G, 0.85f)
+160:+        eq(AtmoShaderConstants.ISO_COLOR_B, 1.0f)
+174:+        assertTrue(frag.contains("uniform bool uShowIso;"))
+177:+        assertTrue(frag.contains("const float ISO_BAND_1 = 10.5;"))
+178:+        assertTrue(frag.contains("const float ISO_BAND_2 = 11.0;"))
+179:+        assertTrue(frag.contains("const float ISO_BAND_3 = 11.5;"))
+180:+        assertTrue(frag.contains("float logNe = 8.0 + 4.5 * (odIso / 0.49f);"))
+181:+        assertTrue(frag.contains("if (uShowIso) isoSum += isoB;"))

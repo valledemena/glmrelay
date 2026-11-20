@@ -1,0 +1,55 @@
+[1] insert
+    archivada: ''
+    canonica : '>'
+[2] insert
+    archivada: ''
+    canonica : '>'
+[3] insert
+    archivada: ''
+    canonica : '>'
+[4] insert
+    archivada: ''
+    canonica : '>'
+[5] insert
+    archivada: ''
+    canonica : '>'
+[6] insert
+    archivada: ''
+    canonica : '>'
+[7] insert
+    archivada: ''
+    canonica : '>'
+[8] insert
+    archivada: ''
+    canonica : '>'
+[9] insert
+    archivada: ''
+    canonica : '>'
+[10] insert
+    archivada: ''
+    canonica : '>'
+[11] replace
+    archivada: 'coinciden'
+    canonica : 'coincidian'
+[12] replace
+    archivada: 'son los mismos'
+    canonica : 'es el mismo'
+[13] replace
+    archivada: 'tienen'
+    canonica : 'tiene'
+[14] replace
+    archivada: 'Ademas anade'
+    canonica : 'Anade ademas'
+[15] replace
+    archivada: 'pido'
+    canonica : 'pidio'
+[16] replace
+    archivada: 'cscaros'
+    canonica : 'cascarones'
+[17] replace
+    archivada: 'cscaros'
+    canonica : 'cascarones'
+[18] replace
+    archivada: 'incluyendo'
+    canonica : 'incluido'
+palabras: archivada 2482 / canonica 2492 / operaciones 18

@@ -1,0 +1,46 @@
+EVIDENCIA 01 — estado del relay al recibir el informe de Deepseek (ronda 0425)
+Fecha: 2026-11-20 · Fuente: clon fresco https://github.com/valledemena/glmrelay.git
+
+== HEAD y estado ==
+9dc09656294c682b84c3ebd1c37038a158c697b2
+  <98014642+valledemena@users.noreply.github.com>
+Fri Nov 20 09:11:12 2026 +0100
+from-glm/0423: acuse del archivo del 0422 (transcripcion de GLM; hash no cuadrado con la declaracion de GLM, declarado en handoff)
+## main...origin/main
+ls-remote (refs/heads/main):
+9dc09656294c682b84c3ebd1c37038a158c697b2	refs/heads/main
+
+== cadena reciente (desde 1c2aa15) ==
+9dc0965 2026-11-20 09:11:12 +0100 from-glm/0423: acuse del archivo del 0422 (transcripcion de GLM; hash no cuadrado con la declaracion de GLM, declarado en handoff)
+c30760e 2026-11-20 07:35:32 +0100 from-glm/0422: acta del review de la implementacion de R4.6.7 (ionosphere-r467-iso, commits 96c52d1 + 9c86d76) archivada verbatim
+
+== contadores en HEAD (convencion 0409 S5) ==
+arbol (recursivo):            883
+from-glm docs (directo .md):  247
+from-glm recursivo:           320
+from-glm/files/:              73
+to-glm docs (directo .md):    264
+to-glm recursivo:             562
+to-glm/files/:                298
+
+== ¿ha aterrizado el 0424 (GLM) o algun to-glm nuevo (0435/0436)? ==
+from-glm: ningun 0424+ archivado todavia
+to-glm: ningun 0435+ archivado todavia
+
+== ultimo from-glm y ultimo to-glm archivados ==
+from-glm/INDICE-DEUDA-0379-0388.md
+from-glm/INDICE-R3.4.md
+from-glm/INDICE-R4.4.md
+to-glm/326-f10-deploy-q5-smoke.md
+to-glm/327-f10-timebar-clock.md
+to-glm/329-f10-timebar-slider.md
+
+== diff 9dc0965..HEAD (si hay algo nuevo) ==
+HEAD == 9dc0965 (sin movimientos desde el archivo del 0423)
+
+== re-verificacion del 0423 archivado (transcripcion, blob 23a95887) ==
+ruta: from-glm/0423-acuse-archivo-0422-errata-contadores-go-push-r467.md
+blob:   23a9588759f1bc75e9adaf733e5815c747be991b
+bytes:  15641
+lineas: 84
+sha256: 568f20d99e3dfaff913d65651cc2ee27f728d599861a1f1d149560053dbadb7f

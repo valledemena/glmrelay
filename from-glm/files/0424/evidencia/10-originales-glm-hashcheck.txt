@@ -1,0 +1,13 @@
+== originales GLM en custodia, re-verificados 2026-11-20 08:39 UTC ==
+0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md:
+  bytes=17421 lineas=261 CR=0 blob=f1fa7ddd4b90fcbab7551cf1784315f083aa28fe
+  sha256=5c04012753c5c46553c5836b0be29eaed04060dba4c5802e2009810ef1530429
+0423-acuse-archivo-0422-errata-contadores-go-push-r467.md:
+  bytes=15665 lineas=254 CR=0 blob=041d21b3f096cdf446071100b71ba82d62f54a61
+  sha256=dbdc636f049dd900976bb3b1aa42f8c7f1c8f7ea1ae3c8a7982f10719e08638d
+PAQUETE-from-glm-0422-acuse-GLM-20261120.zip:
+  bytes=25117 miembros=12
+  sha256=904c7e2727d3399056e52ab1ecbe6225617bab71867a4e772e60e5dc763d973f
+PAQUETE-from-glm-0423-acuse-GLM-20261120.zip:
+  bytes=22003 miembros=11
+  sha256=72d327d5bd3460545e1ecc51dabd403fcec5be9b85177afe4c283b77dd74512d

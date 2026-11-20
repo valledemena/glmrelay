@@ -1,0 +1,71 @@
+EVIDENCIA 04 — ferry pre-verificado en INTERCAMBIO (ronda 0425, 2026-11-20)
+Fuente: copias custodiadas de /home/z/my-project/download (INTERCAMBIO)
+
+== item 1: Acta 0423 canonica (suelta) ==
+fichero: 0423-acuse-archivo-0422-errata-contadores-go-push-r467.md
+15665 B / 254 lineas / CR=0 / blob 041d21b3 / sha256 dbdc636f049dd900976bb3b1aa42f8c7f1c8f7ea1ae3c8a7982f10719e08638d
+
+== item 2: PAQUETE 0422 ==
+fichero: PAQUETE-from-glm-0422-acuse-GLM-20261120.zip — 25117 B / 12 miembros
+sha256: 904c7e2727d3399056e52ab1ecbe6225617bab71867a4e772e60e5dc763d973f
+miembro principal (0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md): 17421 B / 261 lineas / CR=0 / blob f1fa7ddd / sha256 5c04012753c5c46553c5836b0be29eaed04060dba4c5802e2009810ef1530429
+
+== item 3: PAQUETE 0423 ==
+fichero: PAQUETE-from-glm-0423-acuse-GLM-20261120.zip — 22003 B / 11 miembros
+sha256: 72d327d5bd3460545e1ecc51dabd403fcec5be9b85177afe4c283b77dd74512d
+miembro principal (acta 0423 canonica, cmp contra item 1):
+  cmp: identicos al item 1
+
+== item 4: Acta 0424 + PAQUETE 0424 ==
+acta: 0424-acuse-archivo-0423-pr56-dictamen-condicionado-ferry-originales.md — 18213 B / 289 lineas / CR=0 / blob bdef5bb5 / sha256 e17cfc4546f7a2d7692cb24c00e5a36262a7c792067f4bc5424ffc1530e48c4b
+paquete: PAQUETE-from-glm-0424-acuse-GLM-20261120.zip — 38798 B / 16 miembros
+sha256: 7cd51e2bba74c3d5ae95f3284f67f622e31277a07e4bb8ae1056df6053dd7642
+
+== contrato de llegada, probado aqui (descompresion + sha256sum -c) ==
+  [paquete 0422] 0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md: OK
+  [paquete 0422] evidencia/01-relay-estado-0432-0433-0434-contadores.txt: OK
+  [paquete 0422] evidencia/02a-toglm-0432-verbatim.md: OK
+  [paquete 0422] evidencia/02b-toglm-0433-v1-verbatim.md: OK
+  [paquete 0422] evidencia/02c-toglm-0433-v2-verbatim.md: OK
+  [paquete 0422] evidencia/02d-toglm-0434-verbatim.md: OK
+  [paquete 0422] evidencia/03-android-estado-main-r467.txt: OK
+  [paquete 0422] evidencia/04-oraculo-rango-proxy-d.txt: OK
+  [paquete 0422] evidencia/05-oraculo-d.py: OK
+  [paquete 0422] evidencia/06-metodo-y-accesos.txt: OK
+  [paquete 0423] 0423-acuse-archivo-0422-errata-contadores-go-push-r467.md: OK
+  [paquete 0423] evidencia/01-relay-estado-c30760e-contadores.txt: OK
+  [paquete 0423] evidencia/02-0422-archivado-verbatim.md: OK
+  [paquete 0423] evidencia/03-cotejo-canonical-vs-archivado.txt: OK
+  [paquete 0423] evidencia/04-android-estado-r467-push.txt: OK
+  [paquete 0423] evidencia/05-oraculo-odref-bandas.txt: OK
+  [paquete 0423] evidencia/06-oraculo-odref.py: OK
+  [paquete 0423] evidencia/07-paquete-0422-verificacion.txt: OK
+  [paquete 0423] evidencia/08-metodo-y-accesos.txt: OK
+  [paquete 0424] 0424-acuse-archivo-0423-pr56-dictamen-condicionado-ferry-originales.md: OK
+  [paquete 0424] evidencia/01-metodo-y-accesos.txt: OK
+  [paquete 0424] evidencia/02-relay-9dc0965-estado-contadores-cadena.txt: OK
+  [paquete 0424] evidencia/03-0423-archivado-verbatim.md: OK
+  [paquete 0424] evidencia/04-0423-cotejo-canonical-vs-archivado.diff: OK
+  [paquete 0424] evidencia/04b-0423-cotejo-palabras.txt: OK
+  [paquete 0424] evidencia/04c-cotejo-palabras.py: OK
+  [paquete 0424] evidencia/05-android-pr56-heads-diffstat-blobs-clausulas.txt: OK
+  [paquete 0424] evidencia/06-pr56-diff-verbatim.patch: OK
+  [paquete 0424] evidencia/07-api-pr56-rate-limited.json: OK
+  [paquete 0424] evidencia/08-api-checkruns-rate-limited.json: OK
+  [paquete 0424] evidencia/09-pr56-cuerpo-y-checks-webfetch.txt: OK
+  [paquete 0424] evidencia/10-originales-glm-hashcheck.txt: OK
+  [paquete 0424] evidencia/11-upload-html-identidad.txt: OK
+
+== cmp de los miembros principales contra INTERCAMBIO ==
+  0422: identicos
+  0423: identicos
+  0424: identicos
+
+== extra: el 0422 del relay (c30760e, «archivada verbatim») vs canonica ==
+relay: blob b3a32335 / 4158 B / sha256 4ba841af98e3f319a4999f5e0ba13ba7c7fc526d01c8de27e6ed12a0ac57d1b3
+- /home/z/my-project/download/0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md differ: char 23, line 1
+
+== extra: el 0423 del relay (9dc0965, transcripcion) vs canonica ==
+relay: blob 23a95887 / 15641 B / 84 lineas / sha256 568f20d99e3dfaff913d65651cc2ee27f728d599861a1f1d149560053dbadb7f
+- /home/z/my-project/download/0423-acuse-archivo-0422-errata-contadores-go-push-r467.md differ: char 64, line 1
+  cmp: DIFIEREN (transcripcion re-fluida, como declara el 0424 SS3 — el ferry la sustituye)

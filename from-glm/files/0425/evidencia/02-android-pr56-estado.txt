@@ -1,0 +1,33 @@
+EVIDENCIA 02 — estado del repo Android y del PR #56 (ronda 0425)
+Fecha: 2026-11-20 · Fuente: clon fresco --depth 50 de
+https://github.com/valledemena/ionosphere-live-3d-android.git + ls-remote
+
+== origin/main ==
+8611ee6ff7c79cff02fb91e1f4d5c8d6179f31e9
+8611ee6 Merge pull request #55 from valledemena/docs/r4.6-plan-numeracion
+73cb24d docs(r4.6): enmiendas del dictamen 0419 (alias, desglose y Q16)
+
+== PR #56: head declarado vs head hoy ==
+ls-remote refs/pull/56/head:
+9c86d76641b49e501175a0ac6cfaade391b62ce7	refs/pull/56/head
+head declarado en el dictamen 0424: 9c86d76641b49e501175a0ac6cfaade391b62ce7
+
+== ramas feat/* en el remoto ==
+23bb04715b95a752f34eac8353ef36e0f0fdd85b	refs/heads/feat/r3.4-ionosonde-layer
+53a6df7fe8f38b7cca77aecd7a1e225b6cff3fe9	refs/heads/feat/r4-c-wiring
+1ec6f367df06aba7be885ae9670472937bdcb34f	refs/heads/feat/r4-d-camera
+24595b13e7b46c4f56b5248ef6156dc547005aa3	refs/heads/feat/r4-e-gates
+a483f48bb7b321e659d1e6a5e04ec392d19f8975	refs/heads/feat/r4-p-precision
+c741e32b30ecd8d4a1bf3a4b22e4af5fd639777c	refs/heads/feat/r4.1-replay-core
+a2c1f580fbb5785a14e270473b1e7d944ebc3bf8	refs/heads/feat/r4.2-timebar
+36ae781ba21d03d6e83004ae883222a311ab97f5	refs/heads/feat/r4.3-station-epoch
+84f30101b0b6c1eb01bd013b5dbbd5af15c37aaf	refs/heads/feat/r4.4-neh-volume-pure
+1519f546ca82c25d0991c3c0d78b708fdd7f4b0d	refs/heads/feat/r4.5-curtain-pure
+32f4af36d414d9cf131e20c50b07e73561485a5a	refs/heads/feat/r4.6.1-slice-volume
+870e05f0239a082d0c3da4f0043c7577faddcbfe	refs/heads/feat/r4.6.2-readout-par
+d19570aa7c2518a64eb84112fbe2a2c912f87626	refs/heads/feat/r4.6.6-ci-tests
+9c86d76641b49e501175a0ac6cfaade391b62ce7	refs/heads/feat/r4.6.7-iso-bands
+6556b25a2504907b2b7eb30300120b0caadc83ef	refs/heads/feat/r5-deep-gate
+e87d848e85311604a216ae20c00e7d161ad98995	refs/heads/feat/replay-solar-terminator
+
+== merges recientes a main (pull request refs) ==

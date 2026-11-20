@@ -1,0 +1,26 @@
+--- a/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
++++ b/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+@@ -118,7 +118,7 @@
+     if (logNe >= ISO_BAND_3) isoB = 1.0;
+     else if (logNe >= ISO_BAND_2) isoB = 0.75;
+     else if (logNe >= ISO_BAND_1) isoB = 0.5;
+-    if (uShowIso) isoSum += isoB;
++    if (uShowIso) isoSum += isoB * dt;
+ 
+     // planet shadow: the ray to the sun from p must not cross Earth
+     float tPlanet = raySphere(p, sun, PLANET_R);
+
+--- a/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
++++ b/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+@@ -82,8 +82,10 @@
+         assertTrue(frag.contains("const float ISO_BAND_1 = 10.5;"))
+         assertTrue(frag.contains("const float ISO_BAND_2 = 11.0;"))
+         assertTrue(frag.contains("const float ISO_BAND_3 = 11.5;"))
++        assertTrue(frag.contains("if (logNe >= ISO_BAND_3) isoB = 1.0;"))
++        assertTrue(frag.contains("else if (logNe >= ISO_BAND_1) isoB = 0.5;"))
+         assertTrue(frag.contains("float logNe = 8.0 + 4.5 * (odIso / 0.49f);"))
+-        assertTrue(frag.contains("if (uShowIso) isoSum += isoB;"))
++        assertTrue(frag.contains("if (uShowIso) isoSum += isoB * dt;"))
+         assertTrue(frag.contains("isoSum * uIsoColor * uIsoStrength"))
+     }
+ }

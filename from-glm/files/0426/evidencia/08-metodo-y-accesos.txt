@@ -1,0 +1,21 @@
+# Evidencia 08 — metodo y accesos, 2026-11-20 10:32 UTC
+
+- Relay y repo Android: clones locales + git fetch / ls-remote por https
+  anonimo, sin sesion ni token (como en el 0425).
+- API anonima (api.github.com): la primera llamada respondio (check-runs del
+  9c86d76, campos en evidencia 05); las siguientes salieron rate-limited con
+  IP de salida rotada (8.212.10.159 -> 47.57.232.232; capturas integras en 05).
+- Ruta HTML no rate-limited para el CI: pagina del run 44700675364
+  (evidencia 07) — cabecera del run 'completed successfully', los tres
+  trabajos success (assembleDebug 47s, unitTest, lint), cero marcadores de
+  fallo (color-fg-danger / octicon-x-circle-fill: 0).
+- PR #56: JSON de la API anonima integro (evidencia 06); la pagina HTML del
+  PR se trajo tambien (237 670 B) pero los checks van renderizados por JS
+  (cero marcadores) — descartada como evidencia, sustituida por 06 + 07.
+  La pagina del commit 9c86d76 devolvio 87 B (redireccion vacia): descartada.
+- Upload de esta ronda: 'ionosphere-live-3d[1]' (337 982 chars, HTML) = pagina
+  GitHub del repo DESKTOP valledemena/ionosphere-live-3d (C++17/OpenGL),
+  fechado 2026-11-13 — contexto de rondas anteriores; sin marcadores de esta
+  ronda (9c86d76/0425/8810e03: 0 apariciones). Examinado y registrado.
+- El parche R1+R2 verbatim (input de la evidencia 03) es la copia exacta de
+  la evidencia 03 del acta 0425 (sha256 cotejado en el propio fichero).

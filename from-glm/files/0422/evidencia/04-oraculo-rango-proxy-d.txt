@@ -1,0 +1,70 @@
+ORACULO 04 — rango del proxy d en ATMO_FRAG (main 8611ee6) para Q19
+Constantes: PLANET_R=1.0 ATM_R=1.0255 H_R=0.0085 H_M=0.012 (AtmoShaderConstants.kt, blob 62f5f6c9)
+Camara: OrbitCamera INITIAL_DISTANCE=3.3; se barre D y el parametro de
+impacto b (0..1.03) para cubrir disco y limbo. uSteps 8/12/16 = STEPS_MIN/DEFAULT/STEPS_MAX.
+
+== [A] d por paso (lo implementado: d = dR + dM con dt) ==
+  uSteps= 8: max d por paso = 0.10912 (D=2.0, b=1.000, h=0.00040)
+            logNe = 10.0 + 4.5*d alcanza como maximo 10.491
+            banda 10.5: requiere d = 0.1111 -> FUERA DE RANGO
+            banda 11.0: requiere d = 0.2222 -> FUERA DE RANGO
+            banda 11.5: requiere d = 0.3333 -> FUERA DE RANGO
+  uSteps=12: max d por paso = 0.07440 (D=2.0, b=1.000, h=0.00018)
+            logNe = 10.0 + 4.5*d alcanza como maximo 10.335
+            banda 10.5: requiere d = 0.1111 -> FUERA DE RANGO
+            banda 11.0: requiere d = 0.2222 -> FUERA DE RANGO
+            banda 11.5: requiere d = 0.3333 -> FUERA DE RANGO
+  uSteps=16: max d por paso = 0.05624 (D=2.0, b=1.000, h=0.00010)
+            logNe = 10.0 + 4.5*d alcanza como maximo 10.253
+            banda 10.5: requiere d = 0.1111 -> FUERA DE RANGO
+            banda 11.0: requiere d = 0.2222 -> FUERA DE RANGO
+            banda 11.5: requiere d = 0.3333 -> FUERA DE RANGO
+
+== [B] rho por punto (sin dt): exp(-h/H_R) + exp(-h/H_M) ==
+  rho en h=0 (superficie): 2.00000
+  rho en h=0.0255 (tope atmosferico, 162 km): 0.16922
+  rango real de rho dentro de la atmosfera: [0.16922, 2.0]
+  banda 10.5: requiere rho = 0.1111 -> FUERA (por encima del tope)
+  banda 11.0: requiere rho = 0.2222 -> dentro
+  banda 11.5: requiere rho = 0.3333 -> dentro
+
+== [C] od acumulado (odR + odM) al final del rayo ==
+  uSteps= 8: max od acumulado = 0.49412 -> logNe max = 12.224
+  uSteps=12: max od acumulado = 0.49361 -> logNe max = 12.221
+  uSteps=16: max od acumulado = 0.49343 -> logNe max = 12.220
+
+== [D] la alternativa del 0434: log2(10.0 + 100.0 * d) ==
+  con d por paso (max ~0.1136 a 8 pasos): log2(10+100d) <= 4.417
+  con rho por punto (max 2.0): log2(10+100*rho) <= 7.714
+  Las bandas 10.5/11/11.5 quedan a distancias de orden 5-10 unidades:
+    banda 10.5: requiere 10+100x = 2^10.5 = 1.448e+03 -> x = 1.438e+01
+    banda 11.0: requiere 10+100x = 2^11.0 = 2.048e+03 -> x = 2.038e+01
+    banda 11.5: requiere 10+100x = 2^11.5 = 2.896e+03 -> x = 2.886e+01
+  -> base equivocada (logNe es log10) y rango inalcanzable: rechazada,
+     como propuso el propio 0434; aqui con la medicion que lo cierra.
+
+== [E] altitudes de banda bajo cada mapa (biseccion sobre h) ==
+  (a) 10.0 + 4.5*d_paso: d depende de dt=segLen/uSteps (geometria+calidad);
+      no es un campo: las bandas se mueven con la calidad y la geometria.
+  (b) 10.0 + 4.5*rho(h) (sin dt, campo de altitud):
+      banda 10.5: fuera del rango dentro de la atmosfera
+      banda 11.0: h = 0.02259 (144.0 km)
+      banda 11.5: h = 0.01831 (116.7 km)
+
+== [F] lectura para Q19 ==
+  1. El 0434 declara 'd en [0,1] aprox'. Medido: d por paso <= 0.1136
+     (uSteps=8, rayo rasante) y <= 0.0757 con los 12 pasos por defecto.
+     La declaracion es falsa por un factor ~9-13x.
+  2. Con el mapa implementado (10.0+4.5*d): a calidad por defecto NINGUNA
+     banda es alcanzable (logNe max ~10.34); a 8 pasos solo la banda 10.5
+     en el paso mas denso de un rayo rasante. Las bandas 11 y 11.5 no se
+     alcanzan en ninguna calidad: la maquinaria iso seria codigo muerto.
+  3. Ademas d lleva el factor dt: el umbral efectivo de cada banda se
+     mueve con uSteps (calidad) y con la geometria del rayo — las bandas
+     no serian superficies fijas sino artefactos de muestreo.
+  4. Sin dt (rho por punto): las bandas 11 y 11.5 caen dentro del rango
+     (cascarones de altitud) pero la 10.5 queda por encima del tope
+     atmosferico. El mapa lineal 10+4.5*rho tampoco coloca las tres.
+  5. ConCLUSION: el mapa debe re-escalarse (condiciones en el acta):
+     entrada por punto sin dt, las tres bandas dentro del rango medido,
+     y el mapa declarado como provisional a la espera de R4.6.3.

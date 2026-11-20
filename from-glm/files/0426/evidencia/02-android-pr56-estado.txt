@@ -1,0 +1,19 @@
+# Evidencia 02 — repo Android y PR #56, medido 2026-11-20 10:32 UTC
+# Metodo: git fetch + ls-remote por https anonimo; API anonima (captura en evidencia 06).
+
+$ git fetch origin (sin novedades)
+$ git rev-parse origin/main origin/feat/r4.6.7-iso-bands
+8611ee6ff7c79cff02fb91e1f4d5c8d6179f31e9
+9c86d76641b49e501175a0ac6cfaade391b62ce7
+
+$ git ls-remote origin refs/pull/56/head refs/heads/feat/r4.6.7-iso-bands refs/heads/main
+9c86d76641b49e501175a0ac6cfaade391b62ce7	refs/heads/feat/r4.6.7-iso-bands
+8611ee6ff7c79cff02fb91e1f4d5c8d6179f31e9	refs/heads/main
+9c86d76641b49e501175a0ac6cfaade391b62ce7	refs/pull/56/head
+
+== PR #56 (API anonima, JSON integro en evidencia 06) — campos clave ==
+state: open | mergeable: True | mergeable_state: clean
+head: 9c86d76641b49e501175a0ac6cfaade391b62ce7 | ref: feat/r4.6.7-iso-bands | base: main
+title: R4.6.7 iso-bands (D-R4.6.2) golden JVM
+commits: 2 | additions: 81 | deletions: 1 | files: 5
+created_at: 2026-11-20T08:12:12Z | updated_at: 2026-11-20T08:12:12Z

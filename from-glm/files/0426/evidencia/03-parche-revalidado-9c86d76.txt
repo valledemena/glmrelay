@@ -1,0 +1,21 @@
+# Evidencia 03 — parche R1+R2 re-validado sobre el head 9c86d76, 2026-11-20 10:32 UTC
+# Metodo: git worktree --detach al head, git apply --check + apply + diff + revert; worktree retirado.
+# Entrada: copia del parche literal (evidencia 03 del 0425); sha256 abajo.
+
+sha256 del parche: 2f28eb57887b09bd595a786d732715fe0d9dc63b92cb19cd22ddf8365b0cc168
+bytes/lineas: 1360 / 26
+
+HEAD is now at 9c86d76 fix(r4.6.7): iso-bands activables segun acta 0422 Q19
+
+$ git apply --check --stat <parche>
+ .../ionosphere/render/AtmoShaderSource.kt          |    2 +-
+ .../ionosphere/render/AtmoShaderSourceTest.kt      |    4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+APPLY_CHECK=CLEAN (exit 0)
+
+$ git apply <parche> && git diff --stat
+ .../java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt    | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+$ git checkout -- . (revertir); worktree retirado despues
+WORKTREE_REMOVED

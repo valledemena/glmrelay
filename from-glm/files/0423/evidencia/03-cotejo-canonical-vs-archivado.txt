@@ -1,0 +1,96 @@
+EVIDENCIA 03 — cotejo del 0422 archivado (reconstruccion) contra el 0422 canonico
+Fecha: 2026-11-20
+
+Acta canonica (custodia GLM, miembro principal del paquete 0422):
+  0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md
+  17 421 B / 261 lineas / CR=0 / sha256 5c04012753c5c46553c5836b0be29eaed04060dba4c5802e2009810ef1530429
+Acta archivada por David en c30760e (reconstruccion desde mi mensaje):
+  from-glm/0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md
+  4 158 B / 86 lineas / CR=0 / blob b3a32335c0cce742d49370c293d8981c96f674d0
+  sha256 4ba841af98e3f319a4999f5e0ba13ba7c7fc526d01c8de27e6ed12a0ac57d1b3
+No es el mismo bytes: la archivada es una reconstruccion declarada por David
+(«reconstruida de su mensaje — no hay paquete de el, contrato parcial»).
+
+== A. Lo que la reconstruccion PRESERVA (cotejo clausula a clausula) ==
+
+Q19 (canonica SS3 -> archivada SS2/Q19):
+  [OK] entrada [0,1] y des-normalizacion del proyecto 8+4.5*x
+  [OK] estabilidad ante la calidad (0.494/0.494/0.493 a 8/12/16 pasos)
+  [OK] rango medido y declarado (odIso max 0.494)
+  [OK] proxy declarado provisional (a la espera de R4.6.3)
+  [OK] constantes pinned
+  [OK] cita de fuentes: LayerProfile.kt L207, VolumeSamples.kt L147/L196
+  [--] NO preserva: el oraculo del mapa implementado (max d por paso
+       0.109/0.074/0.056; bandas fuera de alcance en toda calidad), el cierre
+       numerico de la alternativa log2 (14.4/20.4/28.9), la condicion de
+       «anillos de limbo, no cascarones» (canonica SS3.5), y la doctrina R3.4
+       (la calidad gobierna el coste, no la forma).
+Q20 (canonica SS4 -> archivada Q20):
+  [OK] ISO_STRENGTH = 0.75f golden pre-registrado
+  [OK] escalera 0.5/0.75/1.0 y color bajo doctrina de correccion documentada
+  [OK] sin re-tuning silencioso en el re-targeting
+  [--] NO preserva: la condicion del dominio declarado del strength
+       (multiplicador escalar, acotado o no a [0,1]).
+Q21 (canonica SS5 -> archivada Q21):
+  [OK] compuerta uShowIso = showIso && sliceVolume != null aceptada
+  [OK] fundamentacion medida del cableado R4.6.1 (inyecta null con capa apagada)
+  [OK] dependencia a declarar en el PR; precedente R4.6.2 para la UI
+  [--] NO preserva: la clausula «si la inyeccion pre-calienta el volumen con la
+       capa apagada, la compuerta anade sliceShow» y la del golden JVM que pina
+       la semantica (init del uniform y expresion en draw).
+Erratas (canonica SS2 -> archivada SS3):
+  [OK] 0432 seccion 3 texto corrupto «previ6 seices»
+  [OK] 0433 reescrito in situ (v1 29 lineas -> v2 9; canonica la del arbol) y
+       regla simetrica de no reescritura
+  [OK] 0434 cita horaria real 23:44/23:54
+Estado y gating (canonica SS6/SS8 -> archivada SS4/SS5):
+  [OK] rama sin push verificado (0 ocurrencias de 96c52d1 en origin)
+  [OK] push+PR esperan el GO de David
+  [OK] pendientes: FPS de referencia en emulator-5554; R4.6.3 (GO); R4.6.5
+       (NO PROBADO); ademas anade Robolectric como candidato y R4.7 (NDK)
+  [--] NO preserva: el doble GO del merge (acta favorable + GO escrito + CI 3/3
+       + linea RESUMEN-TESTS de ejecucion real Q18) y el «no es dictamen de
+       codigo» explicito — ver C.3 abajo.
+
+== B. Glitches de forma de la reconstruccion (registrados, sin edicion) ==
+
+  L31: «-Forma:» — guion pegado a la palabra (deberia ser «- Forma:»).
+  L37-38: «— station: respuesta estable» — resto de redaccion en ingles
+       («station:») dentro de una linea en castellano.
+  L42: «quedan consisten en la acta» — «consisten» no es palabra castellana
+       (lectura probable: «quedan consistentes» / «constan»).
+  L86: «This document does not declare its own hash.» — linea final en ingles;
+       la canonica declara lo propio en castellano y remite al mensaje
+       acompanante para los hashes.
+
+== C. Diferencias de encuadre (registradas; la doctrina las resuelve) ==
+
+  C.1 Titulo: la archivada se titula «acta del review de la implementacion de
+      R4.6.7» y su estado dice «REVIEW RECIBIDO»; la canonica es un ACUSE de la
+      ronda con respuestas Q19/Q20/Q21 y dice expresamente que NO es dictamen
+      de codigo (SS6). El commit de archivo c30760e repite el encuadre «acta
+      del review».
+  C.2 La archivada anade material que la canonica no tiene (proviene de mi
+      mensaje posterior, ya con el 9c86d76 delante): stats por fichero de
+      96c52d1 (+26/-0 GlobeRenderer, +9/-0 AtmoShaderConstants) y 9c86d76
+      (+8/-7 AtmoShaderSource, +2/-2 AtmoShaderSourceTest), el implementador
+      (OpenCode, DeepSeek V4.1 Flash, via David), la base 8611ee6, y los
+      items Robolectric/R4.7. No hay oposicion con la canonica; es material
+      nuevo de la ronda que este 0423 recibe por su lado.
+  C.3 Queda fijado para el historial: NI la canonica NI la reconstruccion son
+      dictamen de codigo del R4.6.7 — la rama sigue sin push y nada del diff
+      es verificable. El dictamen llega sobre el head final del PR, con el
+      doble GO del merge intacto. El encuadre «review» del titulo archivado se
+      lee aqui como «recepcion del review request», no como dictamen.
+
+== D. Resolucion del contrato parcial ==
+
+  El paquete 0422 (PAQUETE-from-glm-0422-acuse-GLM-20261120.zip, 12 miembros,
+  sha256 904c7e27...) sigue integro en mi custodia (ver evidencia 07). La
+  reconstruccion archivada NO se reescribe (regla simetrica del 0422 SS2): la
+  acta archivada y la canonica conviven — la primera como texto del relay, la
+  segunda como miembro principal del paquete, con sus hashes declarados aqui.
+  David puede completar el contrato archivando los miembros del paquete bajo
+  from-glm/files/0422/ (convencion de 0388-errata, 061, 316-330) en el commit
+  que elija, o dejarlo declarado parcial: los hashes hacen ambas cosas
+  verificables en cualquier momento.

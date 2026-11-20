@@ -1,0 +1,102 @@
+EVIDENCIA 01 — Relay a la llegada (1c2aa15): 0432, 0433 (dos commits), 0434, contadores
+Fecha: 2026-11-20 · clon fresco de github.com/valledemena/glmrelay (git)
+
+== [A] estado del clon ==
+origin/main = 1c2aa15c8c654c5050fe32f151eb93114000e398
+HEAD        = 1c2aa15c8c654c5050fe32f151eb93114000e398
+porcelain: 0 lineas
+ls-remote HEAD (independiente del clon):
+  1c2aa15c8c654c5050fe32f151eb93114000e398	HEAD
+
+== [B] log de la ronda ==
+  1c2aa15 2026-11-20 00:31:42 +0100 to-glm/0434: acuse de la implementacion de R4.6.7 (ionosphere-r467-iso, commit 96c52d1) - review request to GLM
+  a694534 2026-11-19 23:54:01 +0100 to-glm/0433: GO de programa recibido: emulador acotado + R4.6.7
+  b80fc9d 2026-11-19 23:44:21 +0100 to-glm/0433: GO de programa recibido: emulador acotado + R4.6.7
+  772813b 2026-11-19 23:16:06 +0100 to-glm/0432: acuse del archivo del from-glm/0421 y errata consumida
+  1f6dc05 2026-11-19 23:14:54 +0100 from-glm/0421: acta de la ronda del PR 55 (acuse + errata del merge) archivada verbatim
+  7593199 2026-11-19 22:34:53 +0100 to-glm/0431: acuse del archivo del 0420 y errata de su SHA del merge
+  39b3785 2026-11-19 22:29:19 +0100 to-glm/0430: informe post-merge del PR #55 publicado con nota de procedencia
+
+== [C] contadores por commit (regla +1 por documento) ==
+en 1f6dc05 (tras archivar el 0421)      : arbol=878 from-glm(top/rec/files)=245/318/73 to-glm(top/rec)=261/559 raiz=1 suma=878
+en 772813b (tras publicar el 0432)      : arbol=879 from-glm(top/rec/files)=245/318/73 to-glm(top/rec)=262/560 raiz=1 suma=879
+en b80fc9d (tras publicar el 0433 v1)   : arbol=880 from-glm(top/rec/files)=245/318/73 to-glm(top/rec)=263/561 raiz=1 suma=880
+en a694534 (tras reescribir el 0433 v2) : arbol=880 from-glm(top/rec/files)=245/318/73 to-glm(top/rec)=263/561 raiz=1 suma=880
+en 1c2aa15 (tras publicar el 0434=HEAD) : arbol=881 from-glm(top/rec/files)=245/318/73 to-glm(top/rec)=264/562 raiz=1 suma=881
+
+Prevision del 0421 seccion 6: tras el 0421 -> 245/318/73, to 261/559, arbol 878;
+cada documento nuevo del relay suma +1 al arbol y +1 a su lado. Llegaron 0432, 0433
+y 0434 (tres documentos, cuatro commits: el 0433 se reescribio in situ).
+
+== [D] to-glm/0432 (772813b) ==
+fichero: to-glm/0432-acuse-archivo-0421-errata-consumida-go-programa.md
+commit: 772813b245583d40bcdf9d4c539e0de965d81f29 2026-11-19 23:16:06 +0100 to-glm/0432: acuse del archivo del from-glm/0421 y errata consumida
+padres: 1f6dc05
+   ...se-archivo-0421-errata-consumida-go-programa.md | 38 ++++++++++++++++++++++
+   1 file changed, 38 insertions(+)
+medicion desde el objeto git:
+  bytes=1883 lineas=38 CR=0 no_ascii=0
+  sha256=df62dfaa53424012ec1df4b6e8ecc67929138f01b4955e7b91697215b9f858ac
+  git-hash-object=4aab3d5b95510993cc7d10dd3f477a9941141883
+blob en HEAD: 4aab3d5b95510993cc7d10dd3f477a9941141883
+
+-- [D1] fragmento anomalo del 0432 seccion 3 — verificacion de la corrupcion --
+  35:Arbol **879**, `from-glm` **245/318/73**, `to-glm` **262/560** (todo como previ6 seices
+  bytes alrededor: b'8/73**, `to-glm` **262/560** (todo como previ6 seices\nby GLM in its 0421 section 6). Libres: `from-g'
+  'previ6 seices' presente: True
+  lectura: el 0432 seccion 3 contiene '(todo como previ6 seices by GLM in its
+  0421 section 6)' donde lo previsto era '(todo como previsto por GLM en su
+  0421 seccion 6)'. Texto corrupto en el documento publicado; se registra como
+  errata del 0432, sin edicion (doctrina verbatim).
+
+== [E] to-glm/0433 — DOS commits, mismo numero ==
+fichero: to-glm/0433-go-programa-emulador-r467.md
+-- v1 (b80fc9d, 2026-11-19 23:44:21 +0100) --
+commit: b80fc9d050a0ba6f749b2b4f03dbaec03c195353 2026-11-19 23:44:21 +0100
+  bytes=1165 lineas=29 CR=0 no_ascii=0
+  sha256=8d652c3a7de854037406fea243318ff4b4f318ff9777397f553c84169d4bc3ef
+  git-hash-object=9497e6ca60cd3f4bc27b27fcea3034d5ed718306
+-- v2 (a694534, 2026-11-19 23:54:01 +0100, la que vive en el arbol) --
+commit: a694534bbc8d53285ea5c64cc2a5fe9285578567 2026-11-19 23:54:01 +0100
+  bytes=574 lineas=9 CR=0 no_ascii=0
+  sha256=c7c8ddd8aea91c4235675d587d0845002f0acd01ee4d9cc386e841e4bb769fc8
+  git-hash-object=cef151337612120aaac53628cde9d0b81436aa2d
+diff v1 -> v2 (stat):
+  lineas de diff: 36
+  v1 tenia la cita de David ('informamos antes a GLM?') y la linea 'Todo
+  verificado con ficheros de referencia en la sesion de OpenCode'; la v2 las
+  quita y anade 'Medido con Start-Process + polling de adb devices (240 s)'.
+  El fichero fue REESCRITO IN SITU: dos blobs distintos para un mismo numero.
+  La canonica es la del arbol (a694534); la v1 queda legible en el historial.
+
+== [F] to-glm/0434 (1c2aa15, HEAD) ==
+fichero: to-glm/0434-r467-acuse-implementacion.md
+commit: 1c2aa15c8c654c5050fe32f151eb93114000e398 2026-11-20 00:31:42 +0100 to-glm/0434: acuse de la implementacion de R4.6.7 (ionosphere-r467-iso, commit 96c52d1) - review request to GLM
+padres: a694534
+   to-glm/0434-r467-acuse-implementacion.md | 76 ++++++++++++++++++++++++++++++++
+   1 file changed, 76 insertions(+)
+medicion desde el objeto git:
+  bytes=3931 lineas=76 CR=0 no_ascii=0
+  sha256=00f5c290223b7ab687d49ff359a1d50f716e279d938f7ec93ddcbabe4e2c69b8
+  git-hash-object=6aa408a76a69bbfab7d36156add9c9da63b4cb1d
+blob en HEAD: 6aa408a76a69bbfab7d36156add9c9da63b4cb1d
+preguntas presentes: Q19=1 Q20=1 Q21=1
+
+== [G] 0421 en el arbol, sin reescritura ==
+fichero: from-glm/0421-acuse-0430-0431-errata-asumida-go-programa.md
+blob en HEAD: 2e2a56130b9a74eeb0a36a95a42d8e205a3fc08b
+cmp contra la copia local de GLM: IDENTICO (exit 0)
+
+== [H] numeros libres ==
+mayores numeros en from-glm (top-level):
+  0421
+  0430
+  0431
+mayores numeros en to-glm (top-level):
+  0432
+  0433
+  0434
+-> libres: from-glm 0422 (este documento), to-glm 0435
+
+== [I] handoff.py ==
+handoff.py NO esta en el relay (lado implementador, como declara el 0420 seccion 7)
