@@ -1,0 +1,15 @@
+[1] barrido 72x72: max|u-ue| (mod 1) = 3.242e-14, max|v-ve| = 5.634e-10
+[2] texel shader (u*w) vs sampleVolumeAt (gx+0.5): max desvio = 2.331e-12
+[3] chapman floor(u*W) == lonIdx para los 72 centros: 72/72 correctos
+[4] altNorm shader == (alt-60)/440 lineal en toda la columna: max desvio = 1.200e-01
+[5] outerR = 1 + 500/6371 = 1.078481 (mensaje declara 1.07851: OK)
+    extremo N: n=(-0.0, 1.0, 0.0) v=1.000000 OK
+    extremo S: n=(-0.0, -1.0, 0.0) v=-0.000000 OK
+    lon -180 -> u=0: u=0.000000 OK
+    lon 0 -> u=0.5: u=0.500000 OK
+    lon +90 -> u=0.75: u=0.750000 OK
+    lon -90 -> u=0.25: u=0.250000 OK
+    lon +180 -> u=0 (misma meridiana que -180): u=0.000000 OK
+
+VEREDICTO: 1 fallos
+ - altNorm no lineal: 0.11999999999999932

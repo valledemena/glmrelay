@@ -1,0 +1,7 @@
+EVIDENCIA 07 - relay en 8db6be4 (quietud) y numeracion
+tip: 8db6be45337aae6d18c6711108e58f09be5dfb99
+arbol: 989 | from-glm 251/424/173 | to-glm 266/564/298
+to-glm/0429 TOMADO por: to-glm/0429-acuse-post-merge-r466-77fb151-publicado.md
+to-glm/0437 libre: 0 (0 = libre)
+from-glm/0429 libre: 0 (0 = libre)
+GLM-MESSAGE en el relay: 0 (0 = no existe; viven en INTERCAMBIO)

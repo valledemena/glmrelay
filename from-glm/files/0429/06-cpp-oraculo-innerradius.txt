@@ -1,0 +1,59 @@
+EVIDENCIA 06 - oraculo C++ (valledemena/ionosphere-live-3d, master d9fb809):
+innerR del volumen = fondo de rejilla (60 km), NO la superficie del planeta
+Fuente: clon fresco; VolumeRenderer.cpp:256-257 y DensityVolume.h
+
+== VolumeRenderer.cpp L254-270 (uniforms) ==
+    if (!visible_ || !hasVolume_) return;
+
+    float outerR = 1.0f + (altMaxKm_ / 6371.0f) * explode_;
+    float innerR = 1.0f + (altMinKm_ / 6371.0f) * explode_;
+    glm::mat4 model = glm::scale(glm::mat4(1.0f), glm::vec3(outerR));
+
+    glUseProgram(shader_);
+    glUniformMatrix4fv(glGetUniformLocation(shader_, "u_model"), 1, GL_FALSE, &model[0][0]);
+    glUniformMatrix4fv(glGetUniformLocation(shader_, "u_view"), 1, GL_FALSE, &view[0][0]);
+    glUniformMatrix4fv(glGetUniformLocation(shader_, "u_projection"), 1, GL_FALSE, &projection[0][0]);
+    glUniform3f(glGetUniformLocation(shader_, "u_camPos"),
+                camPosWorld.x, camPosWorld.y, camPosWorld.z);
+    glUniform3f(glGetUniformLocation(shader_, "u_sunDir"),
+                sunDir_.x, sunDir_.y, sunDir_.z);
+    glUniform1f(glGetUniformLocation(shader_, "u_innerR"), innerR);
+    glUniform1f(glGetUniformLocation(shader_, "u_outerR"), outerR);
+    glUniform1f(glGetUniformLocation(shader_, "u_opacityScale"), opacityScale_);
+
+== DensityVolume.h L15 (rango por defecto) y L51-54 (rejilla ^1.5) ==
+    float altMinKm = 60.0f, altMaxKm = 500.0f;
+//   h_i = altMin + (altMax-altMin) * (i/(n-1))^1.5
+inline float volumeAltKm(int i, int n, float altMinKm, float altMaxKm) {
+    float f = (n <= 1) ? 0.0f : (float)i / (float)(n - 1);
+    return altMinKm + (altMaxKm - altMinKm) * powf(f, 1.5f);
+
+== VolumeRenderer.h L55-57 (defaults) ==
+    float altMinKm_ = 60.0f, altMaxKm_ = 500.0f;
+    float opacityScale_ = 1.0f;
+    float explode_ = 1.0f;
+
+== contraste con el port Android (VolumeLayerRenderer.kt L73-77) ==
+    /** Radio exterior de la esfera proxy: 500 km sobre el radio del planeta. */
+    val outerRadius: Float = volumeOuterRadius(VOL_ALT_MAX_KM)
+
+    /** Radio interior: la superficie del planeta (la marcha entra desde ahi). */
+    val innerRadius: Float = AtmoShaderConstants.PLANET_R
+
+C++: innerR = 1.0 + 60/6371 = 1.0094204 (fondo de la rejilla)
+Android: innerRadius = PLANET_R = 1.0 (superficie)  <-- R1
+
+== jitter y alpha: C++ vs Android (identicos) ==
+/home/z/my-project/work/r0429-verificacion/web/src/Ionosphere/VolumeRenderer.cpp:78:    float jit = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
+/tmp/wt-r463/app/src/main/java/com/valledemena/ionosphere/render/VolumeShaderSource.kt:85:  float jit = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
+126:        float a = clamp(d * d * u_opacityScale * dt * 40.0, 0.0, 1.0) * sunShadow;
+127:    float a = clamp(d * d * uOpacity * dt * 40.0, 0.0, 1.0) * sunShadow;
+
+== bloque u_isoOn del C++ (L129-135, omitido en Android - divergencia declarada) ==
+            float m = min(min(abs(d - 0.556), abs(d - 0.667)), abs(d - 0.778));
+            float band = 1.0 - smoothstep(0.0, u_isoWidth, m);
+            col = mix(col, vec3(1.0), band * 0.55);
+            a = max(a, min(band * 0.35, u_opacityScale));
+        }
+
+        accumColor += (1.0 - accumAlpha) * a * col;

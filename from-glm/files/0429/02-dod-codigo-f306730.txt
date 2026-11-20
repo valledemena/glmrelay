@@ -1,0 +1,32 @@
+EVIDENCIA 02 - DoD R4.6.3 verificado en el codigo de f306730
+Fuente: worktree /tmp/wt-r463 (f306730)
+
+== OFF por defecto ==
+32:const val VOLUME_VISIBLE_DEFAULT = false
+== pasos ==
+40:const val VOL_STEPS_REF = 64
+41:const val VOL_STEPS_MIN = 16
+42:const val VOL_STEPS_MAX = 64
+63:    HIGH(VOL_STEPS_REF),
+== cero coste OFF (plan L199 + wiring) ==
+199:    if (!showVolume) return VolumeFramePlan(upload = null, draw = null)
+520:        val draw = plan.draw ?: return
+== uMode 0/1 ==
+app/src/main/java/com/valledemena/ionosphere/render/VolumeLayerPlan.kt:52:    DENSITY(0),
+app/src/main/java/com/valledemena/ionosphere/render/VolumeLayerPlan.kt:53:    CHAPMAN(1),
+app/src/main/java/com/valledemena/ionosphere/render/VolumeShaderSource.kt:111:    if (uMode == 1) {
+== guard 60..500 ==
+24:const val VOL_ALT_MIN_KM = 60.0
+25:const val VOL_ALT_MAX_KM = 500.0
+207:    if (v.altMinKm != VOL_ALT_MIN_KM || v.altMaxKm != VOL_ALT_MAX_KM) {
+== atmosfera 12/4 intacta ==
+19:    const val DEFAULT_STEPS = 12           // web builders.ts L130
+20:    const val DEFAULT_LIGHT_STEPS = 4      // web builders.ts L131
+ficheros atmo en el diff: 0
+0 (0 = ninguno)
+== HUD (e) ==
+25:        modeEnabled = volumeOn,
+205:        if (program == 0 || vao == 0 || densityTex == 0 || !hasData) return
+== conteo de tests ==
+total @Test: 353 en 54 ficheros
+G7c nuevos: 14+9+4

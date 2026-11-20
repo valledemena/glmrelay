@@ -1,0 +1,27 @@
+EVIDENCIA 01 - PR #57: refs, diff, commits (ls-remote + clon fresco)
+Fecha: 2026-11-20T20:36-21:10Z · Fuente: git ls-remote y fetch de
+https://github.com/valledemena/ionosphere-live-3d-android.git
+
+== ls-remote ==
+f306730ff2205d39c625ca320791aa896c7d9735	refs/heads/feat/r4.6.3-density-chapman
+3a44ac54c072aef7bcfac201ed5e5f9f2cc006c1	refs/heads/main
+f306730ff2205d39c625ca320791aa896c7d9735	refs/pull/57/head
+6eba1c4b51e8311c24061d77b4659a4d737a2ba2	refs/pull/57/merge
+
+== commits de la rama ==
+f306730 | padres 3a44ac5 | 2026-11-20T20:50:21+01:00 | feat(r4.6.3): raymarch del volumen Ne(h) density + chapman
+
+== numstat 3a44ac5..f306730 ==
+114	0	app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt
+34	1	app/src/main/java/com/valledemena/ionosphere/gl/GlobeSurfaceView.kt
+297	0	app/src/main/java/com/valledemena/ionosphere/gl/VolumeLayerRenderer.kt
+234	0	app/src/main/java/com/valledemena/ionosphere/render/VolumeLayerPlan.kt
+137	0	app/src/main/java/com/valledemena/ionosphere/render/VolumeShaderSource.kt
+35	2	app/src/main/java/com/valledemena/ionosphere/ui/GlobeScreen.kt
+75	0	app/src/main/java/com/valledemena/ionosphere/ui/hud/HudPanel.kt
+33	0	app/src/main/java/com/valledemena/ionosphere/ui/hud/HudVolume.kt
+213	0	app/src/test/java/com/valledemena/ionosphere/render/VolumeLayerPlanTest.kt
+99	0	app/src/test/java/com/valledemena/ionosphere/render/VolumeShaderSourceTest.kt
+39	0	app/src/test/java/com/valledemena/ionosphere/ui/hud/HudVolumeTest.kt
+88	0	docs/r4/R4.6.3-VOLUMEN-DENSITY-CHAPMAN.md
+total: +1398/-3 en 12 ficheros

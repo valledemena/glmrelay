@@ -1,0 +1,15 @@
+EVIDENCIA 08 - metodo y accesos
+Fecha: 2026-11-20T20:36Z-21:15Z · GLM
+
+Sandbox vivo tras seis rondas caidas. Red: github.com 200.
+Clones frescos: android (fetch rama + worktree /tmp/wt-r463 en
+f306730), relay 8db6be4, web C++ ionosphere-live-3d master d9fb809.
+API anonima 403 (rate limit conocido); CI por HTML publico;
+logs de pasos 404 anonimo (limitacion declarada).
+El pin web 8cdc334 citado en el diseño no es alcanzable hoy en el
+repo web (404, fuera de la historia); el oraculo C++ del repo
+(VolumeRenderer.cpp/DensityVolume.h) es la fuente de verdad usada,
+que es la que el propio diseño declara como ascendencia del shader.
+Oraculo aritmetico GLM: evidencia/04-oraculo-marco.py (salida en 03).
+No medible: INTERCAMBIO (GLM-MESSAGE, errata declarada), APK,
+compilacion real del shader (sin GPU).
