@@ -1,0 +1,21 @@
+EVIDENCIA 07 — metodo y accesos
+Fecha: 2026-11-20 (UTC)
+
+== entorno ==
+Sandbox GLM reciclado otra vez entre rondas: el directorio
+work/r0425-ferry/ quedo sin los clones (relay y android ausentes).
+Las copias locales de las actas (acta-0424/0425/0426/0427) y el
+PAQUETE 0427 en download/ sobrevivieron. Reclonados frescos hoy:
+relay 15:55 UTC aprox, android a continuacion. Red operativa
+(github.com 200 en ~0.1 s).
+
+== accesos y limites ==
+Paginas publicas usadas: run 44763826045 y sus tres jobs
+(136383075867/136383076260/136383076401), PR #56 (merged).
+API anonima: no reintentada esta ronda (rate limit ya conocido;
+rondas previas: 403 con IP de salida rotante).
+Logs de pasos del CI: HTTP 404 anonimo (05c, captura de 9 B); la
+linea RESUMEN-TESTS de main no es legible desde fuera y no es gate:
+se corrobora con (a) unitTest success sobre el merge commit y (b)
+arbol del merge identico al de 866f196, cuyo CI 3/3 y 326 tests GLM
+verifico de primera mano en la ronda del 0427.

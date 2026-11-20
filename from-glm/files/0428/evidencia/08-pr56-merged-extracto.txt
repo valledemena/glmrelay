@@ -1,0 +1,8 @@
+EVIDENCIA 08 — extracto de la pagina del PR #56 (estado tras el merge)
+Fecha: 2026-11-20 (UTC) · Fuente: https://github.com/valledemena/ionosphere-live-3d-android/pull/56
+
+titulo: R4.6.7 iso-bands (D-R4.6.2) golden JVM by valledemena · Pull Request #56 · valledemena/ionosphere-live-3d-andr
+apariciones de "Merged": 4
+refs a 3a44ac5: 3
+refs a 866f196: 21
+comentario del gate citado: ['7043448129']

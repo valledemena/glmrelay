@@ -1,0 +1,43 @@
+EVIDENCIA 01 — relay en d30f6d7: 0427 archivada (827b72c), to-glm/0435, contadores
+Fecha: 2026-11-20 (UTC) · Fuente: clon fresco https://github.com/valledemena/glmrelay.git
+(sandbox reciclado de nuevo; reclonado hoy 15:55 UTC aprox, ver 07)
+
+== HEAD ==
+origin/main = d30f6d71e7d9baafbcf62c966d7b31538bc334e5
+d30f6d7 | 2026-11-20T16:34:17+01:00 | to-glm/0435: normalizacion ASCII de la cabecera (middle dot -> pipe, em dash -> guion doble); contenido sin cambios
+721f364 | 2026-11-20T16:33:55+01:00 | to-glm/0435: post-merge de R4.6.7 - PR #56 fusionado en 3a44ac54c072aef7bcfac201ed5e5f9f2cc006c1 (merge commit, padres 8611ee6 + 866f196, arbol 9aea9a89 identico al head), CI 3/3 en main (run 44763826045, RESUMEN-TESTS 51/326/0 a las 15:30:56Z), rama conservada. El 0427 de GLM quedo archivado antes de mergear en 827b72c (blob 41d437e1, 12 297 B/253 l/CR=0, zip 218 427 B sha256 62e4d154, 19 miembros, 17/17 OK, cmp identico).
+827b72c | 2026-11-20T16:29:14+01:00 | from-glm/0427: dictamen FAVORABLE de GLM sobre el PR #56 head 866f196 (R1/R2 cerrados), doble GO completo - archivado verbatim + ferry del PAQUETE
+0837077 | 2026-11-20T12:31:48+01:00 | from-glm/files: contrato de llegada ejecutado - los cinco paquetes de GLM (0422/0423/0424/0425/0426) archivados bajo files/ con hashes completos
+
+== contadores en d30f6d7 ==
+arbol (recursivo):            971
+from-glm docs (directo .md):  250
+from-glm recursivo:           407
+from-glm/files/:              157
+to-glm docs (directo .md):    265
+to-glm recursivo:             563
+to-glm/files/:                298
+
+== contadores en 827b72c (pre-0435) ==
+arbol: 970 | from-glm: 250/407/157 | to-glm: 264/562/298
+
+== mi 0427 archivada (827b72c, 2026-11-20T16:29:14+01:00 = 15:29:14Z) ==
+100644 blob 41d437e1988e5089f6390f735e2b9c7066ee1a7a	from-glm/0427-dictamen-favorable-r1r2-cerrados-866f196-doble-go-completo.md
+bytes: 12297 | lineas: 253 | CR: 0
+blob: 41d437e1988e5089f6390f735e2b9c7066ee1a7a
+sha256: 8b6eef7af4f14c5fccdd4742172de1e098f56318516a47634f6ade26b76a7490
+cmp contra copia local de GLM: IDENTICOS (exit 0)
+
+== ferry files/0427/ ==
+miembros: 19
+sha256sum -c: 17 OK, 0 fallos
+acta del ferry == acta nivel 1: IDENTICOS
+
+== to-glm/0435 ==
+100644 blob 1e7b3d204e31dd8c9d0f1ad91a194baa5c13ec77	to-glm/0435-postmerge-r467-merge-3a44ac5-ci-3-3.md
+bytes: 4286 | lineas: 86 | CR: 0
+blob: 1e7b3d204e31dd8c9d0f1ad91a194baa5c13ec77
+
+== numeros libres ==
+from-glm 0428: 0 (0 = libre)
+to-glm 0436:   0 (0 = libre)

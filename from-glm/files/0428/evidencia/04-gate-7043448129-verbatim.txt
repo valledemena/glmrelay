@@ -1,0 +1,53 @@
+EVIDENCIA 04 — gate de merge registrado en el PR antes de fusionar
+Fecha: 2026-11-20 (UTC) · Fuente: pagina publica del PR #56
+
+Comentario: issuecomment-7043448129
+Marca temporal: 2026-11-20T15:29:35Z
+Merge commit: 2026-11-20T16:29:42+01:00 = 15:29:42Z
+El gate precede al merge por 7 segundos. Registrado ANTES de fusionar.
+
+## Gate de merge del PR #56 — R4.6.7 iso-bands
+
+**Doble GO completo.**
+
+### Mitad de GLM: acta `0427` FAVORABLE
+
+- Acta canonica: `from-glm/0427-dictamen-favorable-r1r2-cerrados-866f196-doble-go-completo.md`,
+  archivada verbatim en el relay en el commit **`827b72c`**, blob
+  **`41d437e1988e5089f6390f735e2b9c7066ee1a7a`**, **12 297 B / 253 lineas / CR=0 /
+  ASCII puro**, sha256
+  `8b6eef7af4f14c5fccdd4742172de1e098f56318516a47634f6ade26b76a7490`.
+- Paquete: `PAQUETE-from-glm-0427-dictamen-GLM-20261120.zip`, **218 427 B**,
+  sha256 `62e4d154f93bdb8cee755738768ffbf3e6dd05646ddc5b5adff3cdcba72b952e`,
+  **19 miembros**, `sha256sum -c` **17/17 OK (0 fallos)**, `cmp` identico
+  (exit 0) entre el miembro del zip y la copia suelta. Miembros archivados bajo
+  `from-glm/files/0427/`.
+- Verificado por GLM de primera mano sobre este head: delta `9c86d76..866f196`
+  **+7/-2 en 2 ficheros** (identico al enviado), acumulado **+86/-1 en 5
+  ficheros**, **0 lineas del delta** tocan `logNe`, `ISO_BAND_*` o el sitio
+  `isoSum * uIsoColor * uIsoStrength`; R1 con la forma integral de `dR`/`dM`;
+  R2 pinea los tres peldanos (el 0.75 estaba preautorizado en su `0425` seccion
+  5); CI **3/3** del run `44728416840`; cuerpo del PR con las tres anotaciones y
+  la atribucion corregida.
+
+### Mitad de David: GO escrito
+
+> «GO para todo por mi parte» — David, 2026-11-20, en el canal.
+
+### Evidencia del head que se fusiona
+
+- Head: **`866f19607ca566fbe25781ecf1d19f2162428dae`** (rama
+  `feat/r4.6.7-iso-bands`), base `main` `8611ee6`.
+- Delta contra `main`: **5 ficheros, +86/-1**.
+- CI del head: run **`44728416840`**, `completed success` — assembleDebug 58 s,
+  unitTest 55 s, lint 1 m 34 s; el job `unitTest` (`136261624532`) publica
+  `RESUMEN-TESTS tarea=testDebugUnitTest ficheros=51 tests=326 fallos=0
+  errores=0 omitidos=0` a las `11:33:13Z`.
+- Refrendo local del mismo arbol: mismo `RESUMEN-TESTS` (51/326/0), BUILD
+  SUCCESSFUL.
+
+### Forma del merge
+
+Merge commit (sin squash, sin rebase), gate registrado aqui antes de fusionar,
+rama `feat/r4.6.7-iso-bands` **conservada** (no se borra sin GO).
+

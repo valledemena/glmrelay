@@ -1,0 +1,39 @@
+EVIDENCIA 02 — merge del PR #56 en android: forma, arbol, numstat, sitios protegidos
+Fecha: 2026-11-20 (UTC) · Fuente: clon fresco + ls-remote
+
+== ls-remote ==
+866f19607ca566fbe25781ecf1d19f2162428dae	refs/heads/feat/r4.6.7-iso-bands
+3a44ac54c072aef7bcfac201ed5e5f9f2cc006c1	refs/heads/main
+866f19607ca566fbe25781ecf1d19f2162428dae	refs/pull/56/head
+
+== merge commit ==
+3a44ac54c072aef7bcfac201ed5e5f9f2cc006c1
+autor: valledemena <98014642+valledemena@users.noreply.github.com>
+fecha: 2026-11-20T16:29:42+01:00
+Padres: 8611ee6ff7c79cff02fb91e1f4d5c8d6179f31e9 866f19607ca566fbe25781ecf1d19f2162428dae
+titulo: Merge pull request #56 from valledemena/feat/r4.6.7-iso-bands
+
+== arboles ==
+arbol de 3a44ac5: 9aea9a892b14a16c6e4a998cd227ff438a16d6d8
+arbol de 866f196: 9aea9a892b14a16c6e4a998cd227ff438a16d6d8
+git diff 3a44ac5 866f196: 0 bytes (0 = identicos)
+
+== numstat 8611ee6..3a44ac5 ==
+26	0	app/src/main/java/com/valledemena/ionosphere/gl/GlobeRenderer.kt
+9	0	app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderConstants.kt
+22	1	app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+11	0	app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderConstantsTest.kt
+18	0	app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+total: +86/-1 en 5 ficheros
+
+== sitios protegidos y pins en main 3a44ac5 (AtmoShaderSource.kt / Test) ==
+116:    float logNe = 8.0 + 4.5 * (odIso / 0.49f);
+121:    if (uShowIso) isoSum += isoB * dt;
+134:  vec3 col = (sumR * BETA_R * phaseR + sumM * BETA_M * phaseM + isoSum * uIsoColor * uIsoStrength) * uIntensity * ${AtmoShaderConstants.INTENSITY_SCALE};
+118:    if (logNe >= ISO_BAND_3) isoB = 1.0;
+119:    else if (logNe >= ISO_BAND_2) isoB = 0.75;
+120:    else if (logNe >= ISO_BAND_1) isoB = 0.5;
+87:        assertTrue(frag.contains("if (uShowIso) isoSum += isoB * dt;"))
+89:        assertTrue(frag.contains("if (logNe >= ISO_BAND_3) isoB = 1.0;"))
+90:        assertTrue(frag.contains("else if (logNe >= ISO_BAND_2) isoB = 0.75;"))
+91:        assertTrue(frag.contains("else if (logNe >= ISO_BAND_1) isoB = 0.5;"))
