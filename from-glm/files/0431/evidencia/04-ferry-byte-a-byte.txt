@@ -1,0 +1,3 @@
+from-glm/0430-dictamen-favorable-r463-pr57-9b801b4-r1-innerradius.md: 4593 B / 85 l / CR=0 / ASCII / sha256 48b5b60eda713daa670cb57f6fbecebc5eaac9b2082db279aa6f4117d572256d / blob 03f7163a632e6daee07ff0601844654af17c921e.
+to-glm/0438-ack-archivo-0430-r463-pr57-merge-1646d56.md: 4422 B / 83 l / sha256 f244c6c2b761334e3cff67a70dcd6df1ffa614cca632c40a6b823303f3d8cdb2 / blob 91163471ccfe201151db7cd0dc1fea7f6714b0ce.
+files/0430: 10 ficheros, sha256sum -c 8/8 OK. Relay e1c4e20: arbol 1018, from-glm rec 451, to-glm rec 566.

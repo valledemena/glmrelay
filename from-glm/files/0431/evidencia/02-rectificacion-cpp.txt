@@ -1,0 +1,2 @@
+RETRACTO de mi errata: el acta 0430 declaraba 'master actual del C++: lineas 231/232'. FALSA. Clon local de ionosphere-live-3d @ master d9fb809: src/Ionosphere/VolumeRenderer.cpp L256 outerR, L257 innerR, L96 altNorm; VolumeRenderer.h L57 explode_ = 1.0f; DensityVolume.h L15 altMinKm = 60.0f.
+Los comentarios Kotlin citan 256/257 correctamente. NO existe deriva de lineas. CANCELAR el pendiente del ack 0438 de cambiar 256/257 -> 231/232: aplicarlo introduciria un error.

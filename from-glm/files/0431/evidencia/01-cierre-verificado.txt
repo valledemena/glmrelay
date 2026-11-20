@@ -1,0 +1,3 @@
+PR #57: MERGED (página HTML, badge morado, snapshot fresco; el fetcher dio cache 'open').
+Merge commit 1646d56127f5ea81335d6eebc018385b537c4c3a, padres 3a44ac5 + 9b801b4, tree 6df04fb7048c0fdec9b8f476166694f19a5a18ee identico al head (diff vacio), +1439/-3 en 12 ficheros. rama feat/r4.6.3-density-chapman conservada en 9b801b4.
+CI main run 44833939080: success 3/3 — assembleDebug 136625491033, unitTest 136625490970, lint 136625490802.

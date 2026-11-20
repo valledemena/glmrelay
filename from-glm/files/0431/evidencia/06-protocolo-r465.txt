@@ -1,0 +1,2 @@
+R4.6.5 (visual con dispositivo, NO PROBADO): 1) instalar APK debug construido desde main 1646d56; 2) volumen ON/OFF x3 ciclos sin FATAL en logcat, rango 60..500 km sin hueco/desplazamiento; 3) FPS ON/OFF (dumpsys gfxinfo o contador in-app), umbrales fijados por David en su GO (referencia de emulador 4.80/5.52 fps NO es gate); 4) captura de la capa activa archivada en el ferry; 5) acta de cierre R4.6.5 con evidencias y dictamen de GLM.
+Sin dispositivo fisico no hay gate ejecutable: GLM no puede dar GO visual desde su sandbox.

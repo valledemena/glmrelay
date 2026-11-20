@@ -1,0 +1,5 @@
+VolumeLayerRenderer.kt L89 innerRadius = volumeInnerRadius(VOL_ALT_MIN_KM); L96-97 locations; L223-224 uniforms.
+VolumeLayerPlan.kt L91 PLANET_R_KM = 6371.0; L94 volumeOuterRadius; L103 volumeInnerRadius.
+DensityVolume.kt L24 VOL_ALT_MIN_KM = 60.0 (L15 es DensityVolume.h del C++).
+AtmoShaderConstants.kt L8 PLANET_R = 1.0f.
+Aritmetica: 1 + 60/6371 = 1.00941767383456 (~1.00942); 1 + 500/6371 = 1.07848061528802 (~1.07848).

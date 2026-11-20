@@ -1,0 +1,1 @@
+Sandbox GLM revivido 23:18:47Z; API anonima GitHub 403 (rate-limited), fetcher web devolvio cache 'open'; verificacion por git clone local + pagina web. El fichero 'zip' subido al sandbox era una pagina HTML del repo C++, no el ferry: irrelevante porque se clonaron todos los repos.
