@@ -1,0 +1,31 @@
+diff --git a/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt b/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+index bd17326..2279d82 100644
+--- a/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
++++ b/app/src/main/java/com/valledemena/ionosphere/render/AtmoShaderSource.kt
+@@ -118,7 +118,7 @@ void main() {
+     if (logNe >= ISO_BAND_3) isoB = 1.0;
+     else if (logNe >= ISO_BAND_2) isoB = 0.75;
+     else if (logNe >= ISO_BAND_1) isoB = 0.5;
+-    if (uShowIso) isoSum += isoB;
++    if (uShowIso) isoSum += isoB * dt;
+ 
+     // planet shadow: the ray to the sun from p must not cross Earth
+     float tPlanet = raySphere(p, sun, PLANET_R);
+diff --git a/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt b/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+index dbec1d5..8b21c55 100644
+--- a/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
++++ b/app/src/test/java/com/valledemena/ionosphere/render/AtmoShaderSourceTest.kt
+@@ -83,7 +83,12 @@ class AtmoShaderSourceTest {
+         assertTrue(frag.contains("const float ISO_BAND_2 = 11.0;"))
+         assertTrue(frag.contains("const float ISO_BAND_3 = 11.5;"))
+         assertTrue(frag.contains("float logNe = 8.0 + 4.5 * (odIso / 0.49f);"))
+-        assertTrue(frag.contains("if (uShowIso) isoSum += isoB;"))
++        // R1: la contribucion iso se integra por paso (dt), no se suma por paso.
++        assertTrue(frag.contains("if (uShowIso) isoSum += isoB * dt;"))
++        // R2: la escalera del glow queda pinned (1.0 / 0.75 / 0.5).
++        assertTrue(frag.contains("if (logNe >= ISO_BAND_3) isoB = 1.0;"))
++        assertTrue(frag.contains("else if (logNe >= ISO_BAND_2) isoB = 0.75;"))
++        assertTrue(frag.contains("else if (logNe >= ISO_BAND_1) isoB = 0.5;"))
+         assertTrue(frag.contains("isoSum * uIsoColor * uIsoStrength"))
+     }
+ }

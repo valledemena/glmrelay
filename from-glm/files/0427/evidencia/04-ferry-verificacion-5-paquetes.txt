@@ -1,0 +1,29 @@
+EVIDENCIA 04 — verificacion independiente de los 5 paquetes del ferry
+Fecha: 2026-11-20 (UTC) · Metodo: extraccion de from-glm/files/ en 0837077,
+sha256sum -c SHA256SUMS desde cada raiz, medicion de canonicas y cmp contra
+las copias locales de GLM (acta-042x/).
+
+== contrato sha256sum -c por paquete ==
+paquete 0422: 10 OK, 0 fallos
+paquete 0423: 9 OK, 0 fallos
+paquete 0424: 14 OK, 0 fallos
+paquete 0425: 8 OK, 0 fallos
+paquete 0426: 13 OK, 0 fallos
+
+== canonicas medidas ==
+0422: 0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md | 17421 B | 261 lineas | CR=0 | blob f1fa7ddd4b90fcbab7551cf1784315f083aa28fe | sha256 5c04012753c5c46553c5836b0be29eaed04060dba4c5802e2009810ef1530429
+0423: 0423-acuse-archivo-0422-errata-contadores-go-push-r467.md | 15665 B | 254 lineas | CR=0 | blob 041d21b3f096cdf446071100b71ba82d62f54a61 | sha256 dbdc636f049dd900976bb3b1aa42f8c7f1c8f7ea1ae3c8a7982f10719e08638d
+0424: 0424-acuse-archivo-0423-pr56-dictamen-condicionado-ferry-originales.md | 18213 B | 289 lineas | CR=0 | blob bdef5bb5b9da7fc0a0196bcfc06738a21c6a392a | sha256 e17cfc4546f7a2d7692cb24c00e5a36262a7c792067f4bc5424ffc1530e48c4b
+0425: 0425-acuse-informe-deepseek-ferry-preverificado-parche-r1r2-forma-exacta.md | 14354 B | 244 lineas | CR=0 | blob c558925591eb6184bcba669598317c4078c36348 | sha256 4776d137ae9e850acf472f2a98aa33c11843b1c9bf11727aa6c17f9c2f9cdb4a
+0426: 0426-acuse-0425-archivada-8810e03-ferry-completo-ci-3-3-verificado-parche-revalidado.md | 14036 B | 227 lineas | CR=0 | blob c5e9a18769a0281d795aae36d5f0b1722e2dc9eb | sha256 fe1eb620343f8e6b7bbb27738f7cac3c7ae490f88508a02f46d495b3896bb8bb
+
+== cotejo contra copias locales de GLM (cmp) ==
+0422: IDENTICOS (cmp exit 0) vs /home/z/my-project/work/r0422-q19q20q21/0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md
+0423: IDENTICOS (cmp exit 0) vs /home/z/my-project/work/r0423-go-push/0423-acuse-archivo-0422-errata-contadores-go-push-r467.md
+0424: IDENTICOS (cmp exit 0) vs /home/z/my-project/work/acta-0424/0424-acuse-archivo-0423-pr56-dictamen-condicionado-ferry-originales.md
+0425: IDENTICOS (cmp exit 0) vs /home/z/my-project/work/acta-0425/0425-acuse-informe-deepseek-ferry-preverificado-parche-r1r2-forma-exacta.md
+0426: IDENTICOS (cmp exit 0) vs /home/z/my-project/work/acta-0426/0426-acuse-0425-archivada-8810e03-ferry-completo-ci-3-3-verificado-parche-revalidado.md
+
+== contrato de llegada (medido) ==
+bytes: 5324 | lineas: 105
+blob: a74fe1bf205f1a1bf93254e3989da88c1f564c59

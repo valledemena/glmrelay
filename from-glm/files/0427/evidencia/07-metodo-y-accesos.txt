@@ -1,0 +1,32 @@
+EVIDENCIA 07 — metodo y accesos
+Fecha: 2026-11-20 (UTC)
+
+== entorno ==
+Sandbox GLM reciclado entre rondas: los clones de la ronda anterior
+aparecieron como stubs sin remoto (historial de UUIDs, sin origin),
+creados 2026-11-20 09:56; se desecharon y se reclonaron de cero.
+DNS y HTTPS operativos (github.com responde 200 en ~0.1 s).
+
+== clones frescos ==
+relay:   git clone https://github.com/valledemena/glmrelay.git (13:16 UTC)
+android: git clone https://github.com/valledemena/ionosphere-live-3d-android.git
+         + fetch refs/pull/56/head (13:17 UTC)
+
+== accesos anonimos y limites ==
+API anonima: HTTP 403 rate limit, IP de salida 47.57.232.232
+(captura en 05a; rotacion de IP de salida ya observada en rondas
+anteriores: 8.212.10.159 -> 47.57.232.232).
+Paginas publicas HTML usadas sin limites:
+  - actions/runs/44728416840 (run completo, 'completed successfully')
+  - commit/866f196.../checks (pasos del job renderizado)
+  - actions/runs/44728416840/job/{136261624156,136261624532,136261624736}
+    (veredicto por job: assembleDebug/unitTest/lint success)
+  - pull/56 (cuerpo del PR, commits, estado open)
+Logs de pasos: HTTP 404 anonimo (requieren sesion); limitacion
+declarada; la linea RESUMEN-TESTS no es legible desde fuera y no es
+gate: se corrobora con unitTest success + recuento de tests estable
+(326, sin metodos de test nuevos en el delta).
+
+== worktree ==
+git worktree add --detach /tmp/wt-866f196 866f196 para inspeccion
+del bloque iso completo (ver 03b).

@@ -1,0 +1,43 @@
+EVIDENCIA 01 — estado del relay en 0837077 y ferry cerrado
+Fecha: 2026-11-20 (UTC) · Fuente: clon fresco https://github.com/valledemena/glmrelay.git
+(sandbox reciclado; reclonado hoy, ver 07)
+
+== HEAD ==
+origin/main = 08370771728ec3182bd23091eb75e5d9720c9c04
+0837077   <98014642+valledemena@users.noreply.github.com>
+2026-11-20T12:31:48+01:00
+from-glm/files: contrato de llegada ejecutado - los cinco paquetes de GLM (0422/0423/0424/0425/0426) archivados bajo files/ con hashes completos
+
+== contadores en HEAD (convencion 0409 S5) ==
+arbol (recursivo):            950
+from-glm docs (directo .md):  249
+from-glm recursivo:           387
+from-glm/files/:              138
+to-glm docs (directo .md):    264
+to-glm recursivo:             562
+to-glm/files/:                298
+
+== cadena 8810e03..0837077 ==
+0837077 from-glm/files: contrato de llegada ejecutado - los cinco paquetes de GLM (0422/0423/0424/0425/0426) archivados bajo files/ con hashes completos
+ae5e2d3 from-glm/files: ferry - actas 0422/0423/0424 en files/, codigo ferry para Deepseek (0427)
+dd08684 from-glm/0426: acuse de la ronda 0425 archivada en 8810e03, ferry de los 4 originales cerrado (contrato de llegada 10/9/14 OK, cmp identicos), CI 3/3 verificado de primera mano (API rate limited, HTML completo), doble GO de merge intacto. Relay: HEAD = origin/main = 8810e03 limpio. Contadores: arbol 884, from-glm 248/321/73, to-glo 264/562. Handoff actualizado.
+
+== ferry: miembros por directorio ==
+files/0422: 12 ficheros
+files/0423: 11 ficheros
+files/0424: 16 ficheros
+files/0425: 10 ficheros
+files/0426: 15 ficheros
+total 0422..0426: 64 miembros
+
+== contrato de llegada ==
+100644 blob a74fe1bf205f1a1bf93254e3989da88c1f564c59	from-glm/files/FERRY-0422-0426-CONTRATO-LLEGADA-20261120.md
+bytes: 5324 | lineas: 105 | blob: a74fe1bf205f1a1bf93254e3989da88c1f564c59
+
+== transcripciones from-glm/ raiz (pista doble, ultimas 6) ==
+from-glm/330-f10-slider-veredicto.md
+from-glm/331-ops-republica.md
+from-glm/332-glm-conforme-relevo-r34.md
+from-glm/INDICE-DEUDA-0379-0388.md
+from-glm/INDICE-R3.4.md
+from-glm/INDICE-R4.4.md

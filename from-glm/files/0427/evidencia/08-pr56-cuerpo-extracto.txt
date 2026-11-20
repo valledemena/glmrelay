@@ -1,0 +1,287 @@
+EVIDENCIA 08 — extracto del cuerpo del PR #56 (texto plano de la pagina)
+Fecha: 2026-11-20 (UTC) · Fuente: https://github.com/valledemena/ionosphere-live-3d-android/pull/56
+Nota: saltos de linea anadidos al quitar tags; los puntos de interes estan
+marcados con >>> al margen.
+
+    markdown-body js-comment-body soft-wrap user-select-contain d-block">
+    R4.6.7 iso-bands (D-R4.6.2) - golden JVM
+    Branch
+    feat/r4.6.7-iso-bands
+    , base
+    main
+    (
+    8611ee6
+    ), commits
+    96c52d1
+    (iso-bands en el raymarch) +
+    9c86d76
+    (activables segun Q19) +
+>>> 866f196
+    (R1/R2 del dictamen GLM
+>>> 0424
+    ). Sin
+    data/**
+    , sin
+    .github/**
+    , sin checker
+    congelado; 5 ficheros,
+    +86/-1
+    contra
+    8611ee6
+    .
+    DoD de R4.6.7
+    Bandas solo en el raymarch (
+    isoSum
+    en
+    ATMO_FRAG
+    ), nunca en la cortina.
+    showIso=false
+    por defecto (
+    GlobeRenderer.showIso
+    ).
+    Bandas logNe 10.5/11/11.5 (
+    ISO_BAND_1/2/3
+    ).
+    UI deshabilitada sin volumen ON:
+    uShowIso = showIso && sliceVolume != null
+    .
+    Golden JVM del uniform:
+    ISO_STRENGTH = 0.75f
+    + pines de color
+    (
+    AtmoShaderConstantsTest.pins_iso
+    ).
+    Escalera del glow pinned: 1.0 / 0.75 / 0.5 (
+    AtmoShaderSourceTest
+    , R2).
+    Cierre de R1 y R2 (dictamen GLM
+>>> 0424
+    )
+>>> R1 (integracion)
+    :
+    if (uShowIso) isoSum += isoB;
+    pasaba a escalar con
+    el numero de pasos (el brillo crecia ~2x de 8 a 16 pasos). Ahora
+    if (uShowIso) isoSum += isoB * dt;
+    , la misma forma integral que
+    dR
+    /
+    dM
+    :
+    la magnitud acumulada no depende de
+    N
+    y las posiciones de las bandas no se
+    mueven (dependen de
+    odIso
+    , que converge).
+>>> R2 (escalera pinned)
+    : tres
+    assertTrue(frag.contains(...))
+    nuevos en
+    AtmoShaderSourceTest.frag_iso_bands_r467
+    que fijan
+    isoB = 1.0
+    en
+    ISO_BAND_3
+    ,
+    isoB = 0.75
+    en
+    ISO_BAND_2
+    y
+    isoB = 0.5
+    en
+    ISO_BAND_1
+    .
+    El dictamen permitia pinnar solo los extremos; se pinnan los tres peldanos.
+    Verificacion (golden JVM, JVM pura)
+    testDebugUnitTest
+    tras
+>>> 866f196
+    : BUILD SUCCESSFUL,
+>>> RESUMEN-TESTS tarea=testDebugUnitTest ficheros=51 tests=326 fallos=0 errores=0 omitidos=0
+    .
+    Delta por fichero contra
+    8611ee6
+    :
+    GlobeRenderer
+    +26/-0,
+    AtmoShaderConstants
+    +9/-0,
+    AtmoShaderSource
+    +22/-1,
+    AtmoShaderConstantsTest
+    +11/-0,
+    AtmoShaderSourceTest
+    +18/-0.
+    Decisiones de forma (acta
+    0422
+    de GLM, relay)
+    Q19: mapa del shader
+    logNe = 8.0 + 4.5 * (odIso / 0.49f)
+    con
+    odIso = odR + odM
+    ; bandas alcanzables en odIso 0.27222 / 0.32667 / 0.38111
+    en toda calidad.
+    Q20:
+    ISO_STRENGTH = 0.75f
+    golden.
+    Q21: gating
+    showIso && sliceVolume != null
+    (el cableado de R4.6.1 ya
+    garantiza que
+    sliceVolume != null
+    implica capa ON y datos).
+    Anotaciones del latente (pedidas por el dictamen
+>>> 0424
+    )
+>>> Proxy provisional
+    :
+    odIso = odR + odM
+    (columna integral del propio
+    raymarch) hace de proxy de la densidad electronica; la des-normalizacion es
+    8 + 4.5 * (odIso / 0.49)
+    , rango medido max 0.494. A sustituir por el
+    raymarch
+    density()
+    de R4.6.3.
+>>> Anillos de limbo
+    : las bandas ISO se renderizan como anillos de limbo en
+    el raymarch del shell atmosferico, nunca en la cortina (R4.5); sin cascarones
+    3D ni geometria nueva.
+>>> Dominio del strength
+    :
+    ISO_STRENGTH
+    es un multiplicador escalar del
+    termino
+    isoSum * uIsoColor * uIsoStrength
+    , sin clamp en el shader
+    (verificado en el head); valor golden 0.75; la acotacion de UI se decide en
+    R4.6.5 (gate visual).
+    Deudas de forma (0421 seccion 5.1 y 05.4)
+    Informe del emulador (
+    emulator-5554
+    ): version de emulador, imagen, comando,
+    logcat y casillas; FPS de referencia, no de dispositivo.
+    Actas
+    0422
+    de GLM:
+    from-glm/files/0422/0422-acuse-0432-0433-0434-q19-q20-q21-forma-r467.md
+    (canonica, 17 421 B, blob
+    f1fa7ddd
+    , sha256
+    5c040127...
+    ).
+    0423
+    de GLM:
+    from-glm/files/0423/0423-acuse-archivo-0422-errata-contadores-go-push-r467.md
+    (canonica, 15 665 B, blob
+    041d21b3
+    , sha256
+    dbdc636f...
+    ).
+>>> 0424
+    de GLM: el dictamen de este PR
+    (favorable condicionado), y
+    0425
+    con la forma exacta del parche R1+R2:
+>>> from-glm/files/0424/
+    ,
+    /0425/
+    (18 213 B / blob
+    bdef5bb5
+    / sha256
+    e17cfc45...
+    ; 14 354 B / blob
+    c5589255
+    / sha256
+    4776d137...
+    ).
+>>> 0426
+    de GLM: CI 3/3 verificado de primera mano:
+>>> from-glm/files/0426/
+    (14 036 B, blob
+    c5e9a187
+    , sha256
+    fe1eb620...
+    ).
+>>> Correccion de atribucion: el acta favorable del doble GO es la
+>>> 0424
+    de GLM,
+    no un acta de OpenCode sobre
+    9c86d76
+    .
+>>> Doble GO del merge: acta favorable de GLM (
+>>> 0424
+    , condiciones R1/R2 cerradas
+    en
+>>> 866f196
+    y anotaciones de arriba) + GO escrito de David.
+    -->
+    Sorry, something went wrong.
+    Uh oh!
+    There was an error while loading.
+    Please reload this page
+    .
+    -->
+    All reactions
+    valledemena
+    added
+    3
+    commits
+    November 20, 2026 00:24
+    feat/r4.6.7-iso-bands: iso-bands en el raymarch del shell atmosferico…
+    …
+    96c52d1
+    … (D-R4.6.2)
+    - AtmoShaderConstants: pines golden D-R4.6.2: ISO_BAND_1=10.5, ISO_BAND_2=11.0,
+    ISO_BAND_3=11.5, ISO_STRENGTH=0.75, ISO_COLOR_R/G/B.
+    - AtmoShaderSource.ATMO_FRAG: uniforms uShowIso/uIsoColor/uIsoStrength + emision
+    isotropica donde el raymarch encierra umbrales logNe banda logNe; glow 1 por
+    encima de ISO_BAND_3, 0.75 entre ISO_BAND_2 e ISO_BAND_3, 0.5 entre ISO_BAND_1
+    e ISO_BAND_2. logNe = 10 + 4.5*d (dR+dM).
+    - GlobeRenderer: wiring de uniforms, setShowIso, uShowIso = showIso && sliceVolume != null
+    (showIso=false por defecto, DoD; UI deshabilitada sin volumen ON).
+    - Tests: AtmoShaderConstantsTest.pins_iso (golden JVM), AtmoShaderSourceTest.frag_iso_bands_r467.
+    Verificado: testDebugUnitTest --no-daemon: BUILD SUCCESSFUL, 326 tests / 0 fallos.
+    fix(r4.6.7): iso-bands activables segun acta 0422 Q19
+    …
+    9c86d76
+    Escala del mapa aceptada: logNe = 8.0 + 4.5 * (odIso / 0.49f), escala aceptada
+    en la acta 0422 (acta GLM): des-normalizacion del proyecto 8+4.5*x con rango
+    medido max 0.49 (provisional, declarado en el PR). Algunos glow: 1.0 encima de
+    ISO_BAND_3, 0.75 entre ISO_BAND_2 e ISO_BAND_3, 0.5 entre ISO_BAND_1 e
+    ISO_BAND_2. Constantes ISO_BAND_1/2/3 = 10.5/11/11.5 y ISO_STRENGTH = 0.75
+    consisten en la acta (Q20). Verificado: testDebugUnitTest BUILD SUCCESSFUL,
+    326 tests, 0 fallos.
+    fix(r4.6.7): R1 integra el termino iso con dt y R2 pinea la escalera …
+    …
+>>> 866f196
+>>> …del glow (dictamen GLM 0424)
+    R1: isoSum += isoB pasaba a escalar con el numero de pasos (el brillo crecia
+    ~2x de 8 a 16 pasos). Ahora isoSum += isoB * dt, en la misma forma integral
+    que dR/dM: la magnitud acumulada deja de depender de N y las posiciones de las
+    bandas no se mueven (dependen de odIso, que converge).
+    R2: el golden de AtmoShaderSourceTest pinea los tres peldanos de la escalera
+    (1.0 / 0.75 / 0.5) contra ISO_BAND_3/2/1; antes solo se comprobaba el if/else
+    completo por el contiene del termino iso.
+>>> Evidencia local: testDebugUnitTest -> RESUMEN-TESTS ficheros=51 tests=326
+    fallos=0 errores=0 omitidos=0, BUILD SUCCESSFUL (Gradle 8.x, JBR de Android
+    Studio). Delta del commit: 2 ficheros, +7/-2.
+    -->
+    This file contains hidden or bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
+    Learn more about bidirectional Unicode characters
+    Show hidden characters
+    Sign up for free
+    to join this conversation on GitHub
+    .
+    Already have an account?
+    Sign in to comment
+    -->
+    Reviewers
+    No reviews
+    Uh oh!
+    There was an error while loading.
+    Please reload this page
+    .
+    -->
+    <form class="js-issue-sidebar-for
