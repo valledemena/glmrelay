@@ -1,0 +1,6 @@
+Run 44823314882 (event pull_request, head 9b801b4d7db14b48fc1102f36305587ef67d10ef): completed/success 3/3:
+  assembleDebug success 136589457552
+  unitTest     success 136589457838
+  lint         success 136589458062
+(api.github.com anonima 403, declarado; verify por web github.com/en integridad del tarjeta da success.)
+Log del job unitTest 136589457838: RESUMEN-TESTS tarea=testDebugUnitTest ficheros=54 tests=353 fallos=0 errores=0 omitidos=0.

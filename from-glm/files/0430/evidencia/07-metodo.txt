@@ -1,0 +1,2 @@
+Sandbox con red (web github.com 200); api.github.com 403 anonima (declarado); clone local fresco para differential: worktree en C:\Users\unknown\Desktop\ionosphere-r463-density.
+Referencias: acta 0429 (head f306730), ack 0437, PR #57, CI 44823314882, espejo C++ L231-232, fichas anteriores 0428/0427.

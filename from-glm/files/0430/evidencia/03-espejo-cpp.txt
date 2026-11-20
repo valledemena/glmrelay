@@ -1,0 +1,6 @@
+ionosphere-live-3d (master): src/Ionosphere/VolumeRenderer.cpp
+L256: float outerR = 1.0f + (altMaxKm_ / 6371.0f) * explode_;
+L257: float innerR = 1.0f + (altMinKm_ / 6371.0f) * explode_;
+L86 (shader): float altNorm = clamp((r - u_innerR)/(u_outerR - u_innerR), 0.0, 1.0);
+Explode: paul.h L57: float explode_ = 1.0f; DensityVolume.h L15: altMinKm_ = 60.0f, asignado desde el volumen (L237).
+Fusion Java/C++ del radio: identical expression.

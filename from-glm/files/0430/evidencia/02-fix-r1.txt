@@ -1,0 +1,7 @@
+VolumeLayerRenderer.kt L80: val outerRadius: Float = volumeOuterRadius(VOL_ALT_MAX_KM)
+VolumeLayerRenderer.kt L89: val innerRadius: Float = volumeInnerRadius(VOL_ALT_MIN_KM)
+VolumeLayerRenderer.kt L96-97: uInnerR/uOuterR (locations); L223-224: glUniform1f(uInnerR, innerRadius) / glUniform1f(uOuterR, outerRadius)
+VolumeLayerPlan.kt L91: const val PLANET_R_KM = 6371.0
+VolumeLayerPlan.kt L94-95: volumeOuterRadius(altMaxKm) = PLANET_R + altMaxKm/6371
+VolumeLayerPlan.kt L103-104: volumeInnerRadius(altMinKm) = PLANET_R + altMinKm/6371
+Volumen del diff documenta altNorm = (r - uInnerR)/(uOuterR - uInnerR) (G7c_10/11/12).

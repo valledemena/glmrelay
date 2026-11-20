@@ -1,0 +1,4 @@
+PR #57: open, mergeable: true, merged: false, head 9b801b4d7db14b48fc1102f36305587ef67d10ef, rama feat/r4.6.3-density-chapman, base main, 12 ficheros, +1439/-3 (Deepseek lo declara igual).
+gh pr view 57 --repo valledemena/ionosphere-live-3d-android --json number,state,mergeable,headRefOid,baseRefName,title:
+{"number":57,"state":"OPEN","mergeable":true,"headRefOid":"9b801b4d7db14b48fc1102f36305587ef67d10ef","baseRefName":"main","title":"feat(r4.6.3): raymarch del volumen Ne(h) density + chapman"}
+Poll repetido: head_ref_oid=9b801b4d7db14b48fc1102f36305587ef67d10ef, mergeable=true.
