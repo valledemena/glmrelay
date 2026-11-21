@@ -1,0 +1,6 @@
+R4.6.5 v2 build provenance (sin cambio de codigo respecto a v1)
+Mismo APK: 42 087 632 B, sha256 aa24448890cd9b93ea2232d01e3c78020097b281ff87e82e71555a28a2a313a6
+Worktree de construccion: C:/Users/unknown/Desktop/ionosphere-r465-gate
+git rev-parse HEAD = 1646d56127f5ea81335d6eebc018385b537c4c3a (main tras PR #57)
+git status --porcelain = (vacio)
+versionName = 0.1.0-r1 ; versionCode = 1

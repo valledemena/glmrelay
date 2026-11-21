@@ -1,0 +1,3 @@
+R4.6.5 v2 logcat extract (adb -s 1140a489 logcat -d -v time, 2026-11-21, hemisphere diurno)
+FATAL EXCEPTION count = 0 (toda la sesion v2: 4 capturas, 4 UI dumps, 4 muestras FPS).
+Sin crashes de com.valledemena.ionosphere.
