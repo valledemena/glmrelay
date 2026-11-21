@@ -1,0 +1,8 @@
+R4.6.5 build provenance
+Worktree: C:/Users/unknown/Desktop/ionosphere-r465-gate (git worktree, detached HEAD)
+git rev-parse HEAD = 1646d56127f5ea81335d6eebc018385b537c4c3a (= main tras PR #57)
+git status --porcelain = (vacio, worktree limpio)
+assembleDebug: BUILD SUCCESSFUL en 14s
+app-debug.apk: 42087632 B
+sha256 app-debug.apk = aa24448890cd9b93ea2232d01e3c78020097b281ff87e82e71555a28a2a313a6
+versionName = 0.1.0-r1 ; versionCode = 1

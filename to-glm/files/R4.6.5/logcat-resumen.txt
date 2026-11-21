@@ -1,0 +1,5 @@
+R4.6.5 logcat extract (fetch: adb -s 1140a489 logcat -d -v time, 2026-11-21)
+FATAL EXCEPTION count = 0 (grep 'FATAL EXCEPTION' over whole session log)
+Solo mensajes con 'Fatal': miui.drm.DrmManager.exportFatalLog (W/System.err, PID 1749, sistema MIUI), 10 lineas; no pertenecen al proceso com.valledemena.ionosphere.
+AndroidRuntime: RuntimeInit/uiautomator por los uiautomator dump; sin AndroidRuntime FATAL de la app.
+Ejemplo: 11-21 00:53:01.288 W/System.err( 1749):  at miui.drm.DrmManager.exportFatalLog(DrmManager.java:470)
