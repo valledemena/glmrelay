@@ -1,0 +1,14 @@
+R4.6.5 v3 — muestras FPS (SurfaceFlinger --latency, 2 tomas de 10 s por estado)
+Dispositivo Mi 10 (1140a489), APK f3079d9 / sha256 d3c97413.
+
+ON  ciclo 1: 18.76 fps / 18.76 fps   (frames=127, dur=6.716 s en ambas)
+OFF ciclo 1: 27.71 fps / 27.73 fps   (frames=126/127, dur=4.511/4.544 s)
+ON  ciclo 2: 18.67 fps / 18.75 fps   (frames=127/126, dur=6.749/6.666 s)
+OFF ciclo 2: 27.63 fps / 27.92 fps   (frames=127/126, dur=4.561/4.477 s)
+
+OBSERVACION (declarada, no ocultada): el volumen ON cuesta ~9 fps (~32 %) frente
+a OFF en v3. GLM estimo ~30 fps por ser despreciable el raster de la banda; la
+medicion real es ~18.7 fps. No hay FATAL, ANR ni crash; el criterio binario de
+'caida de FPS fuera de lo esperado' queda a criterio de GLM. Los ficheros fps/
+contienen los dumps crudos de SurfaceFlinger para re-calcular.
+Comparacion v2 (malla degenerada, capa invisible): ON 29.93 / OFF 29.93.

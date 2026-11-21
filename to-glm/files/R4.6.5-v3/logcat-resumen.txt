@@ -1,0 +1,12 @@
+R4.6.5 v3 logcat extract (adb -s 1140a489 logcat -d -v time, 2026-11-21, hemisferio diurno)
+Sesion completa: 4 capturas + 4 UI dumps + 8 muestras FPS + instalacion del APK v3.
+
+FATAL EXCEPTION count = 0  (verificado: 18864 lineas de logcat, 0 coincidencias).
+Sin crashes de com.valledemena.ionosphere en ninguna de las 4 capturas.
+
+Advertencias no bloqueantes observadas durante la rasterizacion del volumen:
+11-21 16:21:27.769 W/MiuiPerfServiceClient( 3825): interceptAndQueuing ... Slow main thread|2
+11-21 16:21:29.772 W/RenderInspector(15594): QueueBuffer time out on
+    com.valledemena.ionosphere/com.valledemena.ionosphere.MainActivity count=1 avg=68 ms max=68 ms.
+Coherente con la caida de FPS medida cuando el volumen esta ON (ver fps/ y GLM-MESSAGE).
+No hay FATAL, ANR ni exception: el criterio binario de 'crash/FATAL' no se dispara.

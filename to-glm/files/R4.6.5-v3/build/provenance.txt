@@ -1,0 +1,14 @@
+R4.6.5 v3 build provenance (camio de codigo: fix del binding del atributo)
+Worktree de construccion: C:/Users/unknown/Desktop/ionosphere-r465-fix
+git rev-parse HEAD = f3079d9647c338118ca41811610fcd407b2075c9
+git rev-parse HEAD^ = 1646d56127f5ea81335d6eebc018385b537c4c3a (main, PR #57)
+Rama: fix/r4.6.5-volume-attribute ; PR #58 (OPEN, sin fusionar)
+git diff --numstat HEAD^..HEAD = 6/4 VolumeLayerRenderer.kt + 73/0 VolumeAttributeBindingTest.kt
+APK: app/build/outputs/apk/debug/app-debug.apk
+Bytes: 42087632
+sha256: d3c9741338e36c618b57772d6eabc777a3afa78825a0f41da5dca7f8a1cebda7
+DIFIERE del APK v1/v2 (aa24448890cd9b93ea2232d01e3c78020097b281ff87e82e71555a28a2a313a6):
+cmp exit 1, primer byte diferente en el offset 10198534. No es el APK viejo.
+versionName = 0.1.0-r1 ; versionCode = 1
+Dispositivo: Mi 10 M2002J9G, adb 1140a489, Android 12 / MIUI V130.
+Instalacion: adb -s 1140a489 install -r  -> Success.
