@@ -1,0 +1,8 @@
+ANTES (118c7e9):
+  git grep -c solarWindColor -- src -> IonosphereScene.tsx:2 (definicion + llamada interna)
+  git grep -c SOLAR_WIND_STOPS -- src -> IonosphereScene.tsx:4 (definicion + 3 usos internos)
+  Aclaracion: el '4' del pre-registro era el conteo de SOLAR_WIND_STOPS, no el de solarWindColor.
+DESPUES (5854e04):
+  git grep --cached -c solarWindColor -- src -> solarWindColor.ts:1 (definicion); IonosphereScene.tsx:2 (import + llamada)
+  git grep --cached -c SOLAR_WIND_STOPS -- src -> solarWindColor.ts:4 (definicion + 3 usos); 0 en otros ficheros
+Estado: 0 ocurrencias en cualquier otro fichero; inventario cerrado.

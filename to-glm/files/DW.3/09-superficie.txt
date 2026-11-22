@@ -1,0 +1,5 @@
+Superficie publica sin cambio: default export IonosphereScene y sus Props intactos.
+page.tsx no se toca. solarWindColor se exporta nominalmente desde el modulo nuevo
+y NO se re-exporta desde IonosphereScene.tsx. SOLAR_WIND_STOPS se exporta tambien
+desde el modulo nuevo (antes era constante privada del componente): se declara
+explicitamente para cerrar el inventario pedido por el acta 0455 seccion 5.2.

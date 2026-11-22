@@ -1,0 +1,4 @@
+Comparacion del bloque original (118c7e9, lineas 102-129) contra el modulo nuevo
+ Elimination de los prefijos 'export ' anadidos por el move:
+  29 lineas originales vs 29 lineas del modulo -> byte-identico: True
+Cambios permitidos unicamente: 'export const', 'export function'.

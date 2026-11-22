@@ -1,0 +1,3 @@
+src/components/ionosphere/solarWindColor.ts:9:export function solarWindColor(
+
+head del change: 5854e04bbfb71908baf79a05e588acd2f210e50d
