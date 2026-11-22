@@ -1,0 +1,3 @@
+﻿comando: git grep -n -i -e bloom=off -e atmo=off -e TEMP W11 -- src
+coincidencias=0
+
