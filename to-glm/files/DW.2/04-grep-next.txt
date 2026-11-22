@@ -1,0 +1,3 @@
+comando: grep -c '\.next/' work-dw2/03-test.txt
+coincidencias=0
+.next/standalone/src presente durante build/lint/test: True (no se limpió)

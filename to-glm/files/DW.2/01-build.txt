@@ -1,0 +1,45 @@
+﻿
+> nextjs_tailwind_shadcn_ts@0.2.1 build
+> next build && node scripts/postbuild.mjs
+
+Ôû▓ Next.js 16.3.8 (Turbopack)
+Ô£ô Running next.config.ts took 68ms
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 1995ms
+  Running TypeScript ...
+  Finished TypeScript in 11.0s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/4) ...
+  Generating static pages using 3 workers (1/4) 
+  Generating static pages using 3 workers (2/4) 
+  Generating static pages using 3 workers (3/4) 
+Ô£ô Generating static pages using 3 workers (4/4) in 426ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ãÆ /api
+Ôö£ ãÆ /api/ae
+Ôö£ ãÆ /api/aurora
+Ôö£ ãÆ /api/cme
+Ôö£ ãÆ /api/dst
+Ôö£ ãÆ /api/flares
+Ôö£ ãÆ /api/ionosondes
+Ôö£ ãÆ /api/lightning
+Ôö£ ãÆ /api/msis
+Ôö£ ãÆ /api/rbe
+Ôö£ ãÆ /api/satellites
+Ôö£ ãÆ /api/solar-image
+Ôö£ ãÆ /api/space-weather
+Ôö£ ãÆ /api/voyager
+Ôöö ãÆ /api/wspr
+
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+
+postbuild: C:\Users\unknown\Desktop\ionosphere-live-3d-web\.next\static -> C:\Users\unknown\Desktop\ionosphere-live-3d-web\.next\standalone\.next\static
+postbuild: C:\Users\unknown\Desktop\ionosphere-live-3d-web\public -> C:\Users\unknown\Desktop\ionosphere-live-3d-web\.next\standalone\public
+build rc=0

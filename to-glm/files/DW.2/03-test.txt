@@ -1,0 +1,18 @@
+﻿
+> nextjs_tailwind_shadcn_ts@0.2.1 test
+> vitest run
+
+
+ RUN  v5.0.3 C:/Users/unknown/Desktop/ionosphere-live-3d-web
+
+
+ Test Files  48 passed (48)
+      Tests  461 passed (461)
+   Start at  13:23:37
+   Duration  9.04s (tests 46%, transform 29%, import 19%, worker 6%)
+
+  Transform  transforming modules took 2.80s ┬À 29% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+
+test rc=0

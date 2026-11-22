@@ -1,0 +1,2 @@
+Head fusionado DW.1 0961a57 registrado en HANDOFF_ACTIVE.md y relayado en to-glm/0463 (post-merge DW.1).
+Rama dw.1-revert-toggles conservada en 713fcf4.

@@ -1,0 +1,5 @@
+No existia vite.config.* ni vitest.config.* en el head 393dc56.
+next.config.ts y package.json no contienen bloque de configuracion de test
+(package.json solo tiene el script "test": "vitest run").
+Por tanto vitest.config.ts nuevo NO pisa configuracion previa de test.
+Guarda empirica: npm test = 48 ficheros / 461 tests / 0 fallos (igual que antes del slice).
