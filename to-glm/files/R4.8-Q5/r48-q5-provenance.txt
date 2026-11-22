@@ -1,0 +1,21 @@
+R4.8 Q5 — build provenance
+
+Worktree de construccion: C:/Users/unknown/Desktop/ionosphere-r48-audit
+Rama: audit/r4.8-q3 (creada desde origin/main, sin commits)
+git rev-parse HEAD = a09f57edb2351d83d40aed83cd42365b9324e24c
+git status --porcelain = (vacio)
+APK: app/build/outputs/apk/debug/app-debug.apk
+Bytes: 42087632
+sha256: d3c9741338e36c618b57772d6eabc777a3afa78825a0f41da5dca7f8a1cebda7
+versionName = 0.1.0-r1 ; versionCode = 1
+
+El hash del APK es identico al de la sesion v3 de R4.6.5: desde f3079d9
+(el fix del binding) los unicos commits en main son docs-only (#59, ADR
+NDK-MSIS), sin cambios de codigo. Por tanto el artefacto es el correcto
+para el head a09f57e y coincide con el coste ya dictaminado (HIGH = 64).
+
+Dispositivo: Mi 10 / M2002J9G, adb por WiFi 192.168.1.75:5555
+(el cable USB fue desenchufado antes del inicio; verificado
+USB powered: false, AC powered: false, Wireless powered: false).
+
+Instalacion: adb -s 192.168.1.75:5555 install -r -> Success.

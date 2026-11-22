@@ -1,0 +1,57 @@
+{
+  "fin": "2026-11-22T01:08:22",
+  "duracion_s": 1838.4,
+  "n_muestras": 7,
+  "FATAL": 0,
+  "ANR": 0,
+  "inicial": {
+    "tag": "t0",
+    "t_rel_s": 0.4,
+    "hora": "2026-11-22T00:37:44",
+    "battery_level": "56",
+    "temperature": "282",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "00:57 UTC"
+      ]
+    },
+    "fps": [
+      {
+        "muestra": "a",
+        "frames": 0,
+        "fps": null
+      },
+      {
+        "muestra": "b",
+        "frames": 0,
+        "fps": null
+      }
+    ]
+  },
+  "final": {
+    "tag": "t30min",
+    "t_rel_s": 1833.4,
+    "hora": "2026-11-22T01:08:17",
+    "battery_level": "46",
+    "temperature": "318",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "01:28 UTC"
+      ]
+    }
+  }
+}

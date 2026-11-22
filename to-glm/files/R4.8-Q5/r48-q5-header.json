@@ -1,0 +1,17 @@
+{
+  "sesion": "R4.8 Q5 bateria 30 min",
+  "head": "a09f57edb2351d83d40aed83cd42365b9324e24c",
+  "apk_sha256": "d3c9741338e36c618b57772d6eabc777a3afa78825a0f41da5dca7f8a1cebda7",
+  "dispositivo": "Mi 10 M2002J9G / 192.168.1.75:5555 (WiFi adb, USB desenchufado)",
+  "instrumentos": {
+    "nivel": "dumpsys battery -> level",
+    "temperatura": "dumpsys battery -> temperature (decimas de C)",
+    "brillo": "settings get system screen_brightness = 640 (fijado)",
+    "ahorro_MIUI": "settings get global low_power = 0",
+    "timeout_pantalla": "600000 ms (10 min) + toques de despertar de David cada ~8 min (declarado)",
+    "carga": "USB powered: false, AC powered: false, Wireless powered: false",
+    "calidad": "VolumeQuality.HIGH = 64 pasos (defecto, fijo A.d)"
+  },
+  "criterio_PASS": "sesion termina + reproduccion avanza + 0 FATAL/ANR + sin apagado termico; %/h informado sin umbral",
+  "inicio": "2026-11-22T00:37:44"
+}

@@ -1,0 +1,147 @@
+[
+  {
+    "tag": "t0",
+    "t_rel_s": 0.4,
+    "hora": "2026-11-22T00:37:44",
+    "battery_level": "56",
+    "temperature": "282",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "00:57 UTC"
+      ]
+    },
+    "fps": [
+      {
+        "muestra": "a",
+        "frames": 0,
+        "fps": null
+      },
+      {
+        "muestra": "b",
+        "frames": 0,
+        "fps": null
+      }
+    ]
+  },
+  {
+    "tag": "t05min",
+    "t_rel_s": 315.4,
+    "hora": "2026-11-22T00:42:59",
+    "battery_level": "54",
+    "temperature": "299",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "01:03 UTC"
+      ]
+    }
+  },
+  {
+    "tag": "t10min",
+    "t_rel_s": 619.0,
+    "hora": "2026-11-22T00:48:03",
+    "battery_level": "52",
+    "temperature": "305",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "01:08 UTC"
+      ]
+    }
+  },
+  {
+    "tag": "t15min",
+    "t_rel_s": 922.5,
+    "hora": "2026-11-22T00:53:06",
+    "battery_level": "51",
+    "temperature": "307",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "01:13 UTC"
+      ]
+    }
+  },
+  {
+    "tag": "t20min",
+    "t_rel_s": 1226.1,
+    "hora": "2026-11-22T00:58:10",
+    "battery_level": "50",
+    "temperature": "310",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "01:18 UTC"
+      ]
+    }
+  },
+  {
+    "tag": "t25min",
+    "t_rel_s": 1529.6,
+    "hora": "2026-11-22T01:03:13",
+    "battery_level": "48",
+    "temperature": "314",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "01:23 UTC"
+      ]
+    }
+  },
+  {
+    "tag": "t30min",
+    "t_rel_s": 1833.4,
+    "hora": "2026-11-22T01:08:17",
+    "battery_level": "46",
+    "temperature": "318",
+    "ac": "false",
+    "usb": "false",
+    "wireless": "false",
+    "power": "mWakefulness=Awake",
+    "ui": {
+      "replay": true,
+      "live": false,
+      "volumen": "true",
+      "clocks": [
+        "01:28 UTC"
+      ]
+    }
+  }
+]
