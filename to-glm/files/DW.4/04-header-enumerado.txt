@@ -1,0 +1,19 @@
+H=21 lineas: 15 movidas (7-21) + S=6 de andamiaje admisible (1-6).
+ 1 [andamiaje-admisible]: #pragma once
+ 3 [andamiaje-admisible]: #include <cmath>
+ 4 [andamiaje-admisible]: #include <cstdio>
+ 5 [andamiaje-admisible]: #include <string>
+ 7 [bloque-movido]: // Formatea un campo del perfil Ebro ("---" si NaN).
+ 8 [bloque-movido]: static std::string ebFmt(float v, int dec) {
+ 9 [bloque-movido]:     if (std::isnan(v)) return "---";
+10 [bloque-movido]:     char b[32];
+11 [bloque-movido]:     if (dec <= 0) snprintf(b, sizeof(b), "%.0f", v);
+12 [bloque-movido]:     else if (dec == 1) snprintf(b, sizeof(b), "%.1f", v);
+13 [bloque-movido]:     else snprintf(b, sizeof(b), "%.2f", v);
+14 [bloque-movido]:     return std::string(b);
+15 [bloque-movido]: }
+17 [bloque-movido]: // Igual para GIRO (ausente = 0).
+18 [bloque-movido]: static std::string giroFmt(float v, int dec) {
+19 [bloque-movido]:     if (!(v > 0.0f)) return "---";
+20 [bloque-movido]:     return ebFmt(v, dec);
+21 [bloque-movido]: }

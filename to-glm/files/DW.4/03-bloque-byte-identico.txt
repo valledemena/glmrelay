@@ -1,0 +1,18 @@
+Bloque original lineas 719-733 (15 lineas) copiado literalmente a FieldFormat.h lineas 7-21.
+Comparacion byte a byte: True
+
+ 719: // Formatea un campo del perfil Ebro ("---" si NaN).
+ 720: static std::string ebFmt(float v, int dec) {
+ 721:     if (std::isnan(v)) return "---";
+ 722:     char b[32];
+ 723:     if (dec <= 0) snprintf(b, sizeof(b), "%.0f", v);
+ 724:     else if (dec == 1) snprintf(b, sizeof(b), "%.1f", v);
+ 725:     else snprintf(b, sizeof(b), "%.2f", v);
+ 726:     return std::string(b);
+ 727: }
+ 728: 
+ 729: // Igual para GIRO (ausente = 0).
+ 730: static std::string giroFmt(float v, int dec) {
+ 731:     if (!(v > 0.0f)) return "---";
+ 732:     return ebFmt(v, dec);
+ 733: }

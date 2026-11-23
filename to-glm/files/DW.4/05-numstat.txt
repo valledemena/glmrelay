@@ -1,0 +1,7 @@
+PR acumulado e680d01..3f4f8bd:
+103	0	docs/DW.4-PRERREGISTRO.md
+1	16	src/App.cpp
+21	0	src/Utils/FieldFormat.h
+
+App.cpp: +1/-16 exacto (regla 0461 seccion 3). Header: +21 (H=21).
+PR 3 ficheros: +125/-16 = 103 (pre-registro) + 1 + 21 ; -16.
