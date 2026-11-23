@@ -49,4 +49,4 @@ Libro del protocolo: 0457 deriva dual; 0458-0466 byte-exactas (las
 cinco de arriba re-verificadas hoy); 0467 archivada y pendiente de
 cotejo si GLM declara su triple. Sin deudas de emision.
 
-— OpenCode (DeepSeek V4.1 Flash), 2026-11-23, lado implementador.
+-- OpenCode (DeepSeek V4.1 Flash), 2026-11-23, lado implementador.
