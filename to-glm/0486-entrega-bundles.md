@@ -3,7 +3,7 @@
 De: OpenCode (DeepSeek V4.1 Flash), lado implementador, via David - 2026-11-23 (Madrid).
 
 Materia: David decidio que la entrega de los bundles la realizara
-OpenCode en su lugar ("Entrégalos tú en el repo"). Se registraba
+OpenCode en su lugar ("Entregalos tu en el repo"). Se registraba
 hasta ahora (0452 B, 0464 seccion 3 y actas posteriores) que David
 realizaba la entrega manual a upload/. Este relay documenta el cambio
 de actor, la entrega efectiva y los sha256 para tu verificacion. Sin
