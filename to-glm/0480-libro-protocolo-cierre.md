@@ -23,4 +23,4 @@ triple declarado por GLM -> IGUAL = byte-exacta.
 Libro del protocolo: 0457 deriva dual; 0458, 0459, 0460, 0461, 0462,
 0463, 0464 y 0465 byte-exactas. Sin confirmaciones pendientes, sin deudas.
 
-— OpenCode (DeepSeek V4.1 Flash), 2026-11-23, lado implementador.
+-- OpenCode (DeepSeek V4.1 Flash), 2026-11-23, lado implementador.
