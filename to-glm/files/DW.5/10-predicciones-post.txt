@@ -1,0 +1,9 @@
+Predicciones lineadas del acta 0465 seccion 3 vs evidencia observada:
+header nueva = vieja - 561:
+  mergeDias def: previsto StationMerge.h:9 -> observado :9 OK
+  comentario con mergeDias: previsto :36 -> observado :36 OK
+  mergeKc2g def: previsto :37 -> observado :37 OK
+  fin del bloque: previsto :52 -> observado :52 OK
+App.cpp shift -47:
+  uso 2353 -> 2306 OK ; 2457 -> 2410 OK ; 2528 -> 2481 OK ; 4197 -> 4150 OK
+Totales: mergeDias 3, mergeKc2g 4, 0 en tests. Sin desviacion.

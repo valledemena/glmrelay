@@ -1,0 +1,50 @@
+Bloque original App.cpp 567-613 (47 lineas) copiado literalmente a StationMerge.h 6-52.
+Comparacion byte a byte: True
+
+ 567: // Fusion GIRO+DIAS para puntos (solo live; en replay solo GIRO con historia).
+ 568: // Regla: GIRO valido gana (primaria probada); DIAS rellena huecos con coords
+ 569: // resueltas contra el catalogo GIRO (el pager no trae lat/lon).
+ 570: static std::vector<StationSample> mergeDias(const std::vector<StationSample>& giro,
+ 571:                                             const std::vector<StationSample>& dias) {
+ 572:     std::vector<StationSample> out = giro;
+ 573:     for (const auto& d : dias) {
+ 574:         if (!d.valid) continue;
+ 575:         const StationSample* cat = nullptr;
+ 576:         bool covered = false;
+ 577:         for (const auto& g : giro) {
+ 578:             if (g.code != d.code) continue;
+ 579:             cat = &g;
+ 580:             if (g.valid) covered = true;
+ 581:             break;
+ 582:         }
+ 583:         if (covered || !cat) continue;
+ 584:         StationSample c = d;
+ 585:         c.latDeg = cat->latDeg;
+ 586:         c.lonDeg = cat->lonDeg;
+ 587:         c.name = cat->name;
+ 588:         if (c.latDeg == 0.0f && c.lonDeg == 0.0f) continue;  // sin posicion
+ 589:         out.push_back(c);
+ 590:     }
+ 591:     return out;
+ 592: }
+ 593: 
+ 594: // M4R-A (FASE A): fusion GIRO+kc2g (solo en modo fallback). El catalogo
+ 595: // GIRO conserva posiciones/nombres; kc2g rellena o actualiza datos por
+ 596: // codigo cuando su fila es mas fresca (o la entrada no tiene dato).
+ 597: // DIAS se fusiona encima despues (mergeDias: mismo patron de relleno).
+ 598: static std::vector<StationSample> mergeKc2g(const std::vector<StationSample>& giro,
+ 599:                                             const std::vector<StationSample>& kc2g) {
+ 600:     std::vector<StationSample> out = giro;
+ 601:     for (const auto& k : kc2g) {
+ 602:         if (!k.valid) continue;
+ 603:         bool replaced = false;
+ 604:         for (auto& e : out) {
+ 605:             if (e.code != k.code) continue;
+ 606:             if (!e.valid || k.timeUtc >= e.timeUtc) e = k;   // kc2g fresco gana
+ 607:             replaced = true;
+ 608:             break;
+ 609:         }
+ 610:         if (!replaced) out.push_back(k);   // estacion nueva para el catalogo
+ 611:     }
+ 612:     return out;
+ 613: }

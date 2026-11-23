@@ -1,0 +1,11 @@
+Estado POST = 151bd87016ca6235788240e294b8dfaea8110360
+src/App.cpp:2306:            impl->kc2gMerged = mergeKc2g(impl->giro.getSamples(), impl->kc2g.copySamples());
+src/App.cpp:2410:                impl->giroReplayCache = mergeKc2g(impl->giro.sampleHistoryAt(replayEpoch),
+src/App.cpp:2481:                giroPointsFrom(mergeDias(gsLive, impl->dias.copySamples())));
+src/App.cpp:4150:            impl->kc2gMerged = mergeKc2g(impl->giro.getSamples(), impl->kc2g.copySamples());
+src/Utils/StationMerge.h:9:static std::vector<StationSample> mergeDias(const std::vector<StationSample>& giro,
+src/Utils/StationMerge.h:36:// DIAS se fusiona encima despues (mergeDias: mismo patron de relleno).
+src/Utils/StationMerge.h:37:static std::vector<StationSample> mergeKc2g(const std::vector<StationSample>& giro,
+
+Lineas con mergeDias: 3 ; lineas con mergeKc2g: 4 ; ficheros: src/App.cpp + src/Utils/StationMerge.h
+0 en tests en ambos estados. Totales por simbolo sin cambio.

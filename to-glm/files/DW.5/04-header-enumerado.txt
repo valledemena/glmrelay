@@ -1,0 +1,53 @@
+H=52: 47 lineas movidas (6-52) + S=5 de andamiaje (1-5), regla general acta 0465 seccion 2.
+ 1 [andamiaje-guardia: #pragma once]: #pragma once
+ 2 [andamiaje-blank]: 
+ 3 [andamiaje-include-directo: <vector> (std::vector en firmas y cuerpos movidos)]: #include <vector>
+ 4 [andamiaje-include-directo: Data/GiroAdapter.h (struct StationSample por valor, linea 28; sin ciclo)]: #include "Data/GiroAdapter.h"
+ 5 [andamiaje-blank]: 
+ 6 [bloque-movido (App.cpp 572)]: // Fusion GIRO+DIAS para puntos (solo live; en replay solo GIRO con historia).
+ 7 [bloque-movido (App.cpp 573)]: // Regla: GIRO valido gana (primaria probada); DIAS rellena huecos con coords
+ 8 [bloque-movido (App.cpp 574)]: // resueltas contra el catalogo GIRO (el pager no trae lat/lon).
+ 9 [bloque-movido (App.cpp 575)]: static std::vector<StationSample> mergeDias(const std::vector<StationSample>& giro,
+10 [bloque-movido (App.cpp 576)]:                                             const std::vector<StationSample>& dias) {
+11 [bloque-movido (App.cpp 577)]:     std::vector<StationSample> out = giro;
+12 [bloque-movido (App.cpp 578)]:     for (const auto& d : dias) {
+13 [bloque-movido (App.cpp 579)]:         if (!d.valid) continue;
+14 [bloque-movido (App.cpp 580)]:         const StationSample* cat = nullptr;
+15 [bloque-movido (App.cpp 581)]:         bool covered = false;
+16 [bloque-movido (App.cpp 582)]:         for (const auto& g : giro) {
+17 [bloque-movido (App.cpp 583)]:             if (g.code != d.code) continue;
+18 [bloque-movido (App.cpp 584)]:             cat = &g;
+19 [bloque-movido (App.cpp 585)]:             if (g.valid) covered = true;
+20 [bloque-movido (App.cpp 586)]:             break;
+21 [bloque-movido (App.cpp 587)]:         }
+22 [bloque-movido (App.cpp 588)]:         if (covered || !cat) continue;
+23 [bloque-movido (App.cpp 589)]:         StationSample c = d;
+24 [bloque-movido (App.cpp 590)]:         c.latDeg = cat->latDeg;
+25 [bloque-movido (App.cpp 591)]:         c.lonDeg = cat->lonDeg;
+26 [bloque-movido (App.cpp 592)]:         c.name = cat->name;
+27 [bloque-movido (App.cpp 593)]:         if (c.latDeg == 0.0f && c.lonDeg == 0.0f) continue;  // sin posicion
+28 [bloque-movido (App.cpp 594)]:         out.push_back(c);
+29 [bloque-movido (App.cpp 595)]:     }
+30 [bloque-movido (App.cpp 596)]:     return out;
+31 [bloque-movido (App.cpp 597)]: }
+32 [bloque-movido (App.cpp 598)]: 
+33 [bloque-movido (App.cpp 599)]: // M4R-A (FASE A): fusion GIRO+kc2g (solo en modo fallback). El catalogo
+34 [bloque-movido (App.cpp 600)]: // GIRO conserva posiciones/nombres; kc2g rellena o actualiza datos por
+35 [bloque-movido (App.cpp 601)]: // codigo cuando su fila es mas fresca (o la entrada no tiene dato).
+36 [bloque-movido (App.cpp 602)]: // DIAS se fusiona encima despues (mergeDias: mismo patron de relleno).
+37 [bloque-movido (App.cpp 603)]: static std::vector<StationSample> mergeKc2g(const std::vector<StationSample>& giro,
+38 [bloque-movido (App.cpp 604)]:                                             const std::vector<StationSample>& kc2g) {
+39 [bloque-movido (App.cpp 605)]:     std::vector<StationSample> out = giro;
+40 [bloque-movido (App.cpp 606)]:     for (const auto& k : kc2g) {
+41 [bloque-movido (App.cpp 607)]:         if (!k.valid) continue;
+42 [bloque-movido (App.cpp 608)]:         bool replaced = false;
+43 [bloque-movido (App.cpp 609)]:         for (auto& e : out) {
+44 [bloque-movido (App.cpp 610)]:             if (e.code != k.code) continue;
+45 [bloque-movido (App.cpp 611)]:             if (!e.valid || k.timeUtc >= e.timeUtc) e = k;   // kc2g fresco gana
+46 [bloque-movido (App.cpp 612)]:             replaced = true;
+47 [bloque-movido (App.cpp 613)]:             break;
+48 [bloque-movido (App.cpp 614)]:         }
+49 [bloque-movido (App.cpp 615)]:         if (!replaced) out.push_back(k);   // estacion nueva para el catalogo
+50 [bloque-movido (App.cpp 616)]:     }
+51 [bloque-movido (App.cpp 617)]:     return out;
+52 [bloque-movido (App.cpp 618)]: }

@@ -1,0 +1,10 @@
+Estado PRE = 3716295604e9f5446d5afa3160953674b3792f82
+3716295:src/App.cpp:570:static std::vector<StationSample> mergeDias(const std::vector<StationSample>& giro,
+3716295:src/App.cpp:597:// DIAS se fusiona encima despues (mergeDias: mismo patron de relleno).
+3716295:src/App.cpp:598:static std::vector<StationSample> mergeKc2g(const std::vector<StationSample>& giro,
+3716295:src/App.cpp:2353:            impl->kc2gMerged = mergeKc2g(impl->giro.getSamples(), impl->kc2g.copySamples());
+3716295:src/App.cpp:2457:                impl->giroReplayCache = mergeKc2g(impl->giro.sampleHistoryAt(replayEpoch),
+3716295:src/App.cpp:2528:                giroPointsFrom(mergeDias(gsLive, impl->dias.copySamples())));
+3716295:src/App.cpp:4197:            impl->kc2gMerged = mergeKc2g(impl->giro.getSamples(), impl->kc2g.copySamples());
+
+Lineas con mergeDias: 3 ; lineas con mergeKc2g: 4 ; fichero unico: src/App.cpp ; 0 en tests.

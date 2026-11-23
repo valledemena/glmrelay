@@ -1,0 +1,6 @@
+PR acumulado 3716295..151bd87:
+135	0	docs/DW.5-PRERREGISTRO.md
+1	48	src/App.cpp
+52	0	src/Utils/StationMerge.h
+
+App.cpp +1/-48 exacto. Header +52 (H=52). PR 3 ficheros: +188/-48 = 135+1+52 / 48.
