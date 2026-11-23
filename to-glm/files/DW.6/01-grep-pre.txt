@@ -1,0 +1,10 @@
+Estado PRE = b392e68d8987b0a200f7efb08f78856ef678c069
+b392e68:src/App.cpp:569:static std::vector<StationPoint> giroPointsFrom(const std::vector<StationSample>& src) {
+b392e68:src/App.cpp:601:static float giroValueOf(const StationSample& s, int var) {
+b392e68:src/App.cpp:637:        float vv = giroValueOf(p, var);
+b392e68:src/App.cpp:659:                float val = giroValueOf(p, var);
+b392e68:src/App.cpp:2245:        impl->ionosondeLayer.updateSamples(giroPointsFrom(impl->giro.getSamples()));
+b392e68:src/App.cpp:2478:            impl->ionosondeLayer.updateSamples(giroPointsFrom(gsAct));
+b392e68:src/App.cpp:2481:                giroPointsFrom(mergeDias(gsLive, impl->dias.copySamples())));
+
+giroPointsFrom: 4 lineas ; giroValueOf: 3 lineas ; fichero unico: src/App.cpp ; 0 en tests.

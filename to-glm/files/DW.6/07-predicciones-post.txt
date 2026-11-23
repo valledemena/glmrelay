@@ -1,0 +1,5 @@
+Predicciones del acta 0471 seccion 3 (acta 0471 + pre-registro) vs observado:
+header nueva=vieja-561: comentario 568->:7 OK; giroPointsFrom def 569->:8 OK;
+comentario 600->:39 OK; giroValueOf def 601->:40 OK; fin 608->:47 OK.
+App.cpp nueva=vieja-41: 637->596 OK; 659->618 OK; 2245->2204 OK; 2478->2437 OK;
+2481->2440 OK. Totales 4/3, 0 en tests. Diez de diez, sin desviacion.

@@ -1,0 +1,44 @@
+Bloque original App.cpp 568-608 (41 lineas) copiado literalmente a GiroHelpers.h 7-47.
+Comparacion byte a byte: True
+
+ 568: // Convierte muestras GIRO a puntos de render para la capa de ionosondas.
+ 569: static std::vector<StationPoint> giroPointsFrom(const std::vector<StationSample>& src) {
+ 570:     std::vector<StationPoint> out;
+ 571:     for (const auto& s : src) {
+ 572:         StationPoint p;
+ 573:         p.latDeg = s.latDeg;
+ 574:         p.lonDeg = s.lonDeg;
+ 575:         p.foF2 = s.foF2;
+ 576:         p.muf = s.muf;
+ 577:         p.hmF2 = s.hmF2;
+ 578:         p.nmF2 = s.nmF2;
+ 579:         p.foF1 = s.foF1;
+ 580:         p.foE = s.foE;
+ 581:         p.foEs = s.foEs;
+ 582:         p.fxI = s.fxI;
+ 583:         p.hF2 = s.hF2;
+ 584:         p.hF = s.hF;
+ 585:         p.hE = s.hE;
+ 586:         p.hEs = s.hEs;
+ 587:         p.B0 = s.B0;
+ 588:         p.B1 = s.B1;
+ 589:         p.fmin = s.fmin;
+ 590:         p.code = s.code;
+ 591:         p.name = s.name;
+ 592:         p.valid = s.valid;
+ 593:         p.timeUtc = s.timeUtc;   // M4R-A: edad de la fila (marca en paneles)
+ 594:         p.stale = s.stale;       // M4R-A: kc2g 6-24 h o EG931 (panel si, grids no)
+ 595:         out.push_back(p);
+ 596:     }
+ 597:     return out;
+ 598: }
+ 599: 
+ 600: // Valor de una magnitud GIRO por indice de variable (0=foF2,1=MUF,2=hmF2,3=NmF2).
+ 601: static float giroValueOf(const StationSample& s, int var) {
+ 602:     switch (var) {
+ 603:         case 1: return s.muf;
+ 604:         case 2: return s.hmF2;
+ 605:         case 3: return s.nmF2;
+ 606:         default: return s.foF2;
+ 607:     }
+ 608: }

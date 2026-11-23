@@ -1,0 +1,6 @@
+PR acumulado b392e68..7c1ecdc:
+142	0	docs/DW.6-PRERREGISTRO.md
+1	42	src/App.cpp
+47	0	src/Utils/GiroHelpers.h
+
+App.cpp +1/-42 exacto. Header +47 (H=47). PR 3 ficheros: +190/-42 = 142+1+47 / 42.

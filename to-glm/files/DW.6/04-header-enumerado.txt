@@ -1,0 +1,48 @@
+H=47: 41 lineas movidas (7-47) + S=6 andamiaje (1-6), regla acta 0465 seccion 2.
+ 1 [guarda: #pragma once]: #pragma once
+ 2 [blanco separador]: 
+ 3 [include directo: <vector> (std::vector en firmas y cuerpo)]: #include <vector>
+ 4 [include directo: Data/GiroAdapter.h (struct StationSample, linea 28)]: #include "Data/GiroAdapter.h"
+ 5 [include directo: Ionosonde/IonosondeLayer.h (struct StationPoint, linea 9)]: #include "Ionosphere/IonosondeLayer.h"
+ 6 [blanco separador]: 
+ 7 [bloque-movido (App.cpp 568)]: // Convierte muestras GIRO a puntos de render para la capa de ionosondas.
+ 8 [bloque-movido (App.cpp 569)]: static std::vector<StationPoint> giroPointsFrom(const std::vector<StationSample>& src) {
+ 9 [bloque-movido (App.cpp 570)]:     std::vector<StationPoint> out;
+10 [bloque-movido (App.cpp 571)]:     for (const auto& s : src) {
+11 [bloque-movido (App.cpp 572)]:         StationPoint p;
+12 [bloque-movido (App.cpp 573)]:         p.latDeg = s.latDeg;
+13 [bloque-movido (App.cpp 574)]:         p.lonDeg = s.lonDeg;
+14 [bloque-movido (App.cpp 575)]:         p.foF2 = s.foF2;
+15 [bloque-movido (App.cpp 576)]:         p.muf = s.muf;
+16 [bloque-movido (App.cpp 577)]:         p.hmF2 = s.hmF2;
+17 [bloque-movido (App.cpp 578)]:         p.nmF2 = s.nmF2;
+18 [bloque-movido (App.cpp 579)]:         p.foF1 = s.foF1;
+19 [bloque-movido (App.cpp 580)]:         p.foE = s.foE;
+20 [bloque-movido (App.cpp 581)]:         p.foEs = s.foEs;
+21 [bloque-movido (App.cpp 582)]:         p.fxI = s.fxI;
+22 [bloque-movido (App.cpp 583)]:         p.hF2 = s.hF2;
+23 [bloque-movido (App.cpp 584)]:         p.hF = s.hF;
+24 [bloque-movido (App.cpp 585)]:         p.hE = s.hE;
+25 [bloque-movido (App.cpp 586)]:         p.hEs = s.hEs;
+26 [bloque-movido (App.cpp 587)]:         p.B0 = s.B0;
+27 [bloque-movido (App.cpp 588)]:         p.B1 = s.B1;
+28 [bloque-movido (App.cpp 589)]:         p.fmin = s.fmin;
+29 [bloque-movido (App.cpp 590)]:         p.code = s.code;
+30 [bloque-movido (App.cpp 591)]:         p.name = s.name;
+31 [bloque-movido (App.cpp 592)]:         p.valid = s.valid;
+32 [bloque-movido (App.cpp 593)]:         p.timeUtc = s.timeUtc;   // M4R-A: edad de la fila (marca en paneles)
+33 [bloque-movido (App.cpp 594)]:         p.stale = s.stale;       // M4R-A: kc2g 6-24 h o EG931 (panel si, grids no)
+34 [bloque-movido (App.cpp 595)]:         out.push_back(p);
+35 [bloque-movido (App.cpp 596)]:     }
+36 [bloque-movido (App.cpp 597)]:     return out;
+37 [bloque-movido (App.cpp 598)]: }
+38 [bloque-movido (App.cpp 599)]: 
+39 [bloque-movido (App.cpp 600)]: // Valor de una magnitud GIRO por indice de variable (0=foF2,1=MUF,2=hmF2,3=NmF2).
+40 [bloque-movido (App.cpp 601)]: static float giroValueOf(const StationSample& s, int var) {
+41 [bloque-movido (App.cpp 602)]:     switch (var) {
+42 [bloque-movido (App.cpp 603)]:         case 1: return s.muf;
+43 [bloque-movido (App.cpp 604)]:         case 2: return s.hmF2;
+44 [bloque-movido (App.cpp 605)]:         case 3: return s.nmF2;
+45 [bloque-movido (App.cpp 606)]:         default: return s.foF2;
+46 [bloque-movido (App.cpp 607)]:     }
+47 [bloque-movido (App.cpp 608)]: }

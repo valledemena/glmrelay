@@ -1,0 +1,10 @@
+Estado POST = 7c1ecdc79d380f3f2ec8ed116c21b8edcecf4a69
+src/App.cpp:596:        float vv = giroValueOf(p, var);
+src/App.cpp:618:                float val = giroValueOf(p, var);
+src/App.cpp:2204:        impl->ionosondeLayer.updateSamples(giroPointsFrom(impl->giro.getSamples()));
+src/App.cpp:2437:            impl->ionosondeLayer.updateSamples(giroPointsFrom(gsAct));
+src/App.cpp:2440:                giroPointsFrom(mergeDias(gsLive, impl->dias.copySamples())));
+src/Utils/GiroHelpers.h:8:static std::vector<StationPoint> giroPointsFrom(const std::vector<StationSample>& src) {
+src/Utils/GiroHelpers.h:40:static float giroValueOf(const StationSample& s, int var) {
+
+giroPointsFrom: 4 ; giroValueOf: 3 ; 0 en tests. Totales sin cambio.
