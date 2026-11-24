@@ -1,0 +1,22 @@
+H=21: 16 lineas movidas (6-21) + S=5 andamiaje (1-5), regla acta 0465 seccion 2.
+ 1 [guarda: #pragma once]: #pragma once
+ 2 [blanco separador]: 
+ 3 [include directo: glm/glm.hpp (glm::clamp en el cuerpo)]: #include <glm/glm.hpp>
+ 4 [include directo: Ionosphere/GridLayer.h (struct GridData)]: #include "Ionosphere/GridLayer.h"
+ 5 [blanco separador]: 
+ 6 [bloque-movido (App.cpp 808)]: // Mezcla lineal de dos grids TEC (mismo tamano) para el replay temporal.
+ 7 [bloque-movido (App.cpp 809)]: static GridData blendGrids(const GridData& a, const GridData& b, double f) {
+ 8 [bloque-movido (App.cpp 810)]:     if (!a.valid) return b;
+ 9 [bloque-movido (App.cpp 811)]:     if (!b.valid) return a;
+10 [bloque-movido (App.cpp 812)]:     if (a.width != b.width || a.height != b.height || a.values.size() != b.values.size()) return a;
+11 [bloque-movido (App.cpp 813)]:     GridData g;
+12 [bloque-movido (App.cpp 814)]:     g.width = a.width;
+13 [bloque-movido (App.cpp 815)]:     g.height = a.height;
+14 [bloque-movido (App.cpp 816)]:     g.values.resize(a.values.size());
+15 [bloque-movido (App.cpp 817)]:     float fb = (float)glm::clamp(f, 0.0, 1.0);
+16 [bloque-movido (App.cpp 818)]:     for (size_t i = 0; i < a.values.size(); i++)
+17 [bloque-movido (App.cpp 819)]:         g.values[i] = a.values[i] * (1.0f - fb) + b.values[i] * fb;
+18 [bloque-movido (App.cpp 820)]:     g.timestamp = a.timestamp * (1.0 - f) + b.timestamp * f;
+19 [bloque-movido (App.cpp 821)]:     g.valid = true;
+20 [bloque-movido (App.cpp 822)]:     return g;
+21 [bloque-movido (App.cpp 823)]: }

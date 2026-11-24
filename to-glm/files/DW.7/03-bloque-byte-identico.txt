@@ -1,0 +1,19 @@
+Bloque original App.cpp 808-823 (16 lineas) copiado literalmente a GridBlend.h 6-21.
+Comparacion byte a byte: True
+
+ 808: // Mezcla lineal de dos grids TEC (mismo tamano) para el replay temporal.
+ 809: static GridData blendGrids(const GridData& a, const GridData& b, double f) {
+ 810:     if (!a.valid) return b;
+ 811:     if (!b.valid) return a;
+ 812:     if (a.width != b.width || a.height != b.height || a.values.size() != b.values.size()) return a;
+ 813:     GridData g;
+ 814:     g.width = a.width;
+ 815:     g.height = a.height;
+ 816:     g.values.resize(a.values.size());
+ 817:     float fb = (float)glm::clamp(f, 0.0, 1.0);
+ 818:     for (size_t i = 0; i < a.values.size(); i++)
+ 819:         g.values[i] = a.values[i] * (1.0f - fb) + b.values[i] * fb;
+ 820:     g.timestamp = a.timestamp * (1.0 - f) + b.timestamp * f;
+ 821:     g.valid = true;
+ 822:     return g;
+ 823: }

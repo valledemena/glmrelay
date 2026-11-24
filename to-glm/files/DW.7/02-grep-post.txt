@@ -1,0 +1,5 @@
+Estado POST = b09bfade5af6e47b413857b1b052e3ba5da35e3a
+src/App.cpp:2346:                updateMainGrid(blendGrids(fa, fb, f));
+src/Utils/GridBlend.h:7:static GridData blendGrids(const GridData& a, const GridData& b, double f) {
+
+blendGrids: 2 lineas (def en GridBlend.h:7, uso en App.cpp:2346); 0 en tests. Sin cambio.

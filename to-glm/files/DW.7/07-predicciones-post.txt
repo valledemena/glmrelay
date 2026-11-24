@@ -1,0 +1,3 @@
+Predicciones del pre-registro (f932292) vs observado:
+header nueva=vieja-802: comentario 808->:6 OK; def 809->:7 OK; fin 823->:21 OK.
+App.cpp nueva=vieja-16: uso 2362->2346 OK. Totales 2, 0 en tests. 4/4 sin desviacion.

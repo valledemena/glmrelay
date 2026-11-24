@@ -1,0 +1,6 @@
+Estado PRE = ba8a4c1a89a970fb0a8084162f650089a09ac437
+ba8a4c1:src/App.cpp:809:static GridData blendGrids(const GridData& a, const GridData& b, double f) {
+ba8a4c1:src/App.cpp:2362:                updateMainGrid(blendGrids(fa, fb, f));
+
+blendGrids: 2 lineas (809 definicion, 2362 uso); 0 en tests; 0 en otros ficheros.
+El comentario 808 NO contiene el simbolo (errata corregida en f932292).
