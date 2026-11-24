@@ -1,0 +1,6 @@
+PR acumulado 38ef6e3..34a717c:
+192	0	docs/DW.8-PRERREGISTRO.md
+1	226	src/App.cpp
+238	0	src/Utils/IdwInterp.h
+
+App.cpp +1/-226. Header +238 (H=238). Total 3 ficheros +431/-226 = 192+1+238 / 226.

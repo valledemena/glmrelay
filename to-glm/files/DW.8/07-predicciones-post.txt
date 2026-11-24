@@ -1,0 +1,6 @@
+Predicciones acta 0478 (regla completa neto -225) vs observado:
+giroInterpGrid 2439->2214 OK, 2545->2320 OK, 2546->2321 OK, 4108->3883 OK.
+radioInterpGrid 2449->2224 OK, 2547->2322 OK, 4125->3900 OK.
+interpLayerProfiles 2619->2394 OK.
+Invariantes: HelpMarker 633->571 (def 572), comentario 373->374, comentario 809->584.
+Totales 11/6/4, 0 usos nuevos en tests. 8/8 sin desviacion.

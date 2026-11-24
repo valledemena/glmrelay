@@ -1,0 +1,239 @@
+H=238: 223 movidas + S=13 (guarda, 10 includes, 2 blanks) + 2 blanks separadores = 223+13+2=238.
+  1 [guarda: #pragma once]: #pragma once
+  2 [blanco separador]: 
+  3 [include directo]: #include <algorithm>
+  4 [include directo]: #include <cmath>
+  5 [include directo]: #include <vector>
+  6 [include directo]: #include <glm/glm.hpp>
+  7 [include directo]: #include "Data/GiroAdapter.h"
+  8 [include directo]: #include "Data/RadioPropagationAdapter.h"
+  9 [include directo]: #include "Ionosphere/GridLayer.h"
+ 10 [include directo]: #include "Ionosphere/LayerProfile.h"
+ 11 [include directo]: #include "Ionosphere/DensityVolume.h"
+ 12 [include directo]: #include "Utils/GiroHelpers.h"
+ 13 [blanco separador]: 
+ 14 [bloque movido]: // Interpola espacialmente las muestras GIRO (IDW) a una rejilla 72x72 con el
+ 15 [bloque movido]: // mismo layout que GloTEC (compatible con GridLayer::updateFromGrid):
+ 16 [bloque movido]: //   values[latIdx*72 + lonIdx], fila 0 = lat -90 (sur), col 0 = lon -180,
+ 17 [bloque movido]: //   lat de -90..90 (paso 2.5), lon de -180..180 (paso 5).
+ 18 [bloque movido]: // var: 0=foF2, 1=MUF, 2=hmF2, 3=NmF2.
+ 19 [bloque movido]: static GridData giroInterpGrid(const std::vector<StationSample>& samples, int var, int w, 
+ 20 [bloque movido]:     const int W = w, H = h;
+ 21 [bloque movido]:     GridData g;
+ 22 [bloque movido]:     g.width = W;
+ 23 [bloque movido]:     g.height = H;
+ 24 [bloque movido]:     g.values.assign(W * H, 0.0f);
+ 25 [bloque movido]:     g.valid = false;
+ 26 [bloque movido]: 
+ 27 [bloque movido]:     std::vector<StationSample> pts;
+ 28 [bloque movido]:     // M4R-A: filas stale (kc2g 6-24 h / EG931-2024) fuera de los grids.
+ 29 [bloque movido]:     for (const auto& s : samples) if (s.valid && !s.stale) pts.push_back(s);
+ 30 [bloque movido]:     if (pts.empty()) return g;
+ 31 [bloque movido]: 
+ 32 [bloque movido]:     const float maxDist = 50.0f;   // radio de influencia en grados
+ 33 [bloque movido]:     const float cellLat = 180.0f / H;   // 2.5
+ 34 [bloque movido]:     const float cellLon = 360.0f / W;   // 5
+ 35 [bloque movido]:     // Fondo = mediana global (en vez de 0): sin acantilados en oceanos.
+ 36 [bloque movido]:     // Peso debil (~estacion a 16deg) para no aplanar los picos locales.
+ 37 [bloque movido]:     const float wBg = 0.004f;
+ 38 [bloque movido]:     std::vector<float> mvals;
+ 39 [bloque movido]:     mvals.reserve(pts.size());
+ 40 [bloque movido]:     for (const auto& p : pts) {
+ 41 [bloque movido]:         float vv = giroValueOf(p, var);
+ 42 [bloque movido]:         if (vv > 0.0f) mvals.push_back(vv);
+ 43 [bloque movido]:     }
+ 44 [bloque movido]:     float med = 0.0f;
+ 45 [bloque movido]:     if (!mvals.empty()) {
+ 46 [bloque movido]:         std::sort(mvals.begin(), mvals.end());
+ 47 [bloque movido]:         med = mvals[mvals.size() / 2];
+ 48 [bloque movido]:     }
+ 49 [bloque movido]: 
+ 50 [bloque movido]:     for (int latIdx = 0; latIdx < H; latIdx++) {
+ 51 [bloque movido]:         float latG = -90.0f + cellLat * latIdx;
+ 52 [bloque movido]:         for (int lonIdx = 0; lonIdx < W; lonIdx++) {
+ 53 [bloque movido]:             float lonG = -180.0f + cellLon * lonIdx;
+ 54 [bloque movido]:             double wSum = wBg, vSum = (double)wBg * med;
+ 55 [bloque movido]:             for (const auto& p : pts) {
+ 56 [bloque movido]:                 float dlat = p.latDeg - latG;
+ 57 [bloque movido]:                 float dlon = p.lonDeg - lonG;
+ 58 [bloque movido]:                 if (dlon > 180.0f) dlon -= 360.0f;
+ 59 [bloque movido]:                 if (dlon < -180.0f) dlon += 360.0f;
+ 60 [bloque movido]:                 // distancia angular aproximada (grados)
+ 61 [bloque movido]:                 float d = sqrtf(dlat * dlat + dlon * dlon);
+ 62 [bloque movido]:                 if (d > maxDist) continue;
+ 63 [bloque movido]:                 float val = giroValueOf(p, var);
+ 64 [bloque movido]:                 if (val <= 0.0f) continue;
+ 65 [bloque movido]:                 float w = 1.0f / (d * d + 0.5f);   // IDW con suavizado
+ 66 [bloque movido]:                 wSum += w;
+ 67 [bloque movido]:                 vSum += (double)w * val;
+ 68 [bloque movido]:             }
+ 69 [bloque movido]:             g.values[latIdx * W + lonIdx] = (float)(vSum / wSum);
+ 70 [bloque movido]:         }
+ 71 [bloque movido]:     }
+ 72 [bloque movido]:     g.valid = true;
+ 73 [bloque movido]:     g.timestamp = 0.0;
+ 74 [bloque movido]:     return g;
+ 75 [bloque movido]: }
+ 76 [bloque movido]: 
+ 77 [bloque movido]: // Interpola LUF/FOT/Spread-F/MUF (Fase 5, via RadioPropagationAdapter) a una
+ 78 [bloque movido]: // rejilla 72x72 con el mismo layout que GridLayer::updateFromGrid.
+ 79 [bloque movido]: // var: 0=LUF, 1=FOT, 2=Spread-F, 3=MUF. kpProxy modula Spread-F; xrayFlux
+ 80 [bloque movido]: // alimenta el termino SID del LUF (M7, plan 10 — Sauer-Wilkinson).
+ 81 [bloque movido]: static GridData radioInterpGrid(const std::vector<StationSample>& samples, int var, int w,
+ 82 [bloque movido]:                                 double utc, float kpProxy, float xrayFlux) {
+ 83 [bloque movido]:     const int W = w, H = h;
+ 84 [bloque movido]:     GridData g;
+ 85 [bloque movido]:     g.width = W;
+ 86 [bloque movido]:     g.height = H;
+ 87 [bloque movido]:     g.values.assign(W * H, 0.0f);
+ 88 [bloque movido]:     g.valid = false;
+ 89 [bloque movido]: 
+ 90 [bloque movido]:     std::vector<StationSample> pts;
+ 91 [bloque movido]:     // M4R-A: filas stale (kc2g 6-24 h / EG931-2024) fuera de los grids.
+ 92 [bloque movido]:     for (const auto& s : samples) if (s.valid && !s.stale) pts.push_back(s);
+ 93 [bloque movido]:     if (pts.empty()) return g;
+ 94 [bloque movido]: 
+ 95 [bloque movido]:     const float maxDist = 50.0f;
+ 96 [bloque movido]:     const float cellLat = 180.0f / H;
+ 97 [bloque movido]:     const float cellLon = 360.0f / W;
+ 98 [bloque movido]:     // Fondo = mediana global (sin acantilados en oceanos).
+ 99 [bloque movido]:     const float wBg = 0.004f;
+100 [bloque movido]:     std::vector<float> mvals;
+101 [bloque movido]:     mvals.reserve(pts.size());
+102 [bloque movido]:     for (const auto& p : pts) {
+103 [bloque movido]:         float vv = RadioPropagationAdapter::stationValue(p, var, utc, kpProxy, xrayFlux);
+104 [bloque movido]:         if (vv > 0.0f) mvals.push_back(vv);
+105 [bloque movido]:     }
+106 [bloque movido]:     float med = 0.0f;
+107 [bloque movido]:     if (!mvals.empty()) {
+108 [bloque movido]:         std::sort(mvals.begin(), mvals.end());
+109 [bloque movido]:         med = mvals[mvals.size() / 2];
+110 [bloque movido]:     }
+111 [bloque movido]: 
+112 [bloque movido]:     for (int latIdx = 0; latIdx < H; latIdx++) {
+113 [bloque movido]:         float latG = -90.0f + cellLat * latIdx;
+114 [bloque movido]:         for (int lonIdx = 0; lonIdx < W; lonIdx++) {
+115 [bloque movido]:             float lonG = -180.0f + cellLon * lonIdx;
+116 [bloque movido]:             double wSum = wBg, vSum = (double)wBg * med;
+117 [bloque movido]:             for (const auto& p : pts) {
+118 [bloque movido]:                 float dlat = p.latDeg - latG;
+119 [bloque movido]:                 float dlon = p.lonDeg - lonG;
+120 [bloque movido]:                 if (dlon > 180.0f) dlon -= 360.0f;
+121 [bloque movido]:                 if (dlon < -180.0f) dlon += 360.0f;
+122 [bloque movido]:                 float d = sqrtf(dlat * dlat + dlon * dlon);
+123 [bloque movido]:                 if (d > maxDist) continue;
+124 [bloque movido]:                 float val = RadioPropagationAdapter::stationValue(p, var, utc, kpProxy, xr
+125 [bloque movido]:                 if (val <= 0.0f) continue;
+126 [bloque movido]:                 float w = 1.0f / (d * d + 0.5f);
+127 [bloque movido]:                 wSum += w;
+128 [bloque movido]:                 vSum += (double)w * val;
+129 [bloque movido]:             }
+130 [bloque movido]:             g.values[latIdx * W + lonIdx] = (float)(vSum / wSum);
+131 [bloque movido]:         }
+132 [bloque movido]:     }
+133 [bloque movido]:     g.valid = true;
+134 [bloque movido]:     g.timestamp = utc;
+135 [bloque movido]:     return g;
+136 [bloque movido]: }
+137 [bloque movido]: 
+138 [bloque movido]: // Interpola perfiles de capa (IDW, patron/radio/peso como giroInterpGrid;
+139 [bloque movido]: // M5: la distancia pasa a gran circulo — el grid 2D conserva la plana,
+140 [bloque movido]: // fuera del 'Archivos' del plan 8, ver P6 del sello M5). Fondo = mediana
+141 [bloque movido]: // por campo EXCEPTO foF2/hmF2, que mezclan el fondo climatologico
+142 [bloque movido]: // modelFoF2/modelHmF2 por cercania (plan 8.2/8.3).
+143 [bloque movido]: // sunDir: marco del motor, el MISMO vector que usan despues
+144 [bloque movido]: // applyDayNight y buildDensityVolume (coherencia terminador-modelo).
+145 [bloque movido]: static std::vector<LayerProfile> interpLayerProfiles(const std::vector<StationSample>& sam
+146 [bloque movido]:                                                      const glm::vec3& sunDir, double epoch
+147 [bloque movido]:     std::vector<LayerProfile> out((size_t)w * h);
+148 [bloque movido]:     std::vector<StationSample> pts;
+149 [bloque movido]:     // M4R-A: filas stale (kc2g 6-24 h / EG931-2024) fuera del volumen.
+150 [bloque movido]:     for (const auto& s : samples) if (s.valid && !s.stale) pts.push_back(s);
+151 [bloque movido]:     if (pts.empty()) return out;
+152 [bloque movido]: 
+153 [bloque movido]:     const float maxDist = 50.0f;
+154 [bloque movido]:     const float cellLat = 180.0f / h;
+155 [bloque movido]:     const float cellLon = 360.0f / w;
+156 [bloque movido]:     const float wBg = 0.004f;
+157 [bloque movido]:     auto medOf = [&](float StationSample::*m) {
+158 [bloque movido]:         std::vector<float> v;
+159 [bloque movido]:         v.reserve(pts.size());
+160 [bloque movido]:         // isfinite: el SAO trae 9999 = "sin dato" -> NaN (noche: foE/foF1),
+161 [bloque movido]:         // y un NaN en la mediana envenenaria el fondo del volumen.
+162 [bloque movido]:         for (const auto& p : pts) if (std::isfinite(p.*m) && p.*m > 0.0f) v.push_back(p.*m
+163 [bloque movido]:         if (v.empty()) return 0.0f;
+164 [bloque movido]:         std::sort(v.begin(), v.end());
+165 [bloque movido]:         return v[v.size() / 2];
+166 [bloque movido]:     };
+167 [bloque movido]:     float fE = medOf(&StationSample::foE);
+168 [bloque movido]:     float fF1 = medOf(&StationSample::foF1);
+169 [bloque movido]:     float fF2 = medOf(&StationSample::foF2);
+170 [bloque movido]:     const float mNmE  = fE  > 0.0f ? 1.24e10f * fE * fE : 0.0f;
+171 [bloque movido]:     const float mNmF1 = fF1 > 0.0f ? 1.24e10f * fF1 * fF1 : 0.0f;
+172 [bloque movido]:     const float mNmF2 = fF2 > 0.0f ? 1.24e10f * fF2 * fF2 : 0.0f;
+173 [bloque movido]:     const float hmedF2 = medOf(&StationSample::hmF2);
+174 [bloque movido]:     const float mB0 = sanitizeB0(medOf(&StationSample::B0));
+175 [bloque movido]:     const float mB1 = sanitizeB1(medOf(&StationSample::B1));
+176 [bloque movido]:     const int doy = dayOfYear(epoch);   // termino estacional del modelo (8.2)
+177 [bloque movido]: 
+178 [bloque movido]:     for (int latIdx = 0; latIdx < h; latIdx++) {
+179 [bloque movido]:         float latG = -90.0f + cellLat * latIdx;
+180 [bloque movido]:         for (int lonIdx = 0; lonIdx < w; lonIdx++) {
+181 [bloque movido]:             float lonG = -180.0f + cellLon * lonIdx;
+182 [bloque movido]:             double wNmE = wBg, vNmE = (double)wBg * mNmE;
+183 [bloque movido]:             double wNmF1 = wBg, vNmF1 = (double)wBg * mNmF1;
+184 [bloque movido]:             double wNmF2 = wBg, vNmF2 = (double)wBg * mNmF2;
+185 [bloque movido]:             double wHm = wBg, vHm = (double)wBg * hmedF2;
+186 [bloque movido]:             double wB0 = wBg, vB0 = (double)wBg * mB0;
+187 [bloque movido]:             double wB1 = wBg, vB1 = (double)wBg * mB1;
+188 [bloque movido]:             // M5/8.1: distancia gran circulo (haversine, en grados) en
+189 [bloque movido]:             // lugar de la plana (error grande en latitudes altas). Radio
+190 [bloque movido]:             // y peso del IDW intactos. nearDeg (8.3) se mide contra
+191 [bloque movido]:             // TODAS las estaciones validas, no solo las de radio.
+192 [bloque movido]:             double nearDeg = 180.0;
+193 [bloque movido]:             for (const auto& p : pts) {
+194 [bloque movido]:                 double d = havDeg(latG, lonG, (double)p.latDeg, (double)p.lonDeg);
+195 [bloque movido]:                 if (d < nearDeg) nearDeg = d;
+196 [bloque movido]:                 if (d > maxDist) continue;
+197 [bloque movido]:                 double w = 1.0 / (d * d + 0.5);
+198 [bloque movido]:                 // usableFo (LayerProfile.h): finita y > 0 — NaN de noche no entra
+199 [bloque movido]:                 if (usableFo(p.foE))  { float v = 1.24e10f * p.foE * p.foE; wNmE += w; vNm
+200 [bloque movido]:                 if (usableFo(p.foF1)) { float v = 1.24e10f * p.foF1 * p.foF1; wNmF1 += w; 
+201 [bloque movido]:                 if (usableFo(p.foF2)) { float v = 1.24e10f * p.foF2 * p.foF2; wNmF2 += w; 
+202 [bloque movido]:                 if (p.hmF2 > 0.0f) { wHm += w; vHm += w * p.hmF2; }
+203 [bloque movido]:                 if (p.B0 > 0.0f)   { wB0 += w; vB0 += w * p.B0; }
+204 [bloque movido]:                 if (p.B1 > 0.0f)   { wB1 += w; vB1 += w * p.B1; }
+205 [bloque movido]:             }
+206 [bloque movido]:             // M5/8.3: mezcla medicion<->modelo SOLO en foF2 y hmF2 (los
+207 [bloque movido]:             // que gobiernan volumen y MUF). cosChi con la MISMA
+208 [bloque movido]:             // expresion que applyDayNight / buildDensityVolume
+209 [bloque movido]:             // (densityDir, marco del motor — P1 corregido por MUSE).
+210 [bloque movido]:             double wG = smoothstep(55.0, 25.0, nearDeg);
+211 [bloque movido]:             glm::vec3 nrm = densityDir(latG, lonG);
+212 [bloque movido]:             double cosChi = (double)(nrm.x * sunDir.x + nrm.y * sunDir.y + nrm.z * sunDir.
+213 [bloque movido]:             LayerProfile pr;
+214 [bloque movido]:             pr.NmE = (float)(vNmE / wNmE);
+215 [bloque movido]:             pr.hasE = pr.NmE > 0.0f;
+216 [bloque movido]:             pr.NmF1 = (float)(vNmF1 / wNmF1);
+217 [bloque movido]:             pr.hasF1 = pr.NmF1 > 0.0f;
+218 [bloque movido]:             // P2 (sello): el IDW de F2 queda intacto (Nm, fondo mediana
+219 [bloque movido]:             // wBg); la mezcla con el modelo es en MHz: sqrt -> blend ->
+220 [bloque movido]:             // cuadrar. wG=1 deja la celda como hoy salvo ~1e-7 (V1).
+221 [bloque movido]:             double nmF2Idw = vNmF2 / wNmF2;
+222 [bloque movido]:             double hmF2Idw = vHm / wHm;
+223 [bloque movido]:             double foF2Idw = (nmF2Idw > 0.0) ? std::sqrt(nmF2Idw / 1.24e10) : 0.0;
+224 [bloque movido]:             double foF2Cell = wG * foF2Idw + (1.0 - wG) * modelFoF2(cosChi, (double)latG, 
+225 [bloque movido]:             pr.NmF2 = (float)(1.24e10 * foF2Cell * foF2Cell);
+226 [bloque movido]:             double hmF2Cell = (hmF2Idw > 0.0)
+227 [bloque movido]:                 ? (wG * hmF2Idw + (1.0 - wG) * modelHmF2(cosChi, (double)latG))
+228 [bloque movido]:                 : modelHmF2(cosChi, (double)latG);
+229 [bloque movido]:             pr.hmF2 = (float)hmF2Cell;
+230 [bloque movido]:             pr.hasF2 = pr.NmF2 > 0.0f && pr.hmF2 > 0.0f;
+231 [bloque movido]:             pr.hmF1 = pr.hmF2 > 0.0f ? std::max(150.0f, 0.8f * pr.hmF2) : 180.0f;
+232 [bloque movido]:             pr.B0 = sanitizeB0((float)(vB0 / wB0));
+233 [bloque movido]:             pr.B1 = sanitizeB1((float)(vB1 / wB1));
+234 [bloque movido]:             out[(size_t)latIdx * w + lonIdx] = pr;
+235 [bloque movido]:         }
+236 [bloque movido]:     }
+237 [bloque movido]:     return out;
+238 [bloque movido]: }

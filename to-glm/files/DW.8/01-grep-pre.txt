@@ -1,0 +1,23 @@
+Estado PRE = 38ef6e345bdf25711f177c3ec0d6b5c0dd93c90b
+38ef6e3:src/App.cpp:373:    GridData hfFoF2Grid, hfHmF2Grid, hfLufGrid;   // caches (giroInterpGrid x2 + LUF M7)
+38ef6e3:src/App.cpp:575:static GridData giroInterpGrid(const std::vector<StationSample>& samples, int var, int w, int h) {
+38ef6e3:src/App.cpp:650:static GridData radioInterpGrid(const std::vector<StationSample>& samples, int var, int w, int h,
+38ef6e3:src/App.cpp:707:// Interpola perfiles de capa (IDW, patron/radio/peso como giroInterpGrid;
+38ef6e3:src/App.cpp:714:static std::vector<LayerProfile> interpLayerProfiles(const std::vector<StationSample>& samples, int w, int h,
+38ef6e3:src/App.cpp:2439:        updateMainGrid(giroInterpGrid(gsAct, impl->mapVariable - 1, 72, 72));
+38ef6e3:src/App.cpp:2449:        updateMainGrid(radioInterpGrid(gsAct,
+38ef6e3:src/App.cpp:2545:            impl->hfFoF2Grid = giroInterpGrid(gsAct, 0, 72, 72);   // var de mapa 1 = foF2
+38ef6e3:src/App.cpp:2546:            impl->hfHmF2Grid = giroInterpGrid(gsAct, 2, 72, 72);   // var de mapa 3 = hmF2
+38ef6e3:src/App.cpp:2547:            impl->hfLufGrid  = radioInterpGrid(gsAct, 0, 72, 72, hfEpoch, hfKp, hfFlux);  // LUF M7
+38ef6e3:src/App.cpp:2619:        auto profs = interpLayerProfiles(gsAct, 72, 72, sd, volEpoch, f107);
+38ef6e3:src/App.cpp:4108:        GridData g = giroInterpGrid(gsSrc, var, 72, 72);   // M4R-A
+38ef6e3:src/App.cpp:4125:        GridData g = radioInterpGrid(gsSrc, var, 72, 72, epoch, kpProxy, xrFlux);   // M4R-A
+38ef6e3:src/Ionosphere/HFTraceLayer.h:16://      muestreo bilineal de los grids 72x72 de giroInterpGrid/radioInterpGrid.
+38ef6e3:src/Ionosphere/HFTraceLayer.h:194:// Muestreo bilineal de los grids 72x72 (layout giroInterpGrid: fila 0 =
+38ef6e3:src/Ionosphere/HFTraceLayer.h:394:        const float* foF2Grid = nullptr;     // giroInterpGrid var 0 (72x72)
+38ef6e3:src/Ionosphere/HFTraceLayer.h:395:        const float* hmF2Grid = nullptr;     // giroInterpGrid var 2
+38ef6e3:src/Ionosphere/HFTraceLayer.h:396:        const float* lufGrid = nullptr;      // radioInterpGrid var 0 (M7)
+38ef6e3:src/Ionosphere/VolumeBuildKey.h:41:// FNV-1a 64 sobre los bits de los campos que alimentan interpLayerProfiles
+38ef6e3:tests/test_model_foF2.cpp:124:        // Misma expresion que el caller de M5 (applyDayNight / interpLayerProfiles):
+
+giroInterpGrid 11 / radioInterpGrid 6 / interpLayerProfiles 4; 0 usos en tests.

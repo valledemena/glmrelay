@@ -1,0 +1,114 @@
+﻿Test project C:/Users/unknown/Desktop/ionosphere-dw8-cpp/build
+      Start  1: getbest_parse
+ 1/54 Test  #1: getbest_parse ....................   Passed    0.07 sec
+      Start  2: kc2g_parse
+ 2/54 Test  #2: kc2g_parse .......................   Passed    0.07 sec
+      Start  3: model_foF2
+ 3/54 Test  #3: model_foF2 .......................   Passed    0.03 sec
+      Start  4: layer_winner
+ 4/54 Test  #4: layer_winner .....................   Passed    0.02 sec
+      Start  5: volume_memo
+ 5/54 Test  #5: volume_memo ......................   Passed    4.42 sec
+      Start  6: volume_guard
+ 6/54 Test  #6: volume_guard .....................   Passed    0.03 sec
+      Start  7: exporter
+ 7/54 Test  #7: exporter .........................   Passed    0.03 sec
+      Start  8: volume_shadow
+ 8/54 Test  #8: volume_shadow ....................   Passed    0.02 sec
+      Start  9: volume_jitter
+ 9/54 Test  #9: volume_jitter ....................   Passed    0.02 sec
+      Start 10: tour
+10/54 Test #10: tour .............................   Passed    0.03 sec
+      Start 11: alerts
+11/54 Test #11: alerts ...........................   Passed    0.04 sec
+      Start 12: igrf
+12/54 Test #12: igrf .............................   Passed    0.06 sec
+      Start 13: godrays
+13/54 Test #13: godrays ..........................   Passed    0.03 sec
+      Start 14: d_region
+14/54 Test #14: d_region .........................   Passed    0.06 sec
+      Start 15: solar_epoch
+15/54 Test #15: solar_epoch ......................   Passed    0.02 sec
+      Start 16: hf_circuit
+16/54 Test #16: hf_circuit .......................   Passed    0.03 sec
+      Start 17: hop_geometry
+17/54 Test #17: hop_geometry .....................   Passed    0.03 sec
+      Start 18: m2_sun
+18/54 Test #18: m2_sun ...........................   Passed    0.02 sec
+      Start 19: tec_cache
+19/54 Test #19: tec_cache ........................   Passed    3.51 sec
+      Start 20: glo_backfill
+20/54 Test #20: glo_backfill .....................   Passed    0.05 sec
+      Start 21: periodic_wait
+21/54 Test #21: periodic_wait ....................   Passed    0.03 sec
+      Start 22: fetchstate_blockedby
+22/54 Test #22: fetchstate_blockedby .............   Passed    0.08 sec
+      Start 23: tle_group_panel
+23/54 Test #23: tle_group_panel ..................   Passed    0.04 sec
+      Start 24: cache_dir
+24/54 Test #24: cache_dir ........................   Passed    0.08 sec
+      Start 25: sdo_projection
+25/54 Test #25: sdo_projection ...................   Passed    0.04 sec
+      Start 26: sdo_adapter
+26/54 Test #26: sdo_adapter ......................   Passed    0.07 sec
+      Start 27: kc2g_history
+27/54 Test #27: kc2g_history .....................   Passed    0.08 sec
+      Start 28: kc2g_cache
+28/54 Test #28: kc2g_cache .......................   Passed    0.81 sec
+      Start 29: irtam_cache
+29/54 Test #29: irtam_cache ......................   Passed    0.14 sec
+      Start 30: irtam_coeff_parse
+30/54 Test #30: irtam_coeff_parse ................   Passed    0.04 sec
+      Start 31: irtamc_cache
+31/54 Test #31: irtamc_cache .....................   Passed    2.65 sec
+      Start 32: irtamc_gate
+32/54 Test #32: irtamc_gate ......................   Passed    0.03 sec
+      Start 33: irtam_adapter
+33/54 Test #33: irtam_adapter ....................   Passed    0.07 sec
+      Start 34: irtam_grid_eval
+34/54 Test #34: irtam_grid_eval ..................   Passed    0.06 sec
+      Start 35: irtam_state
+35/54 Test #35: irtam_state ......................   Passed    0.04 sec
+      Start 36: lgdc_trace
+36/54 Test #36: lgdc_trace .......................   Passed    0.04 sec
+      Start 37: provider_status
+37/54 Test #37: provider_status ..................   Passed    0.04 sec
+      Start 38: flare_parse
+38/54 Test #38: flare_parse ......................   Passed    0.08 sec
+      Start 39: solimage
+39/54 Test #39: solimage .........................   Passed    0.11 sec
+      Start 40: orbit_prop
+40/54 Test #40: orbit_prop .......................   Passed    0.09 sec
+      Start 41: fetch_gate
+41/54 Test #41: fetch_gate .......................   Passed    0.11 sec
+      Start 42: tle_orchestration
+42/54 Test #42: tle_orchestration ................   Passed    9.14 sec
+      Start 43: tle_csv
+43/54 Test #43: tle_csv ..........................   Passed    0.11 sec
+      Start 44: tle_merge
+44/54 Test #44: tle_merge ........................   Passed    0.07 sec
+      Start 45: parker
+45/54 Test #45: parker ...........................   Passed    0.03 sec
+      Start 46: voyager
+46/54 Test #46: voyager ..........................   Passed    0.06 sec
+      Start 47: rbe_parse
+47/54 Test #47: rbe_parse ........................   Passed    0.06 sec
+      Start 48: ae_parse
+48/54 Test #48: ae_parse .........................   Passed    0.09 sec
+      Start 49: solar_wind_river
+49/54 Test #49: solar_wind_river .................   Passed    0.05 sec
+      Start 50: tz_utc
+50/54 Test #50: tz_utc ...........................   Passed    0.06 sec
+      Start 51: ebro_parse
+51/54 Test #51: ebro_parse .......................   Passed    0.07 sec
+      Start 52: ebro_fetch
+52/54 Test #52: ebro_fetch .......................   Passed    0.07 sec
+      Start 53: ebro_retr
+53/54 Test #53: ebro_retr ........................   Passed    0.07 sec
+      Start 54: layer_profile
+54/54 Test #54: layer_profile ....................   Passed    0.03 sec
+
+100% tests passed out of 54
+
+Total Test time (real) =  23.40 sec
+ctest rc=0

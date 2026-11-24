@@ -1,0 +1,4 @@
+Bloques movidos literalmente; App.cpp 570..631 -> header 14..75, 646..705 -> 77..136, 707..807 -> 138..238.
+segmento 570..631 == header[14:75]: True
+segmento 646..705 == header[77:136]: True
+segmento 707..807 == header[138:238]: True
