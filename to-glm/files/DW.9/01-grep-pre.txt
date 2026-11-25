@@ -1,0 +1,10 @@
+Estado PRE = 87313c5
+87313c5:src/App.cpp:589:static bool evalTovGrid(double tov, const std::string& path, double ryear,
+87313c5:src/App.cpp:657:        if (!evalTovGrid(tov, path, ryear, v)) return nullptr;
+87313c5:src/App.cpp:723:static GridData lerpBracketGrid(const std::vector<float>& v0,
+87313c5:src/App.cpp:2241:                GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
+87313c5:src/App.cpp:2265:                GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
+87313c5:src/App.cpp:3920:            GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
+87313c5:src/App.cpp:3951:            GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
+
+evalTovGrid 2 / lerpBracketGrid 5; 0 en tests.

@@ -1,0 +1,1 @@
+PR 87313c5..644d530: 1 fichero +165/-0 (pre-registro erratado). Sin codigo de aplicacion.
