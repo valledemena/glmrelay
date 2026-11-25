@@ -1,0 +1,2 @@
+App.cpp y las 6 cabeceras byte-identicos a master 25098f3.
+git diff 25098f3 -- src/App.cpp src/Utils/*.h -> VACIO.

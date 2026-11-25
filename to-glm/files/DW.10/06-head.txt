@@ -1,3 +1,0 @@
-HEAD=8ee6c84564ef5d450162275ac6d862a6fa562a0b
-BASE=25098f3
-PADRES=25860b3, 5cba408, 2f561ba, 02e481a (micro-errata B seis fuentes), 8ee6c84 (normalizacion)

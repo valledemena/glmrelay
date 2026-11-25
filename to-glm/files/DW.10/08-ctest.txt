@@ -1,0 +1,3 @@
+ctest rc=0
+100% tests passed out of 62
+(54 existentes + 8 nuevos; ebro_parse marcado Skip en CI)

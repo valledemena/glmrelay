@@ -1,0 +1,4 @@
+8 tests DW.10:
+A1 test_hdr_fieldformat; A2 test_hdr_stationmerge; A3 test_hdr_girohelpers;
+A4 test_hdr_gridblend; A5 test_hdr_idwinterp; A6 test_hdr_irtambracket;
+B test_hdr_all_six (SEIS fuentes: RPA+Igrf+4 Irtam+CURL); C hdr_odr.

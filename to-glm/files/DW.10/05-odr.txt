@@ -1,0 +1,1 @@
+Simbolos definidos en las 6 cabeceras: 0 duplicados (test hdr_odr PASS).

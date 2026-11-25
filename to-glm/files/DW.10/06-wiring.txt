@@ -1,0 +1,3 @@
+A5: RadioPropagationAdapter.cpp + Igrf.cpp + CURL::libcurl
+A6: 4 fuentes Irtam
+B: RPA + Igrf + 4 Irtam + CURL (SEIS fuentes + CURL; sin Igrf FALLA)

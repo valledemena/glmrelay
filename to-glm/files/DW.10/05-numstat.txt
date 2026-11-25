@@ -1,4 +1,0 @@
-ERRATA 25098f3..2f561ba:
-156	0	docs/DW.10-PRERREGISTRO.md
-
-Solo el documento; sin codigo de produccion ni tests anadidos aun.
