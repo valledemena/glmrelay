@@ -1,0 +1,5 @@
+E3 wiring verificado por enlace real:
+A1-A4 enlazan tal cual. A5/A6/B requieren fuentes de soporte (patron test_exporter).
+A5: RadioPropagationAdapter.cpp + Igrf.cpp + CURL::libcurl.
+A6: IrtamCoeffCache.cpp + IrtamCoeffParse.cpp + IrtamGridEval.cpp + IrtamState.cpp (LINK OK verificado 0484).
+B: las cinco fuentes de A5/A6.

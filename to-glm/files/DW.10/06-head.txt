@@ -1,0 +1,3 @@
+HEAD=2f561ba300dd42d6f62f47a9277409cd76ff9a92
+BASE=25098f3
+PADRES=25860b3 (pre-registro), 5cba408 (errata), 2f561ba (normalizacion)
