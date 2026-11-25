@@ -1,0 +1,3 @@
+# DW.9 ctest
+ctest rc=0
+100% tests passed out of 54

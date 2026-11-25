@@ -1,1 +1,7 @@
-PR 87313c5..644d530: 1 fichero +165/-0 (pre-registro erratado). Sin codigo de aplicacion.
+PR acumulado 87313c5..6efa534:
+165	0	docs/DW.9-PRERREGISTRO.md
+1	38	src/App.cpp
+48	0	src/Utils/IrtamBracket.h
+
+App.cpp +1/-38. Header +48 (H=48). Total 3 ficheros +214/-38 = 165+1+48 / 38.
+Nota N2 (acta 0482): con N=165 el acumulado es +214/-38, era +1311, total +4564.

@@ -1,0 +1,3 @@
+Bloques movidos literalmente; App.cpp 584..602 -> IrtamBracket.h 12..30, 720..736 -> 32..48.
+segmento 584..602 == header[12:30]: True
+segmento 720..736 == header[32:48]: True

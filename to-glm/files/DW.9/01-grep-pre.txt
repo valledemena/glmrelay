@@ -7,4 +7,4 @@ Estado PRE = 87313c5
 87313c5:src/App.cpp:3920:            GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
 87313c5:src/App.cpp:3951:            GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
 
-evalTovGrid 2 / lerpBracketGrid 5; 0 en tests.
+evalTovGrid 2 (589 def, 657 uso) / lerpBracketGrid 5 (723 def, 2241/2265/3920/3951 usos); 0 en tests.

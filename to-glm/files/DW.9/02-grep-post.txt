@@ -1,0 +1,10 @@
+Estado POST = 6efa5343fcdc469caff0dbc74a69b0fd8364d1f1
+src/App.cpp:638:        if (!evalTovGrid(tov, path, ryear, v)) return nullptr;
+src/App.cpp:2204:                GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
+src/App.cpp:2228:                GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
+src/App.cpp:3883:            GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
+src/App.cpp:3914:            GridData g = lerpBracketGrid(v0, v1, v.t0, v.t1,
+src/Utils/IrtamBracket.h:17:static bool evalTovGrid(double tov, const std::string& path, double ryear,
+src/Utils/IrtamBracket.h:35:static GridData lerpBracketGrid(const std::vector<float>& v0,
+
+Totales 2/5 sin cambio; 0 usos nuevos en tests.

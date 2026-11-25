@@ -1,0 +1,49 @@
+H=48: 36 movidas + S=12 (guarda, 2 blanks, 8 includes, 1 separador).
+ 1 [guarda: #pragma once]: #pragma once
+ 2 [blanco separador]: 
+ 3 [include directo]: #include <cmath>
+ 4 [include directo]: #include <string>
+ 5 [include directo]: #include <vector>
+ 6 [include directo]: #include "Data/IrtamCoeffCache.h"
+ 7 [include directo]: #include "Data/IrtamCoeffParse.h"
+ 8 [include directo]: #include "Data/IrtamGridEval.h"
+ 9 [include directo]: #include "Data/IrtamState.h"
+10 [include directo]: #include "Ionosphere/GridLayer.h"
+11 [blanco separador]: 
+12 [bloque movido]: // M-irtam-replay-028: entrega del BRACKET del par (endpoints para lerp en
+13 [bloque movido]: // render por cursor — simetria TEC). Lee del cache (solo-lectura), no toca
+14 [bloque movido]: // el publish. pA/pB en minusculas ("fof2"/"b0"...). Rellena el bracket
+15 [bloque movido]: // (GridData 45x46 + timestamp + valid en cada endpoint) + t0/t1/clamped.
+16 [bloque movido]: // Nunca lanza. Hilo: SOLO worker (ver sampleIrtamBracketWorker).
+17 [bloque movido]: static bool evalTovGrid(double tov, const std::string& path, double ryear,
+18 [bloque movido]:                         std::vector<float>& out) {
+19 [bloque movido]:     irtamccache::Bucket bk;
+20 [bloque movido]:     if (!irtamccache::loadBucket(path, bk)) return false;
+21 [bloque movido]:     irtamcoeff::Message m;
+22 [bloque movido]:     std::string err;
+23 [bloque movido]:     if (!irtamcoeff::parseMessage(
+24 [bloque movido]:             std::string(bk.bytes.begin(), bk.bytes.end()), m, err) ||
+25 [bloque movido]:         !irtamcoeff::isStandardBasis(m.header))
+26 [bloque movido]:         return false;
+27 [bloque movido]:     const long long day = (long long)std::floor(tov / 86400.0);
+28 [bloque movido]:     const float h = (float)((tov - (double)day * 86400.0) / 3600.0);
+29 [bloque movido]:     return irtameval::evalGrid(m.coeffs, ryear, h, h, out);
+30 [bloque movido]: }
+31 [blanco separador]: 
+32 [bloque movido]: // M-irtam-replay-028: lerp en render por cursor sobre el bracket entregado
+33 [bloque movido]: // (simetria TEC; microsegundos, wait-free). f clampado a [0,1]; a fallo
+34 [bloque movido]: // devuelve grid invalido (ausente honesto).
+35 [bloque movido]: static GridData lerpBracketGrid(const std::vector<float>& v0,
+36 [bloque movido]:                                 const std::vector<float>& v1, double t0,
+37 [bloque movido]:                                 double t1, double epoch) {
+38 [bloque movido]:     GridData g;
+39 [bloque movido]:     double f = (t1 > t0) ? (epoch - t0) / (t1 - t0) : 0.0;
+40 [bloque movido]:     if (f < 0.0) f = 0.0;
+41 [bloque movido]:     if (f > 1.0) f = 1.0;
+42 [bloque movido]:     if (!irtamstate::lerpValues(v0, v1, f, g.values)) return GridData{};
+43 [bloque movido]:     g.width = irtameval::kGridW;
+44 [bloque movido]:     g.height = irtameval::kGridH;
+45 [bloque movido]:     g.timestamp = epoch;
+46 [bloque movido]:     g.valid = true;
+47 [bloque movido]:     return g;
+48 [bloque movido]: }

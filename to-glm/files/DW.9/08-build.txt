@@ -1,0 +1,2 @@
+# DW.9 build (Release, Ninja)
+build rc=0

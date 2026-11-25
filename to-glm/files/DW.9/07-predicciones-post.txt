@@ -1,4 +1,4 @@
-SIMULADOR MECANICO (plan 0481 aplicado a App.cpp real):
-S1 584..602 (19), retirada 584..603 (20); S2 720..736 (17), retirada 720..737 (18).
-App.cpp 6599 -> 6562 (delta -37 por retiradas +1 include = -37 neto? verificar en ejecucion).
-Usos simulados: evalTovGrid 657->638; lerpBracketGrid 2241->2204, 2265->2228, 3920->3883, 3951->3914.
+Simulador mecanico acta 0482 vs observado:
+App.cpp 6599->6562 (con 1 include: 6600->6563 en el fichero staged; diff +1/-38).
+evalTovGrid 657->638 OK; lerpBracketGrid 2241->2204 OK, 2265->2228 OK, 3920->3883 OK, 3951->3914 OK.
+Definiciones header :17 (evalTovGrid) y :35 (lerpBracketGrid) OK. Totales 2/5, 0 en tests. 5/5.
