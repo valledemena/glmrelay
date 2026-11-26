@@ -1,0 +1,14 @@
+[OK] SolarWindRiver initialized (400 particles)
+[PROBE-A] t=1795696222 hasData=1 data=72x72 err=cache dataEpoch=1795696105 age=117
+Framebuffer (MSAA 4x) incomplete
+Framebuffer: MSAA 4x no soportado, cayendo a 0x
+[LGDC 2026-11-26T12:30:23.169Z] launch catalog
+[GiroAdapter] Could not fetch station catalog
+[Ebro] 
+[PROBE-A] t=1795696225 hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696105 age=120
+[LGDC 2026-11-26T12:30:27.072Z] gate-consult deny gambit foF2 2026.11.23T12:00 ms-since-last=3903
+[LGDC 2026-11-26T12:30:29.150Z] launch catalog
+[LGDC 2026-11-26T12:30:29.182Z] launch getbest EB040
+[LGDC 2026-11-26T12:30:37.333Z] gate-consult deny gambit foF2 2026.11.23T12:00 ms-since-last=8151
+[LGDC 2026-11-26T12:30:41.197Z] launch getbest KL154
+[LGDC 2026-11-26T12:30:46.918Z] gate-consult deny gambit foF2 2026.11.23T12:00 ms-since-last=5721

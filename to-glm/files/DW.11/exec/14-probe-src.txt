@@ -1,0 +1,32 @@
+Sonda HUD insertada justo antes de 'bool loading = !impl->initialLoadDone.load();' en App.cpp, NO commiteada (arbol entregado = sin sonda):
+
+    {   // PROBE-HUD: imprime la cadena exacta del HUD TEC y la fila PROV_TEC
+        auto tb = impl->getTec();
+        static double lastP = 0.0;
+        double nowp = (double)std::time(nullptr);
+        if (nowp - lastP >= 8.0) {
+            lastP = nowp;
+            if (tb && tb->grid.valid) {
+                std::time_t tt = (std::time_t)tb->grid.timestamp;
+                std::tm gg;
+#ifdef _WIN32
+                gmtime_s(&gg, &tt);
+#else
+                gmtime_r(&tt, &gg);
+#endif
+                char hb[8];
+                std::strftime(hb, sizeof(hb), "%H:%M", &gg);
+                provstatus::Snapshot ps;
+                { std::lock_guard<std::mutex> lk(impl->bundleMutex); ps = impl->provBoard[provstatus::PROV_TEC]; }
+                fprintf(stderr,
+                    "[PROBE-HUD] t=%s | HUD: TEC: %dx%d GloTEC %s (+%.0fs) | fromCache=%d sim=%d | fila hasData=%d data=%s err=%s dataEpoch=%.0f age=%.0f\n",
+                    hb, tb->grid.width, tb->grid.height, hb,
+                    fmax(0.0, difftime(std::time(nullptr), (std::time_t)tb->grid.timestamp)),
+                    (int)tb->fromCache, (int)tb->simulated,
+                    (int)ps.hasData, ps.data.c_str(), ps.error.c_str(), ps.dataEpoch,
+                    ps.dataEpoch > 0.0 ? (double)std::time(nullptr) - ps.dataEpoch : -1.0);
+            } else {
+                fprintf(stderr, "[PROBE-HUD] t=? | sin bundle TEC aun\n");
+            }
+        }
+    }

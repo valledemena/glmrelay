@@ -1,0 +1,30 @@
+[OK] SolarWindRiver initialized (400 particles)
+Framebuffer (MSAA 4x) incomplete
+Framebuffer: MSAA 4x no soportado, cayendo a 0x
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+940s) | fromCache=1 sim=0 | fila hasData=1 data=72x72 err=cache dataEpoch=1795696442 age=940
+[Ebro] 
+[LGDC 2026-11-26T12:49:43.115Z] launch catalog
+[LGDC 2026-11-26T12:49:43.124Z] launch getbest EB040
+[LGDC 2026-11-26T12:49:45.870Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=2746
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+948s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=948
+[LGDC 2026-11-26T12:49:54.831Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=11707
+[LGDC 2026-11-26T12:49:55.132Z] launch getbest KL154
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+956s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=956
+[LGDC 2026-11-26T12:50:03.658Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=8526
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+964s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=964
+[LGDC 2026-11-26T12:50:07.142Z] launch getbest KI167
+[LGDC 2026-11-26T12:50:12.530Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=5388
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+972s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=972
+[LGDC 2026-11-26T12:50:19.146Z] launch getbest FF051
+[LGDC 2026-11-26T12:50:21.318Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=2172
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+980s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=980
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+988s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=988
+[LGDC 2026-11-26T12:50:30.111Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=10965
+[LGDC 2026-11-26T12:50:31.149Z] launch getbest PQ052
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+996s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=996
+[LGDC 2026-11-26T12:50:38.932Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=7783
+[LGDC 2026-11-26T12:50:43.157Z] launch getbest EA036
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+1004s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=1004
+[LGDC 2026-11-26T12:50:47.959Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=4802
+[PROBE-HUD] t=12:34 | HUD: TEC: 72x72 GloTEC 12:34 (+1012s) | fromCache=0 sim=0 | fila hasData=1 data=72x72 err=backfill: 3 fallos de transporte dataEpoch=1795696442 age=1012
+[LGDC 2026-11-26T12:50:55.167Z] launch getbest VT139

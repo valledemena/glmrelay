@@ -1,0 +1,8 @@
+grep b->grid.timestamp = epoch:
+rc=1 (1 = 0 coincidencias)
+grep st.dataEpoch = epoch;:
+rc=1 (1 = 0 coincidencias)
+grep indice vacio:
+src/Data/GloTecAdapter.cpp:265:        error_ = "indice vacio (0 frames)";
+grep respuestas no-200:
+src/Data/GloTecAdapter.cpp:356:        std::snprintf(eb, sizeof(eb), "backfill: %d respuestas no-200 (ultima %ld)",

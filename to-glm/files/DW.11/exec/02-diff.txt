@@ -1,0 +1,69 @@
+diff --git a/src/App.cpp b/src/App.cpp
+index a02740b..27a5721 100644
+--- a/src/App.cpp
++++ b/src/App.cpp
+@@ -3213,14 +3213,13 @@ void App::fetchWorker() {
+                 if (g.valid) {
+                     auto b = std::make_shared<Impl::TecBundle>();
+                     b->grid = g;
+-                    b->grid.timestamp = epoch;
+                     b->simulated = sim;
+                     { std::lock_guard<std::mutex> lk(impl->bundleMutex); impl->tec = b; }
+                     // M-prov-matrix: fila GloTEC (solo lectura del fetch ya hecho).
+                     provstatus::Snapshot st;
+                     st.id = provstatus::PROV_TEC;
+                     st.hasData = g.valid && !sim;
+-                    st.dataEpoch = epoch;
++                    st.dataEpoch = g.timestamp;   // DW.11-C: edad del dato, no del fetch
+                     char sdb[32];
+                     std::snprintf(sdb, sizeof(sdb), "%dx%d", g.width, g.height);
+                     st.data = sdb;
+@@ -3604,6 +3603,15 @@ void App::restoreTecCache() {
+         b->simulated = false;
+         b->fromCache = true;
+         { std::lock_guard<std::mutex> lk(impl->bundleMutex); impl->tec = b; }
++        provstatus::Snapshot st;   // DW.11-A: fila GloTEC desde cache fresca
++        st.id = provstatus::PROV_TEC;
++        st.hasData = true;
++        st.dataEpoch = newest;
++        char sdb[32];
++        std::snprintf(sdb, sizeof(sdb), "%dx%d", b->grid.width, b->grid.height);
++        st.data = sdb;
++        st.error = "cache";
++        { std::lock_guard<std::mutex> lk(impl->bundleMutex); impl->provBoard[provstatus::PROV_TEC] = st; }
+     }
+     char cbuf[16] = "--:--";
+     { std::time_t tt = (std::time_t)newest; std::tm gg;
+diff --git a/src/Data/GloTecAdapter.cpp b/src/Data/GloTecAdapter.cpp
+index 068aa4a..064202d 100644
+--- a/src/Data/GloTecAdapter.cpp
++++ b/src/Data/GloTecAdapter.cpp
+@@ -261,8 +261,13 @@ bool GloTecAdapter::fetchIndex(std::vector<GloTecFrame>& out) {
+     }
+     std::sort(out.begin(), out.end(),
+               [](const GloTecFrame& a, const GloTecFrame& b) { return a.timeUtc < b.timeUtc; });
++    if (out.empty()) {   // DW.11-B: HTTP 200 con [] deja de ser exito silencioso
++        error_ = "indice vacio (0 frames)";
++        fprintf(stderr, "[GloTecAdapter] Index empty: HTTP 200, 0 frames\n");
++        return false;
++    }
+     printf("[GloTecAdapter] Index OK: %d frames\n", (int)out.size());
+-    return !out.empty();
++    return true;
+ }
+ 
+ bool GloTecAdapter::fetchFrame(const std::string& url, double timeUtc, GridData& out) {
+@@ -346,7 +351,12 @@ bool GloTecAdapter::backfillFrom(const std::vector<GloTecFrame>& index,
+     else if (res.stoppedOnRetryAfter) error_ = "backfill: Retry-After > tope";
+     else if (res.stoppedOnTransport) error_ = "backfill: 3 fallos de transporte";
+     else if (res.stoppedByCaller) error_ = "backfill interrumpido";
+-    else error_.clear();
++    else if (res.httpErrors > 0) {   // DW.11-E': 202/no-200 no es un run limpio
++        char eb[64];
++        std::snprintf(eb, sizeof(eb), "backfill: %d respuestas no-200 (ultima %ld)",
++                      res.httpErrors, lastHttp_);
++        error_ = eb;
++    } else error_.clear();
+ 
+     return !res.stored.empty();
+ }

@@ -1,0 +1,6 @@
+HEAD db0800b7efc715ce6328b272ea2f6c7eead8537a
+db0800b DW.11: errata de ejecucion (+12/-2 real, E-2 no adoptada, E-1 sonda, enlace no determinista)
+b0d3a5b DW.11: honestidad GloTEC (A cache, B indice vacio, C dataEpoch, D timestamp, E' no-200)
+a2a0c68 DW.11: pre-registro honestidad GloTEC (A/B/C/D/E')
+cd65a7b Merge pull request #22 from valledemena/dw.10-consolidacion
+dw.11-glotec-honestidad

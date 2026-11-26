@@ -1,0 +1,46 @@
+[OK] SolarWindRiver initialized (400 particles)
+Framebuffer (MSAA 4x) incomplete
+Framebuffer: MSAA 4x no soportado, cayendo a 0x
+[PROBE-STATE] HUD: TEC: 72x72 GloTEC 12:34 (+1104s) | fila: ok 72x72 age=1104 err=cache
+[LGDC 2026-11-26T12:52:26.400Z] launch catalog
+[GiroAdapter] Could not fetch station catalog
+[Ebro] 
+[LGDC 2026-11-26T12:52:29.353Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=2953
+[LGDC 2026-11-26T12:52:32.042Z] launch catalog
+[GiroAdapter] Could not fetch station catalog
+[LGDC 2026-11-26T12:52:37.904Z] launch catalog
+[LGDC 2026-11-26T12:52:37.939Z] launch getbest EB040
+[LGDC 2026-11-26T12:52:38.320Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=381
+[PROBE-STATE] HUD: TEC: 72x72 GloTEC 12:34 (+1124s) | fila: ok 72x72 age=1124 err=backfill: 3 fallos de transporte
+[LGDC 2026-11-26T12:52:47.112Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=9173
+[LGDC 2026-11-26T12:52:49.940Z] launch getbest KL154
+[LGDC 2026-11-26T12:52:55.866Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=5926
+[LGDC 2026-11-26T12:53:01.950Z] launch getbest EA036
+[LGDC 2026-11-26T12:53:04.627Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=2677
+[PROBE-STATE] HUD: TEC: 72x72 GloTEC 12:34 (+1144s) | fila: ok 72x72 age=1144 err=backfill: 3 fallos de transporte
+[LGDC 2026-11-26T12:53:13.430Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=11480
+[LGDC 2026-11-26T12:53:13.952Z] launch getbest FF051
+[LGDC 2026-11-26T12:53:22.211Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=8259
+[LGDC 2026-11-26T12:53:25.960Z] launch getbest GM037
+[PROBE-STATE] HUD: TEC: 72x72 GloTEC 12:34 (+1164s) | fila: ok 72x72 age=1164 err=backfill: 3 fallos de transporte
+[LGDC 2026-11-26T12:53:30.981Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=5021
+[LGDC 2026-11-26T12:53:37.966Z] launch getbest AT138
+[LGDC 2026-11-26T12:53:39.956Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=1990
+[PROBE-STATE] HUD: TEC: 72x72 GloTEC 12:34 (+1184s) | fila: ok 72x72 age=1184 err=backfill: 3 fallos de transporte
+[LGDC 2026-11-26T12:53:48.806Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=10840
+[LGDC 2026-11-26T12:53:49.968Z] launch getbest KI167
+[LGDC 2026-11-26T12:53:57.654Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=7686
+[LGDC 2026-11-26T12:54:01.980Z] launch getbest OL246
+[PROBE-STATE] HUD: TEC: 72x72 GloTEC 12:34 (+1204s) | fila: stale 72x72 age=1204 err=backfill: 3 fallos de transporte
+[LGDC 2026-11-26T12:54:06.506Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=4526
+[LGDC 2026-11-26T12:54:13.988Z] launch getbest JR055
+[LGDC 2026-11-26T12:54:15.293Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=1305
+[LGDC 2026-11-26T12:54:24.082Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=10094
+[LGDC 2026-11-26T12:54:26.003Z] launch getbest VT139
+[PROBE-STATE] HUD: TEC: 72x72 GloTEC 12:34 (+1224s) | fila: stale 72x72 age=1224 err=backfill: 3 fallos de transporte
+[LGDC 2026-11-26T12:54:32.847Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=6844
+[LGDC 2026-11-26T12:54:38.012Z] launch getbest PQ052
+[LGDC 2026-11-26T12:54:41.574Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=3562
+[PROBE-STATE] HUD: TEC: 72x72 GloTEC 12:34 (+1244s) | fila: stale 72x72 age=1244 err=backfill: 3 fallos de transporte
+[LGDC 2026-11-26T12:54:50.025Z] launch getbest MZ152
+[LGDC 2026-11-26T12:54:50.379Z] gate-consult deny gambit foF2 2026.11.23T12:45 ms-since-last=354
