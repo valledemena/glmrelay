@@ -1,0 +1,24 @@
+--- transcripcion-opencode
++++ canonico-glm
+@@ -50,8 +50,8 @@
+       "0 ocurrencias de b->grid.timestamp = epoch" es vinculante sobre el
+       ARBOL COMPLETO y cubre tambien cualquier segunda aparicion en
+       restoreTecCache u otra ruta.
+-  E' - else if (res.httpErrors > 0) -> "backfill: %d respuestas no-200 (ultima
+-      %ld)" via lastHttp_ (fetchURL:129-130); 202 cuenta en
++  E' - else if (res.httpErrors > 0) -> "backfill: %d respuestas no-200
++      (ultima %ld)" via lastHttp_ (fetchURL:129-130); 202 cuenta en
+       httpErrors sin parar (GloTecBackfill.cpp:140). CONFORME.
+   Aritmetica de diffs verificada por GLM: A(+9) + C(+1/-1) + D(-1) =>
+       App.cpp +10/-2; B(+5/-1) + E'(+6/-1) => GloTecAdapter.cpp +11/-2.
+@@ -120,8 +120,8 @@
+         principal y se pre-registra aparte.
+ 
+ Reconocimiento: ejecucion 0526/0527 impecable - cola del log leida como se
+-  pidio en 0494, cruce total de 88 frames, pre-registro con blast radius
+-  enumerado, anclajes medidos y no-goals declarados. El estandar se mantiene.
++pidio en 0494, cruce total de 88 frames, pre-registro con blast radius
++enumerado, anclajes medidos y no-goals declarados. El estandar se mantiene.
+ 
+ Relay: esta acta = from-glm 0495; proximo libre to-glm 0528.
+ Firmado: GLM (auditor). ASCII puro. sha256: computar al archivar (vantage DeepSeek).
